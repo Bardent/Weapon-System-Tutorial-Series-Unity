@@ -6,3 +6,7 @@
 
 # Early Access
 Early access to the completed prototype of the project is available to all [Patreon](https://www.patreon.com/Bardent "Bardent Patreon Page") tiers.
+
+# Discord
+If you have any questions, feel free to join our [Discord](Discord Server:
+https://discord.gg/uHQrf7K "Bardent Discord Server") community!
