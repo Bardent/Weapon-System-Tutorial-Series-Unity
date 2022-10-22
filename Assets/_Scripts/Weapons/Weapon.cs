@@ -5,16 +5,25 @@ namespace Bardent.Weapons
 {
     public class Weapon : MonoBehaviour
     {
+        public event Action OnExit;
+
         private Animator anim;
         private GameObject baseGameObject;
 
         private AnimationEventHandler eventHandler;
-        
+
         public void Enter()
         {
             print($"{transform.name} enter");
-            
+
             anim.SetBool("active", true);
+        }
+
+        private void Exit()
+        {
+            anim.SetBool("active", false);
+            
+            OnExit?.Invoke();
         }
 
         private void Awake()
@@ -23,5 +32,9 @@ namespace Bardent.Weapons
             anim = baseGameObject.GetComponent<Animator>();
             eventHandler = GetComponentInChildren<AnimationEventHandler>();
         }
+
+        private void OnEnable() => eventHandler.OnFinish += Exit;
+
+        private void OnDisable() => eventHandler.OnFinish -= Exit;
     }
 }

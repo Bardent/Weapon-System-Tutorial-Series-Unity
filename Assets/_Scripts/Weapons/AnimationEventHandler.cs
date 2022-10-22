@@ -5,7 +5,7 @@ namespace Bardent.Weapons
 {
     public class AnimationEventHandler : MonoBehaviour
     {
-        private event Action OnFinish; 
+        public event Action OnFinish; 
 
         private void AnimationFinishedTrigger() => OnFinish?.Invoke();
     }
