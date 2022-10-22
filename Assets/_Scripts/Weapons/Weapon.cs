@@ -7,6 +7,8 @@ namespace Bardent.Weapons
     {
         private Animator anim;
         private GameObject baseGameObject;
+
+        private AnimationEventHandler eventHandler;
         
         public void Enter()
         {
@@ -19,6 +21,7 @@ namespace Bardent.Weapons
         {
             baseGameObject = transform.Find("Base").gameObject;
             anim = baseGameObject.GetComponent<Animator>();
+            eventHandler = GetComponentInChildren<AnimationEventHandler>();
         }
     }
 }
