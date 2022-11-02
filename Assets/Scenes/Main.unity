@@ -44577,7 +44577,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.8319039, y: 1}
+    m_SensorSize: {x: 1.7300813, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -45040,6 +45040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PrimaryWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571504009190527188, guid: 09ad0fb67dd07c849958ce1a5b26b0ca,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}

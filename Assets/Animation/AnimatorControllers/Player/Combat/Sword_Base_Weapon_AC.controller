@@ -270,7 +270,7 @@ AnimatorController:
   - m_Name: counter
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: 0
+    m_DefaultInt: 2
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
