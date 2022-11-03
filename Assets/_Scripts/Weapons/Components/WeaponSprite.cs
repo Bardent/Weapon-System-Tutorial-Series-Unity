@@ -24,13 +24,21 @@ namespace Bardent.Weapons.Components
             // weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
         }
 
-        private void HandleEnter()
+        protected override void HandleEnter()
         {
+            base.HandleEnter();
+            
             currentWeaponSpriteIndex = 0;
         }
 
         private void OnBaseSpriteChange(SpriteRenderer spriteRenderer)
         {
+            if (!isAttackActive)
+            {
+                weaponSpriteRenderer.sprite = null;
+                return;
+            }
+            
             weaponSpriteRenderer.sprite = weaponSprites[weapon.CurrentAttackCounter].Sprites[currentWeaponSpriteIndex];
 
             currentWeaponSpriteIndex++;

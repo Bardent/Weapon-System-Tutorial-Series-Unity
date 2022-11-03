@@ -1,18 +1,19 @@
 using System;
 using Bardent.Utilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Bardent.Weapons
 {
     public class Weapon : MonoBehaviour
     {
-        [SerializeField] private int NumberOfAttacks;
-        [SerializeField] private float AttackCounterResetCooldown;
+        [SerializeField] private int numberOfAttacks;
+        [SerializeField] private float attackCounterResetCooldown;
 
         public int CurrentAttackCounter
         {
             get => currentAttackCounter;
-            private set => currentAttackCounter = value >= NumberOfAttacks ? 0 : value;
+            private set => currentAttackCounter = value >= numberOfAttacks ? 0 : value;
         }
         
         public GameObject BaseGameObject { get; private set; }
@@ -31,15 +32,16 @@ namespace Bardent.Weapons
 
         private GameObject baseGameObject;
         private GameObject weaponSpriteGameObject;
+        
+        private static readonly int Active = Animator.StringToHash("active");
+        private static readonly int Counter = Animator.StringToHash("counter");
 
         public void Enter()
         {
-            print($"{transform.name} enter");
-            
             attackCounterResetTimer.StopTimer();
             
-            anim.SetBool("active", true);
-            anim.SetInteger("counter", currentAttackCounter);
+            anim.SetBool(Active, true);
+            anim.SetInteger(Counter, currentAttackCounter);
             
             OnEnter?.Invoke();
         }
@@ -51,24 +53,23 @@ namespace Bardent.Weapons
 
         private void Exit()
         {
-            anim.SetBool("active", false);
+            OnExit?.Invoke();
+            
+            anim.SetBool(Active, false);
 
             CurrentAttackCounter++;
             
             attackCounterResetTimer.StartTimer();
-            
-            OnExit?.Invoke();
         }
 
-        public void ResetAttackCounter()
+        private void ResetAttackCounter()
         {
-            print("Reset Attack Counter");
             CurrentAttackCounter = 0;
         }
 
         private void Awake()
         {
-            attackCounterResetTimer = new Timer(AttackCounterResetCooldown);
+            attackCounterResetTimer = new Timer(attackCounterResetCooldown);
             
             BaseGameObject = transform.Find("Base").gameObject;
             WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
