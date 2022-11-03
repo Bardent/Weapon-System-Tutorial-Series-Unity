@@ -7,7 +7,7 @@ namespace Bardent.Weapons.Components
     {
         protected Weapon weapon;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             weapon = GetComponent<Weapon>();
         }

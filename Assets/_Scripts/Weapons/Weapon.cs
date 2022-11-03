@@ -15,10 +15,11 @@ namespace Bardent.Weapons
             private set => currentAttackCounter = value >= NumberOfAttacks ? 0 : value;
         }
         
+        public GameObject BaseGameObject { get; private set; }
+        
         public event Action OnExit;
         
         private Animator anim;
-        private GameObject baseGameObject;
         
         private AnimationEventHandler eventHandler;
 
@@ -62,10 +63,10 @@ namespace Bardent.Weapons
         {
             attackCounterResetTimer = new Timer(AttackCounterResetCooldown);
             
-            baseGameObject = transform.Find("Base").gameObject;
-            anim = baseGameObject.GetComponent<Animator>();
+            BaseGameObject = transform.Find("Base").gameObject;
+            anim = BaseGameObject.GetComponent<Animator>();
 
-            eventHandler = baseGameObject.GetComponent<AnimationEventHandler>();
+            eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
         }
 
         private void OnEnable()
