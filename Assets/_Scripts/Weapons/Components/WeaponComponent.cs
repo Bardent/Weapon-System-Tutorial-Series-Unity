@@ -11,5 +11,13 @@ namespace Bardent.Weapons.Components
         {
             weapon = GetComponent<Weapon>();
         }
+
+        protected virtual void OnEnable()
+        {
+        }
+
+        protected virtual void OnDisable()
+        {
+        }
     }
 }

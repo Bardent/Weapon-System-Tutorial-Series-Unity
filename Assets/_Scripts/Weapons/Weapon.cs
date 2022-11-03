@@ -17,7 +17,8 @@ namespace Bardent.Weapons
         
         public GameObject BaseGameObject { get; private set; }
         public GameObject WeaponSpriteGameObject { get; private set; }
-        
+
+        public event Action OnEnter;
         public event Action OnExit;
         
         private Animator anim;
@@ -28,6 +29,9 @@ namespace Bardent.Weapons
 
         private Timer attackCounterResetTimer;
 
+        private GameObject baseGameObject;
+        private GameObject weaponSpriteGameObject;
+
         public void Enter()
         {
             print($"{transform.name} enter");
@@ -36,6 +40,8 @@ namespace Bardent.Weapons
             
             anim.SetBool("active", true);
             anim.SetInteger("counter", currentAttackCounter);
+            
+            OnEnter?.Invoke();
         }
 
         private void Update()
