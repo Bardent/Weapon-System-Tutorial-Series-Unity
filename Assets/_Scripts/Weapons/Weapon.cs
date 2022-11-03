@@ -30,6 +30,8 @@ namespace Bardent.Weapons
         {
             print($"{transform.name} enter");
             
+            attackCounterResetTimer.StopTimer();
+            
             anim.SetBool("active", true);
             anim.SetInteger("counter", currentAttackCounter);
         }
