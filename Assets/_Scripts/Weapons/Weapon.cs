@@ -1,4 +1,5 @@
 using System;
+using Bardent.Utilities;
 using UnityEngine;
 
 namespace Bardent.Weapons
@@ -6,6 +7,7 @@ namespace Bardent.Weapons
     public class Weapon : MonoBehaviour
     {
         [SerializeField] private int NumberOfAttacks;
+        [SerializeField] private float AttackCounterResetCooldown;
 
         public int CurrentAttackCounter
         {
@@ -22,6 +24,8 @@ namespace Bardent.Weapons
 
         private int currentAttackCounter;
 
+        private Timer attackCounterResetTimer;
+
         public void Enter()
         {
             print($"{transform.name} enter");
@@ -30,17 +34,32 @@ namespace Bardent.Weapons
             anim.SetInteger("counter", currentAttackCounter);
         }
 
+        private void Update()
+        {
+            attackCounterResetTimer.Tick();
+        }
+
         private void Exit()
         {
             anim.SetBool("active", false);
 
             CurrentAttackCounter++;
             
+            attackCounterResetTimer.StartTimer();
+            
             OnExit?.Invoke();
+        }
+
+        public void ResetAttackCounter()
+        {
+            print("Reset Attack Counter");
+            CurrentAttackCounter = 0;
         }
 
         private void Awake()
         {
+            attackCounterResetTimer = new Timer(AttackCounterResetCooldown);
+            
             baseGameObject = transform.Find("Base").gameObject;
             anim = baseGameObject.GetComponent<Animator>();
 
@@ -50,11 +69,15 @@ namespace Bardent.Weapons
         private void OnEnable()
         {
             eventHandler.OnFinish += Exit;
+
+            attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
         }
 
         private void OnDisable()
         {
             eventHandler.OnFinish -= Exit;
+            
+            attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
         }
     }
 }
