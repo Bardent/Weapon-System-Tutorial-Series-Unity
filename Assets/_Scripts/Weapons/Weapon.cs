@@ -16,6 +16,7 @@ namespace Bardent.Weapons
         }
         
         public GameObject BaseGameObject { get; private set; }
+        public GameObject WeaponSpriteGameObject { get; private set; }
         
         public event Action OnExit;
         
@@ -64,6 +65,8 @@ namespace Bardent.Weapons
             attackCounterResetTimer = new Timer(AttackCounterResetCooldown);
             
             BaseGameObject = transform.Find("Base").gameObject;
+            WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
+            
             anim = BaseGameObject.GetComponent<Animator>();
 
             eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();

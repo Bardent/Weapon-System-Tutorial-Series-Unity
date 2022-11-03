@@ -14,6 +14,7 @@ namespace Bardent.Weapons.Components
             base.Awake();
 
             baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
+            weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
         }
     }
 }
