@@ -14,3 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfAttacks: 3
   attackCounterResetCooldown: 3
+  componentData:
+  - rid: 5662276222212898820
+  references:
+    version: 2
+    RefIds:
+    - rid: 5662276222212898820
+      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components.Data, asm: Assembly-CSharp}
+      data:
+        <AttackData>k__BackingField:
+        - <Sprites>k__BackingField:
+          - {fileID: -1780751373, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: 577957028, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: -509565249, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: 680478193, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: 365328359, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+        - <Sprites>k__BackingField:
+          - {fileID: 1469980136, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: 1160239679, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: -1537962721, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: 342834816, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: 683960273, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+        - <Sprites>k__BackingField:
+          - {fileID: -84422829, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: -1669289994, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: -312529561, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: -1032906865, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          - {fileID: 621078435, guid: 3179c16b297295440b9749aff89377e2, type: 3}

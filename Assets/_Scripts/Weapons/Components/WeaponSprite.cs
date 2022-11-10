@@ -1,4 +1,5 @@
 ﻿using System;
+using Bardent.Weapons.Components.Data;
 using UnityEngine;
 
 namespace Bardent.Weapons.Components
@@ -7,6 +8,8 @@ namespace Bardent.Weapons.Components
     {
         private SpriteRenderer baseSpriteRenderer;
         private SpriteRenderer weaponSpriteRenderer;
+
+        private WeaponSpriteData data;
 
         [SerializeField] private WeaponSprites[] weaponSprites;
 
