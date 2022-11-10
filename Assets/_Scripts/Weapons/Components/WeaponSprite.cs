@@ -10,9 +10,7 @@ namespace Bardent.Weapons.Components
         private SpriteRenderer weaponSpriteRenderer;
 
         private WeaponSpriteData data;
-
-        [SerializeField] private WeaponSprites[] weaponSprites;
-
+        
         private int currentWeaponSpriteIndex;
 
         protected override void HandleEnter()
@@ -30,7 +28,7 @@ namespace Bardent.Weapons.Components
                 return;
             }
 
-            var currentAttackSprites = weaponSprites[weapon.CurrentAttackCounter].Sprites;
+            var currentAttackSprites = data.AttackData[weapon.CurrentAttackCounter].Sprites;
 
             if (currentWeaponSpriteIndex >= currentAttackSprites.Length)
             {
@@ -49,6 +47,8 @@ namespace Bardent.Weapons.Components
 
             baseSpriteRenderer = transform.Find("Base").GetComponent<SpriteRenderer>();
             weaponSpriteRenderer = transform.Find("WeaponSprite").GetComponent<SpriteRenderer>();
+
+            data = weapon.WeaponData.GetData<WeaponSpriteData>();
 
             // TODO: Fix this when we create weapon data
             // baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
@@ -72,11 +72,5 @@ namespace Bardent.Weapons.Components
 
             weapon.OnEnter -= HandleEnter;
         }
-    }
-
-    [Serializable]
-    public class WeaponSprites
-    {
-        [field: SerializeField] public Sprite[] Sprites { get; private set; }
     }
 }

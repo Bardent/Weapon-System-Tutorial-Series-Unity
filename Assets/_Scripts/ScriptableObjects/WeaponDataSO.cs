@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Bardent.Weapons.Components.Data;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ namespace Bardent._Scripts.ScriptableObjects
         // We want a list of components that build up out weapon but we cannot make a list of Monobehaviours and serialize it => we need to separate weapon components and their data
 
         [SerializeReference] private List<ComponentData> componentData = new List<ComponentData>();
+
+        public T GetData<T>() where T : ComponentData
+        {
+            return componentData.OfType<T>().FirstOrDefault();
+        }
 
         [ContextMenu("Add Weapon Sprite Data")]
         private void AddWeaponSpriteComponent() => componentData.Add(new WeaponSpriteData());

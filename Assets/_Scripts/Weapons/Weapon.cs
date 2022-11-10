@@ -7,12 +7,12 @@ namespace Bardent.Weapons
 {
     public class Weapon : MonoBehaviour
     {
-        [SerializeField] private WeaponDataSO weaponData;
-        
+        [field: SerializeField] public WeaponDataSO WeaponData;
+
         public int CurrentAttackCounter
         {
             get => currentAttackCounter;
-            private set => currentAttackCounter = value >= weaponData.NumberOfAttacks ? 0 : value; 
+            private set => currentAttackCounter = value >= WeaponData.NumberOfAttacks ? 0 : value; 
         }
 
         public event Action OnEnter;
@@ -59,7 +59,7 @@ namespace Bardent.Weapons
 
             eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
-            attackCounterResetTimer = new Timer(weaponData.AttackCounterResetTimer);
+            attackCounterResetTimer = new Timer(WeaponData.AttackCounterResetTimer);
         }
 
         private void Update()
