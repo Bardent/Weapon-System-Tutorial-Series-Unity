@@ -8,5 +8,6 @@ namespace Bardent.Weapons.Components.Data
     [Serializable]
     public abstract class ComponentData
     {
+        [SerializeField] private string componentName;
     }
 }

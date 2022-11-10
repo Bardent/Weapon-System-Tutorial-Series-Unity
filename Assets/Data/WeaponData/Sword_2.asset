@@ -22,20 +22,24 @@ MonoBehaviour:
     - rid: 5662276222212898821
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components.Data, asm: Assembly-CSharp}
       data:
+        componentName: WeaponSprites
         <AttackData>k__BackingField:
-        - <Sprites>k__BackingField:
+        - attackName: Attack 1
+          <Sprites>k__BackingField:
           - {fileID: -1420518866, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -1505483480, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 2084821773, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 521349678, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 1335786267, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
-        - <Sprites>k__BackingField:
+        - attackName: Attack 2
+          <Sprites>k__BackingField:
           - {fileID: -809262849, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -42819579, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 1645220379, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -837185620, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 1231312736, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
-        - <Sprites>k__BackingField:
+        - attackName: Attack 3
+          <Sprites>k__BackingField:
           - {fileID: -134458099, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -93232612, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -32343913, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
