@@ -10,6 +10,8 @@ namespace Bardent._Scripts.ScriptableObjects
         
         [SerializeField] private int numberOfAttacks;
         [SerializeField] private float attackCounterResetCooldown;
+        
+        // We want a list of components that build up out weapon but we cannot make a list of Monobehaviours and serialize it => we need to separate weapon components and their data
 
     }
 }
