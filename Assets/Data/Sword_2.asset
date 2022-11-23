@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
+  m_Name: Sword_2
+  m_EditorClassIdentifier: 
+  <NumberOfAttacks>k__BackingField: 2
+  <componentData>k__BackingField:
+  - rid: 5662276240811753473
+  references:
+    version: 2
+    RefIds:
+    - rid: 5662276240811753473
+      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components.ComponentData,
+        asm: Assembly-CSharp}
+      data:
+        <AttackData>k__BackingField:
+        - <Sprites>k__BackingField:
+          - {fileID: -1420518866, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: -1505483480, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: 2084821773, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: 521349678, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: 1335786267, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+        - <Sprites>k__BackingField:
+          - {fileID: -809262849, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: -42819579, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: 1645220379, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: -837185620, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: 1231312736, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+        - <Sprites>k__BackingField:
+          - {fileID: -134458099, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: -93232612, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: -32343913, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: -1451863314, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+          - {fileID: 1661298058, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
