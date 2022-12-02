@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using Bardent.Core.CoreComponents;
 
 namespace Bardent.Weapons.Components
 {
     public class Movement : WeaponComponent
     {
+        private Core.CoreComponents.Movement movement;
+        private Core.CoreComponents.Movement CoreMovement => movement ? movement : Core.GetCoreComponent(ref movement);
+        
         private void HandleStartMovement()
         {
             

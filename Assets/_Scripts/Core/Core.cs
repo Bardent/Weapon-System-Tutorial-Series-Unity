@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Bardent.Core.CoreComponents;
 
 public class Core : MonoBehaviour
 {

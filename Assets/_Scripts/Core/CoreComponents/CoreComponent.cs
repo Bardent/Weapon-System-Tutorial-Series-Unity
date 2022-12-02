@@ -1,19 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CoreComponent : MonoBehaviour, ILogicUpdate
+namespace Bardent.Core.CoreComponents
 {
-    protected Core core;
-
-    protected virtual void Awake()
+    public class CoreComponent : MonoBehaviour, ILogicUpdate
     {
-        core = transform.parent.GetComponent<Core>();
+        protected global::Core core;
 
-        if(core == null) { Debug.LogError("There is no Core on the parent"); }
-        core.AddComponent(this);
+        protected virtual void Awake()
+        {
+            core = transform.parent.GetComponent<global::Core>();
+
+            if(core == null) { Debug.LogError("There is no Core on the parent"); }
+            core.AddComponent(this);
+        }
+
+        public virtual void LogicUpdate() { }
+
     }
-
-    public virtual void LogicUpdate() { }
-
 }

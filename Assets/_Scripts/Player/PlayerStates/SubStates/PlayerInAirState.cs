@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.Core.CoreComponents;
 using UnityEngine;
 
 public class PlayerInAirState : PlayerState

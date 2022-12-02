@@ -1,35 +1,37 @@
-using System;
 using UnityEngine;
 
-public class Death : CoreComponent
+namespace Bardent.Core.CoreComponents
 {
-    [SerializeField] private GameObject[] deathParticles;
-
-    private ParticleManager ParticleManager =>
-        particleManager ? particleManager : core.GetCoreComponent(ref particleManager);
-    
-    private ParticleManager particleManager;
-
-    private Stats Stats => stats ? stats : core.GetCoreComponent(ref stats);
-    private Stats stats;
-    
-    public void Die()
+    public class Death : CoreComponent
     {
-        foreach (var particle in deathParticles)
+        [SerializeField] private GameObject[] deathParticles;
+
+        private ParticleManager ParticleManager =>
+            particleManager ? particleManager : core.GetCoreComponent(ref particleManager);
+    
+        private ParticleManager particleManager;
+
+        private Stats Stats => stats ? stats : core.GetCoreComponent(ref stats);
+        private Stats stats;
+    
+        public void Die()
         {
-            ParticleManager.StartParticles(particle);
-        }
+            foreach (var particle in deathParticles)
+            {
+                ParticleManager.StartParticles(particle);
+            }
         
-        core.transform.parent.gameObject.SetActive(false);
-    }
+            core.transform.parent.gameObject.SetActive(false);
+        }
 
-    private void OnEnable()
-    {
-        Stats.OnHealthZero += Die;
-    }
+        private void OnEnable()
+        {
+            Stats.OnHealthZero += Die;
+        }
 
-    private void OnDisable()
-    {
-        Stats.OnHealthZero -= Die;
+        private void OnDisable()
+        {
+            Stats.OnHealthZero -= Die;
+        }
     }
 }
