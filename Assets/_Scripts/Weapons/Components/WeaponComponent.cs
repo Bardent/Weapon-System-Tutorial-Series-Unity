@@ -42,10 +42,10 @@ namespace Bardent.Weapons.Components
         }
     }
 
-    public abstract class WeaponComponent<T, U> : WeaponComponent where T : ComponentData<U> where U : AttackData
+    public abstract class WeaponComponent<T1, T2> : WeaponComponent where T1 : ComponentData<T2> where T2 : AttackData
     {
-        protected T data;
-        protected U currentAttackData;
+        protected T1 data;
+        protected T2 currentAttackData;
 
         protected override void HandleEnter()
         {
@@ -58,7 +58,7 @@ namespace Bardent.Weapons.Components
         {
             base.Awake();
 
-            data = weapon.Data.GetData<T>();
+            data = weapon.Data.GetData<T1>();
         }
     }
 }

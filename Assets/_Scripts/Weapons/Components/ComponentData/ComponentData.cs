@@ -6,7 +6,7 @@ namespace Bardent.Weapons.Components
     [Serializable]
     public abstract class ComponentData
     {
-        
+        public string ComponentName;
     }
     
     [Serializable]

@@ -2,6 +2,6 @@
 {
     public class AttackData
     {
-        
+        public string AttackName;
     }
 }
