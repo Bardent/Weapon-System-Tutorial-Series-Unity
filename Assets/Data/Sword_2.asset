@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Sword_2
   m_EditorClassIdentifier: 
-  <NumberOfAttacks>k__BackingField: 2
+  <NumberOfAttacks>k__BackingField: 3
   <ComponentData>k__BackingField:
   - rid: 5662276240811753473
   - rid: 4372344375492476929
@@ -28,7 +28,7 @@ MonoBehaviour:
         - <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 3
         - <Direction>k__BackingField: {x: 1, y: 5}
-          <Velocity>k__BackingField: 4
+          <Velocity>k__BackingField: 8
     - rid: 5662276240811753473
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components.ComponentData,
         asm: Assembly-CSharp}
