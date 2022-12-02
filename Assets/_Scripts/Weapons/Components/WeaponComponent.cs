@@ -9,6 +9,8 @@ namespace Bardent.Weapons.Components
 
         protected bool isAttackActive;
 
+        protected AnimationEventHandler EventHandler => weapon.EventHandler;
+
         protected virtual void Awake()
         {
             weapon = GetComponent<Weapon>();

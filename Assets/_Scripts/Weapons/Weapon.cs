@@ -22,7 +22,7 @@ namespace Bardent.Weapons
         public GameObject BaseGameObject { get; private set; }
         public GameObject WeaponSpriteGameObject { get; private set; }
         
-        private AnimationEventHandler eventHandler;
+        public AnimationEventHandler EventHandler { get; private set; }
 
         private int currentAttackCounter;
 
@@ -57,7 +57,7 @@ namespace Bardent.Weapons
             
             anim = BaseGameObject.GetComponent<Animator>();
 
-            eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+            EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
             attackCounterResetTimer = new Timer(attackCounterResetCooldown);
         }
@@ -75,13 +75,13 @@ namespace Bardent.Weapons
 
         private void OnEnable()
         {
-            eventHandler.OnFinish += Exit;
+            EventHandler.OnFinish += Exit;
             attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
         }
 
         private void OnDisable()
         {
-            eventHandler.OnFinish -= Exit;
+            EventHandler.OnFinish -= Exit;
             attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
         }
     }
