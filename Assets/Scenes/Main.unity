@@ -10820,6 +10820,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d0858588cb91c488efaa7dffe2054e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1286538052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5347446869373260371, guid: 09ad0fb67dd07c849958ce1a5b26b0ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133179029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1321021103
 GameObject:
   m_ObjectHideFlags: 0
@@ -44458,6 +44464,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2133179029}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780144479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286538052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6daadf2d434fc8895a725c7c0e0caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1785562552
 GameObject:
   m_ObjectHideFlags: 0
@@ -44577,7 +44595,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7365854, y: 1}
+    m_SensorSize: {x: 1.8319039, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -44586,6 +44604,12 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 931385145}
+--- !u!1 &1854207894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5347446869373260371, guid: 09ad0fb67dd07c849958ce1a5b26b0ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 2579993880090268338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1896219286
 GameObject:
   m_ObjectHideFlags: 0
@@ -44843,6 +44867,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2579993880090268338}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2101740445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854207894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6daadf2d434fc8895a725c7c0e0caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2105771700
 GameObject:
   m_ObjectHideFlags: 0
