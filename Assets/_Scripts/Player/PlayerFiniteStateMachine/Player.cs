@@ -55,6 +55,9 @@ public class Player : MonoBehaviour
         primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
         secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
         
+        primaryWeapon.SetCore(Core);
+        secondaryWeapon.SetCore(Core);
+        
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");

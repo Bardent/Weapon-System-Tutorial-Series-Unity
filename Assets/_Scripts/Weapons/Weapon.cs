@@ -7,7 +7,10 @@ namespace Bardent.Weapons
     public class Weapon : MonoBehaviour
     {
         [field: SerializeField] public WeaponDataSO Data { get; private set; }
+        
         [SerializeField] private float attackCounterResetCooldown;
+        
+        public Core Core { get; private set; }
 
         public int CurrentAttackCounter
         {
@@ -27,7 +30,8 @@ namespace Bardent.Weapons
         private int currentAttackCounter;
 
         private Timer attackCounterResetTimer;
-        
+
+
         public void Enter()
         {
             print($"{transform.name} enter");
@@ -67,6 +71,11 @@ namespace Bardent.Weapons
             attackCounterResetTimer.Tick();
         }
 
+        public void SetCore(Core core)
+        {
+            Core = core;
+        }
+        
         private void ResetAttackCounter()
         {
             print("Reset Attack Counter");
