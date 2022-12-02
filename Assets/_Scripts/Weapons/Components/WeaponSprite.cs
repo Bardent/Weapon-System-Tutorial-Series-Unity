@@ -4,14 +4,12 @@ using UnityEngine;
 
 namespace Bardent.Weapons.Components
 {
-    public class WeaponSprite : WeaponComponent
+    public class WeaponSprite : WeaponComponent<WeaponSpriteData>
     {
         private SpriteRenderer baseSpriteRenderer;
         private SpriteRenderer weaponSpriteRenderer;
         
         private int currentWeaponSpriteIndex;
-
-        private WeaponSpriteData data;
 
         protected override void HandleEnter()
         {
