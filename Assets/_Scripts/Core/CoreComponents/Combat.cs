@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Bardent.Core.CoreComponents
+namespace Bardent.CoreSystem.CoreComponents
 {
 	public class Combat : CoreComponent, IDamageable, IKnockbackable
 	{

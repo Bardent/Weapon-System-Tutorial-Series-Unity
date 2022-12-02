@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Bardent.Core.CoreComponents
+namespace Bardent.CoreSystem.CoreComponents
 {
     public class Stats : CoreComponent
     {

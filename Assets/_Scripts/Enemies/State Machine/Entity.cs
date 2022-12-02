@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Bardent.Core.CoreComponents;
+using Bardent.CoreSystem;
+using Bardent.CoreSystem.CoreComponents;
 using UnityEngine;
 
 public class Entity : MonoBehaviour {

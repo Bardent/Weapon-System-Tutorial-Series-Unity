@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Bardent.Core.CoreComponents;
+using Bardent.CoreSystem.CoreComponents;
 using UnityEngine;
 
 public class PlayerLedgeClimbState : PlayerState {
