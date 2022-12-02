@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Bardent.CoreSystem;
+using Bardent.Weapons.Components;
 
 namespace Bardent.Weapons.Components
 {
@@ -41,10 +42,18 @@ namespace Bardent.Weapons.Components
         }
     }
 
-    public abstract class WeaponComponent<T> : WeaponComponent where T : ComponentData.ComponentData
+    public abstract class WeaponComponent<T, U> : WeaponComponent where T : ComponentData<U> where U : AttackData
     {
         protected T data;
+        protected U currentAttackData;
 
+        protected override void HandleEnter()
+        {
+            base.HandleEnter();
+            
+            currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
+        }
+        
         protected override void Awake()
         {
             base.Awake();

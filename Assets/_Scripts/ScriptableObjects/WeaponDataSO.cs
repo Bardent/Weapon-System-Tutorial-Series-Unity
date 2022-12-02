@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Bardent.Weapons.Components.ComponentData;
+using Bardent.Weapons.Components;
 using UnityEngine;
 
 namespace Bardent.Weapons

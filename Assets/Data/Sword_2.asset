@@ -14,24 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <NumberOfAttacks>k__BackingField: 3
   <ComponentData>k__BackingField:
-  - rid: 5662276240811753473
-  - rid: 4372344375492476929
+  - rid: 4372344375492476933
+  - rid: 4372344375492476935
   references:
     version: 2
     RefIds:
-    - rid: 4372344375492476929
-      type: {class: MovementData, ns: Bardent.Weapons.Components.ComponentData, asm: Assembly-CSharp}
-      data:
-        <AttackData>k__BackingField:
-        - <Direction>k__BackingField: {x: 1, y: 0}
-          <Velocity>k__BackingField: 2
-        - <Direction>k__BackingField: {x: 1, y: 0}
-          <Velocity>k__BackingField: 3
-        - <Direction>k__BackingField: {x: 1, y: 5}
-          <Velocity>k__BackingField: 8
-    - rid: 5662276240811753473
-      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components.ComponentData,
-        asm: Assembly-CSharp}
+    - rid: 4372344375492476933
+      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         <AttackData>k__BackingField:
         - <Sprites>k__BackingField:
@@ -52,3 +41,13 @@ MonoBehaviour:
           - {fileID: -32343913, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -1451863314, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 1661298058, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
+    - rid: 4372344375492476935
+      type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        <AttackData>k__BackingField:
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 3
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 4
+        - <Direction>k__BackingField: {x: 1, y: 6}
+          <Velocity>k__BackingField: 8

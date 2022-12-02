@@ -1,22 +1,17 @@
 ﻿using UnityEngine;
 using Bardent.CoreSystem.CoreComponents;
-using Bardent.Weapons.Components.ComponentData;
+using Bardent.Weapons.Components;
 
 namespace Bardent.Weapons.Components
 {
-    public class Movement : WeaponComponent
+    public class Movement : WeaponComponent<MovementData, AttackMovement>
     {
         private CoreSystem.CoreComponents.Movement movement;
         private CoreSystem.CoreComponents.Movement CoreMovement => movement ? movement : Core.GetCoreComponent(ref movement);
 
-        private MovementData data;
-        
         private void HandleStartMovement()
         {
-            var currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
-            
             CoreMovement.SetVelocity(currentAttackData.Velocity, currentAttackData.Direction, CoreMovement.FacingDirection);
-
         }
 
         private void HandleStopMovement()
