@@ -13,11 +13,22 @@ MonoBehaviour:
   m_Name: Sword_1
   m_EditorClassIdentifier: 
   <NumberOfAttacks>k__BackingField: 3
-  <componentData>k__BackingField:
+  <ComponentData>k__BackingField:
   - rid: 5662276240811753472
+  - rid: 4372344435206258688
   references:
     version: 2
     RefIds:
+    - rid: 4372344435206258688
+      type: {class: MovementData, ns: Bardent.Weapons.Components.ComponentData, asm: Assembly-CSharp}
+      data:
+        <AttackData>k__BackingField:
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 3
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 4
+        - <Direction>k__BackingField: {x: 1, y: 5}
+          <Velocity>k__BackingField: 5
     - rid: 5662276240811753472
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components.ComponentData,
         asm: Assembly-CSharp}

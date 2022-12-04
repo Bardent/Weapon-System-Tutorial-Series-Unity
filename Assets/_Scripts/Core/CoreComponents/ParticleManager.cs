@@ -1,29 +1,32 @@
 using UnityEngine;
 
-public class ParticleManager : CoreComponent
+namespace Bardent.CoreSystem
 {
-    private Transform particleContainer;
-
-    protected override void Awake()
+    public class ParticleManager : CoreComponent
     {
-        base.Awake();
+        private Transform particleContainer;
 
-        particleContainer = GameObject.FindGameObjectWithTag("ParticleContainer").transform;
-    }
+        protected override void Awake()
+        {
+            base.Awake();
 
-    public GameObject StartParticles(GameObject particlePrefab, Vector2 position, Quaternion rotation)
-    {
-        return Instantiate(particlePrefab, position, rotation, particleContainer);
-    }
+            particleContainer = GameObject.FindGameObjectWithTag("ParticleContainer").transform;
+        }
 
-    public GameObject StartParticles(GameObject particlePrefab)
-    {
-        return StartParticles(particlePrefab, transform.position, Quaternion.identity);
-    }
+        public GameObject StartParticles(GameObject particlePrefab, Vector2 position, Quaternion rotation)
+        {
+            return Instantiate(particlePrefab, position, rotation, particleContainer);
+        }
 
-    public GameObject StartParticlesWithRandomRotation(GameObject particlePrefab)
-    {
-        var randomRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
-        return StartParticles(particlePrefab, transform.position, randomRotation);
+        public GameObject StartParticles(GameObject particlePrefab)
+        {
+            return StartParticles(particlePrefab, transform.position, Quaternion.identity);
+        }
+
+        public GameObject StartParticlesWithRandomRotation(GameObject particlePrefab)
+        {
+            var randomRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+            return StartParticles(particlePrefab, transform.position, randomRotation);
+        }
     }
 }

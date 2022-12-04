@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.CoreSystem;
 using Bardent.Weapons;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -54,6 +55,9 @@ public class Player : MonoBehaviour
 
         primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
         secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
+        
+        primaryWeapon.SetCore(Core);
+        secondaryWeapon.SetCore(Core);
         
         StateMachine = new PlayerStateMachine();
 
