@@ -1,4 +1,5 @@
 using System;
+using Bardent.CoreSystem;
 using UnityEngine;
 using Bardent.Utilities;
 
@@ -22,7 +23,9 @@ namespace Bardent.Weapons
         public GameObject BaseGameObject { get; private set; }
         public GameObject WeaponSpriteGameObject { get; private set; }
         
-        private AnimationEventHandler eventHandler;
+        public AnimationEventHandler EventHandler { get; private set; }
+        
+        public Core Core { get; private set; }
 
         private int currentAttackCounter;
 
@@ -38,6 +41,11 @@ namespace Bardent.Weapons
             anim.SetInteger("counter", currentAttackCounter);
             
             OnEnter?.Invoke();
+        }
+
+        public void SetCore(Core core)
+        {
+            Core = core;
         }
 
         private void Exit()
@@ -57,7 +65,7 @@ namespace Bardent.Weapons
             
             anim = BaseGameObject.GetComponent<Animator>();
 
-            eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+            EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
             attackCounterResetTimer = new Timer(attackCounterResetCooldown);
         }
@@ -75,13 +83,13 @@ namespace Bardent.Weapons
 
         private void OnEnable()
         {
-            eventHandler.OnFinish += Exit;
+            EventHandler.OnFinish += Exit;
             attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
         }
 
         private void OnDisable()
         {
-            eventHandler.OnFinish -= Exit;
+            EventHandler.OnFinish -= Exit;
             attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
         }
     }
