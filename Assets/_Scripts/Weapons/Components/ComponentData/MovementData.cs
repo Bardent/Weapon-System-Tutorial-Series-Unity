@@ -1,10 +1,10 @@
-﻿using Bardent.Weapons.Components.ComponentData.AttackData;
+﻿using Bardent.Weapons.Components;
 using UnityEngine;
 
-namespace Bardent.Weapons.Components.ComponentData
+namespace Bardent.Weapons.Components
 {
-    public class MovementData : ComponentData
+    public class MovementData : ComponentData<AttackMovement>
     {
-        [field: SerializeField] public AttackMovement[] AttackData { get; private set; }
+        
     }
 }

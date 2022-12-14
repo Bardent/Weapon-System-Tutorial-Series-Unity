@@ -44,4 +44,24 @@ namespace Bardent.Weapons.Components
             weapon.OnExit -= HandleExit;
         }
     }
+
+    public abstract class WeaponComponent<T1, T2> : WeaponComponent where T1 : ComponentData<T2> where T2 : AttackData
+    {
+        protected T1 data;
+        protected T2 currentAttackData;
+
+        protected override void HandleEnter()
+        {
+            base.HandleEnter();
+
+            currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            data = weapon.Data.GetData<T1>();
+        }
+    }
 }

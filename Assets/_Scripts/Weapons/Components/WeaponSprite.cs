@@ -1,17 +1,15 @@
 ﻿using System;
-using Bardent.Weapons.Components.ComponentData;
+using Bardent.Weapons.Components;
 using UnityEngine;
 
 namespace Bardent.Weapons.Components
 {
-    public class WeaponSprite : WeaponComponent
+    public class WeaponSprite : WeaponComponent<WeaponSpriteData, AttackSprites>
     {
         private SpriteRenderer baseSpriteRenderer;
         private SpriteRenderer weaponSpriteRenderer;
         
         private int currentWeaponSpriteIndex;
-
-        private WeaponSpriteData data;
 
         protected override void HandleEnter()
         {
@@ -28,7 +26,7 @@ namespace Bardent.Weapons.Components
                 return;
             }
 
-            var currentAttackSprites = data.AttackData[weapon.CurrentAttackCounter].Sprites;
+            var currentAttackSprites = currentAttackData.Sprites;
 
             if (currentWeaponSpriteIndex >= currentAttackSprites.Length)
             {
