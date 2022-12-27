@@ -1,5 +1,8 @@
-﻿namespace Bardent.Weapons.Components
+﻿using System;
+
+namespace Bardent.Weapons.Components
 {
+    [Serializable]
     public class AttackData
     {
         
