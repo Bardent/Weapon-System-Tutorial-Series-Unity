@@ -2,6 +2,21 @@
 {
     public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox>
     {
-        
+        private void HandleAttackAction()
+        {
+            
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            eventHandler.OnAttackAction += HandleAttackAction;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            eventHandler.OnAttackAction -= HandleAttackAction;
+        }
     }
 }
