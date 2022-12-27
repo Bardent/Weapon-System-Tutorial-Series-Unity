@@ -1,4 +1,7 @@
-﻿using UnityEditor;
+﻿using System;
+using System.Collections.Generic;
+using Bardent.Weapons.Components;
+using UnityEditor;
 using UnityEngine;
 
 namespace Bardent.Weapons
@@ -6,14 +9,23 @@ namespace Bardent.Weapons
     [CustomEditor(typeof(WeaponDataSO))]
     public class WeaponDataSOEditor : Editor
     {
+        public List<Type> dataCompTypes = new List<Type>()
+        {
+            typeof(MovementData),
+            typeof(WeaponSpriteData)
+        };
+        
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            if (GUILayout.Button("This is a button"))
+
+            foreach (var compType in dataCompTypes)
             {
-                Debug.Log("TEST!");
+                if (GUILayout.Button(compType.Name))
+                {
+                    Debug.Log($"Presses: {compType.Name}");
+                }
             }
-            
         }
     }
 }
