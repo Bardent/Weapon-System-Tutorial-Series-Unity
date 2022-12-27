@@ -27,6 +27,11 @@ namespace Bardent.Weapons.Components
                 return;
             
             OnDetectCollider2D?.Invoke(detected);
+            
+            foreach (var item in detected)
+            {
+                Debug.Log($"Detected: {detected}");
+            }
         }
 
         protected override void Start()
@@ -46,6 +51,17 @@ namespace Bardent.Weapons.Components
         {
             base.OnDisable();
             eventHandler.OnAttackAction -= HandleAttackAction;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if(data == null || currentAttackData == null || !Application.isPlaying)
+                return;
+
+            foreach (var attackActionHitBox in data.AttackData)
+            {
+                Gizmos.DrawWireCube(transform.position + (Vector3)attackActionHitBox.HitBox.center, attackActionHitBox.HitBox.size);
+            }
         }
     }
 }
