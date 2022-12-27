@@ -17,6 +17,11 @@ namespace Bardent.Weapons
             return ComponentData.OfType<T>().FirstOrDefault();
         }
 
+        public void AddData(ComponentData data)
+        {
+            ComponentData.Add(data);
+        }
+
         [ContextMenu("Add Sprite Data")]
         private void AddSpriteData() => ComponentData.Add(new WeaponSpriteData());
         

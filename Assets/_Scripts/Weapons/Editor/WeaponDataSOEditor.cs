@@ -13,6 +13,8 @@ namespace Bardent.Weapons
     {
         public static List<Type> dataCompTypes = new List<Type>();
 
+        private WeaponDataSO weaponData;
+        
         [DidReloadScripts]
         static void OnRecompile()
         {
@@ -20,6 +22,20 @@ namespace Bardent.Weapons
                 .SelectMany(assembly => assembly.GetTypes())
                 .Where(type => type.IsSubclassOf(typeof(ComponentData)) && type.IsClass && !type.ContainsGenericParameters)
                 .ToList();
+        }
+
+        private void AddDataToComponentData(Type type)
+        {
+            var comp = Activator.CreateInstance(type);
+
+            if (!comp.GetType().IsSubclassOf(typeof(ComponentData))) return;
+            
+            weaponData.AddData(comp as ComponentData);
+        }
+
+        private void OnEnable()
+        {
+            weaponData = target as WeaponDataSO;;
         }
 
         public override void OnInspectorGUI()
@@ -30,7 +46,7 @@ namespace Bardent.Weapons
             {
                 if (GUILayout.Button(compType.Name))
                 {
-                    Debug.Log($"Presses: {compType.Name}");
+                    AddDataToComponentData(compType);
                 }
             }
         }
