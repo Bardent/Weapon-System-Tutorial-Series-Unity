@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEngine;
 
 namespace Bardent.Weapons
 {
@@ -8,6 +9,11 @@ namespace Bardent.Weapons
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
+            if (GUILayout.Button("This is a button"))
+            {
+                Debug.Log("TEST!");
+            }
+            
         }
     }
 }
