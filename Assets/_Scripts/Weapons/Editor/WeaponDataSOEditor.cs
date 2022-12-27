@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Bardent.Weapons.Components;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -10,18 +11,17 @@ namespace Bardent.Weapons
     [CustomEditor(typeof(WeaponDataSO))]
     public class WeaponDataSOEditor : Editor
     {
-        public static List<Type> dataCompTypes = new List<Type>()
-        {
-            typeof(MovementData),
-            typeof(WeaponSpriteData)
-        };
+        public static List<Type> dataCompTypes = new List<Type>();
 
         [DidReloadScripts]
         static void OnRecompile()
         {
-            Debug.Log("Recompiled");
+            dataCompTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(type => type.IsSubclassOf(typeof(ComponentData)) && type.IsClass && !type.ContainsGenericParameters)
+                .ToList();
         }
-        
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
