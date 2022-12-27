@@ -23,11 +23,5 @@ namespace Bardent.Weapons
             
             ComponentData.Add(data);
         }
-
-        [ContextMenu("Add Sprite Data")]
-        private void AddSpriteData() => ComponentData.Add(new WeaponSpriteData());
-        
-        [ContextMenu("Add Movement Data")]
-        private void AddMovementData() => ComponentData.Add(new MovementData());
     }
 }
