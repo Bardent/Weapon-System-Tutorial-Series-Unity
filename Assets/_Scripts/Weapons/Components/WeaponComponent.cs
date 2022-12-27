@@ -22,6 +22,11 @@ namespace Bardent.Weapons.Components
             eventHandler = GetComponentInChildren<AnimationEventHandler>();
         }
 
+        protected virtual void Start()
+        {
+            
+        }
+
         protected virtual void HandleEnter()
         {
             isAttackActive = true;
