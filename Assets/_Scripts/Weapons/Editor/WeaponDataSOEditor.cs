@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Bardent.Weapons.Components;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 namespace Bardent.Weapons
@@ -9,11 +10,17 @@ namespace Bardent.Weapons
     [CustomEditor(typeof(WeaponDataSO))]
     public class WeaponDataSOEditor : Editor
     {
-        public List<Type> dataCompTypes = new List<Type>()
+        public static List<Type> dataCompTypes = new List<Type>()
         {
             typeof(MovementData),
             typeof(WeaponSpriteData)
         };
+
+        [DidReloadScripts]
+        static void OnRecompile()
+        {
+            Debug.Log("Recompiled");
+        }
         
         public override void OnInspectorGUI()
         {
