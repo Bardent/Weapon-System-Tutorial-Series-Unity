@@ -30,7 +30,7 @@ namespace Bardent.Weapons.Components
             
             foreach (var item in detected)
             {
-                Debug.Log($"Detected: {detected}");
+                Debug.Log($"Detected: {item.name}");
             }
         }
 
