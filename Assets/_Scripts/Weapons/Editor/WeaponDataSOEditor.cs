@@ -40,6 +40,14 @@ namespace Bardent.Weapons
 
         public override void OnInspectorGUI()
         {
+            if (GUILayout.Button("Force Update Component Names"))
+            {
+                foreach (var componentData in weaponData.ComponentData)
+                {
+                    componentData.SetComponentName();
+                }
+            }
+            
             base.OnInspectorGUI();
 
             foreach (var compType in dataCompTypes)
