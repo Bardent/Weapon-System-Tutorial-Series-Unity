@@ -14,13 +14,17 @@ namespace Bardent.Weapons
         public static List<Type> dataCompTypes = new List<Type>();
 
         private WeaponDataSO weaponData;
-        
+
+        private bool showForceUpdateButtons;
+        private bool showAddComponentButtons;
+
         [DidReloadScripts]
         static void OnRecompile()
         {
             dataCompTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
-                .Where(type => type.IsSubclassOf(typeof(ComponentData)) && type.IsClass && !type.ContainsGenericParameters)
+                .Where(type =>
+                    type.IsSubclassOf(typeof(ComponentData)) && type.IsClass && !type.ContainsGenericParameters)
                 .ToList();
         }
 
@@ -29,7 +33,7 @@ namespace Bardent.Weapons
             var comp = Activator.CreateInstance(type);
 
             if (!comp.GetType().IsSubclassOf(typeof(ComponentData))) return;
-            
+
             weaponData.AddData(comp as ComponentData);
         }
 
@@ -40,24 +44,6 @@ namespace Bardent.Weapons
 
         public override void OnInspectorGUI()
         {
-            if (GUILayout.Button("Force Update Component Names"))
-            {
-                foreach (var componentData in weaponData.ComponentData)
-                {
-                    componentData.SetComponentName();
-                }
-            }
-
-            if (GUILayout.Button("Force Update Attack Names"))
-            {
-                foreach (var componentData in weaponData.ComponentData)
-                {
-                    componentData.SetAttackDataNames();
-                }
-            }
-            
-            base.OnInspectorGUI();
-
             if (GUILayout.Button("Set Number Of Attacks"))
             {
                 foreach (var componentData in weaponData.ComponentData)
@@ -65,12 +51,40 @@ namespace Bardent.Weapons
                     componentData.InitializeAttackData(weaponData.NumberOfAttacks);
                 }
             }
-            
-            foreach (var compType in dataCompTypes)
+
+            base.OnInspectorGUI();
+
+            showAddComponentButtons = EditorGUILayout.Foldout(showAddComponentButtons, "Add Components");
+
+            if (showAddComponentButtons)
             {
-                if (GUILayout.Button(compType.Name))
+                foreach (var compType in dataCompTypes)
                 {
-                    AddDataToComponentData(compType);
+                    if (GUILayout.Button(compType.Name))
+                    {
+                        AddDataToComponentData(compType);
+                    }
+                }
+            }
+
+            showForceUpdateButtons = EditorGUILayout.Foldout(showForceUpdateButtons, "Force Update Buttons");
+
+            if (showForceUpdateButtons)
+            {
+                if (GUILayout.Button("Force Update Component Names"))
+                {
+                    foreach (var componentData in weaponData.ComponentData)
+                    {
+                        componentData.SetComponentName();
+                    }
+                }
+
+                if (GUILayout.Button("Force Update Attack Names"))
+                {
+                    foreach (var componentData in weaponData.ComponentData)
+                    {
+                        componentData.SetAttackDataNames();
+                    }
                 }
             }
         }
