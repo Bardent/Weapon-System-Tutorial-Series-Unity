@@ -50,7 +50,7 @@ namespace Bardent.Weapons.Components
         {
             base.InitializeAttackData(numberOfAttacks);
 
-            var oldLen = attackData.Length;
+            var oldLen = attackData != null ? attackData.Length : 0;
 
             if (oldLen == numberOfAttacks)
                 return;

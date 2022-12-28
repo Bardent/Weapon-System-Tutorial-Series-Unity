@@ -30,11 +30,13 @@ namespace Bardent.Weapons
 
         private void AddDataToComponentData(Type type)
         {
-            var comp = Activator.CreateInstance(type);
+            var comp = Activator.CreateInstance(type) as ComponentData;
 
             if (!comp.GetType().IsSubclassOf(typeof(ComponentData))) return;
 
-            weaponData.AddData(comp as ComponentData);
+            weaponData.AddData(comp);
+            
+            comp.InitializeAttackData(weaponData.NumberOfAttacks);
         }
 
         private void OnEnable()
