@@ -35,7 +35,7 @@ namespace Bardent.Weapons
 
         private void OnEnable()
         {
-            weaponData = target as WeaponDataSO;;
+            weaponData = target as WeaponDataSO;
         }
 
         public override void OnInspectorGUI()
@@ -58,6 +58,14 @@ namespace Bardent.Weapons
             
             base.OnInspectorGUI();
 
+            if (GUILayout.Button("Set Number Of Attacks"))
+            {
+                foreach (var componentData in weaponData.ComponentData)
+                {
+                    componentData.InitializeAttackData(weaponData.NumberOfAttacks);
+                }
+            }
+            
             foreach (var compType in dataCompTypes)
             {
                 if (GUILayout.Button(compType.Name))

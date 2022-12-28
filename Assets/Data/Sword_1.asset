@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Sword_1
   m_EditorClassIdentifier: 
-  <NumberOfAttacks>k__BackingField: 3
+  <NumberOfAttacks>k__BackingField: 4
   <ComponentData>k__BackingField:
   - rid: 5662276240811753472
   - rid: 4372344435206258688
@@ -24,42 +24,52 @@ MonoBehaviour:
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: MovementData
-        <AttackData>k__BackingField:
-        - name: 
+        attackData:
+        - name: Attack 1
           <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 3
-        - name: 
+        - name: Attack 2
           <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 4
-        - name: 
+        - name: Attack 3
           <Direction>k__BackingField: {x: 1, y: 5}
           <Velocity>k__BackingField: 5
+        - name: Attack 4
+          <Direction>k__BackingField: {x: 0, y: 0}
+          <Velocity>k__BackingField: 0
     - rid: 4372344958183276546
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: ActionHitBoxData
-        <AttackData>k__BackingField:
-        - name: 
+        attackData:
+        - name: Attack 1
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.5
             y: -0.95
             width: 1.6
             height: 1.4
-        - name: 
+        - name: Attack 2
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.5
             y: -0.95
             width: 1.6
             height: 1.4
-        - name: 
+        - name: Attack 3
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.5
             y: -0.95
             width: 1.6
             height: 1.4
+        - name: Attack 4
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
         <DetectableLayer>k__BackingField:
           serializedVersion: 2
           m_Bits: 512
@@ -67,25 +77,27 @@ MonoBehaviour:
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: WeaponSpriteData
-        <AttackData>k__BackingField:
-        - name: Hello!
+        attackData:
+        - name: Attack 1
           <Sprites>k__BackingField:
           - {fileID: -1780751373, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 577957028, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -509565249, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 680478193, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 365328359, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-        - name: 
+        - name: Attack 2
           <Sprites>k__BackingField:
           - {fileID: 1469980136, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 1160239679, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -1537962721, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 342834816, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 683960273, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-        - name: 
+        - name: Attack 3
           <Sprites>k__BackingField:
           - {fileID: -84422829, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -1669289994, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -312529561, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -1032906865, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 621078435, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+        - name: Attack 4
+          <Sprites>k__BackingField: []
