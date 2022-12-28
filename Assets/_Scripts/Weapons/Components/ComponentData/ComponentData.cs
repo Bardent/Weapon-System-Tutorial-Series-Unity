@@ -6,7 +6,7 @@ namespace Bardent.Weapons.Components
     [Serializable]
     public class ComponentData
     {
-        [SerializeField] private string name;
+        [SerializeField, HideInInspector] private string name;
 
         public ComponentData()
         {
