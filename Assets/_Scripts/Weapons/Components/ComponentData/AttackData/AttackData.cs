@@ -6,6 +6,8 @@ namespace Bardent.Weapons.Components
     [Serializable]
     public class AttackData
     {
-        [SerializeField] private string name;
+        [SerializeField, HideInInspector] private string name;
+
+        public void SetAttackName(int i) => name = $"Attack {i}";
     }
 }

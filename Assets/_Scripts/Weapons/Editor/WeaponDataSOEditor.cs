@@ -47,6 +47,14 @@ namespace Bardent.Weapons
                     componentData.SetComponentName();
                 }
             }
+
+            if (GUILayout.Button("Force Update Attack Names"))
+            {
+                foreach (var componentData in weaponData.ComponentData)
+                {
+                    componentData.SetAttackDataNames();
+                }
+            }
             
             base.OnInspectorGUI();
 
