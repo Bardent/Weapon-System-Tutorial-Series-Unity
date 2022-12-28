@@ -8,6 +8,11 @@ namespace Bardent.Weapons.Components
     {
         [SerializeField] private string name;
 
+        public ComponentData()
+        {
+            SetComponentName();
+        }
+        
         public void SetComponentName() => name = GetType().Name;
     }
 
