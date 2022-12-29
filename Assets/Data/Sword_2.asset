@@ -17,36 +17,45 @@ MonoBehaviour:
   - rid: 5662276240811753473
   - rid: 4372344435206258689
   - rid: 4372344958183276547
+  - rid: 4372344982429761545
   references:
     version: 2
     RefIds:
     - rid: 4372344435206258689
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
+        name: MovementData
         attackData:
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 3
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 4
-        - <Direction>k__BackingField: {x: 1, y: 5}
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 5}
           <Velocity>k__BackingField: 5
     - rid: 4372344958183276547
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
+        name: ActionHitBoxData
         attackData:
-        - <HitBox>k__BackingField:
+        - name: 
+          <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.5
             y: -0.95
             width: 1.6
             height: 1.4
-        - <HitBox>k__BackingField:
+        - name: 
+          <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.5
             y: -0.95
             width: 1.6
             height: 1.4
-        - <HitBox>k__BackingField:
+        - name: 
+          <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.5
             y: -0.95
@@ -55,23 +64,36 @@ MonoBehaviour:
         <DetectableLayer>k__BackingField:
           serializedVersion: 2
           m_Bits: 512
+    - rid: 4372344982429761545
+      type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageData
+        attackData:
+        - name: Attack 1
+          damageAmount: 10
+        - name: Attack 2
+          damageAmount: 15
     - rid: 5662276240811753473
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
+        name: WeaponSpriteData
         attackData:
-        - <Sprites>k__BackingField:
+        - name: 
+          <Sprites>k__BackingField:
           - {fileID: -1420518866, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -1505483480, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 2084821773, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 521349678, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 1335786267, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
-        - <Sprites>k__BackingField:
+        - name: 
+          <Sprites>k__BackingField:
           - {fileID: -809262849, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -42819579, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 1645220379, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -837185620, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: 1231312736, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
-        - <Sprites>k__BackingField:
+        - name: 
+          <Sprites>k__BackingField:
           - {fileID: -134458099, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -93232612, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}
           - {fileID: -32343913, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0, type: 3}

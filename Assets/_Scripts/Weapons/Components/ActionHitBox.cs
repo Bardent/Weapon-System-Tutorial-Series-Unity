@@ -1,10 +1,11 @@
 ﻿using System;
 using Bardent.CoreSystem;
+using Bardent.Weapons.Interfaces;
 using UnityEngine;
 
 namespace Bardent.Weapons.Components
 {
-    public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox>
+    public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox>, ICollider2DArrayProvider
     {
         public event Action<Collider2D[]> OnDetectCollider2D;
 

@@ -17,6 +17,7 @@ MonoBehaviour:
   - rid: 5662276240811753472
   - rid: 4372344435206258688
   - rid: 4372344958183276546
+  - rid: 4372344982429761544
   references:
     version: 2
     RefIds:
@@ -63,6 +64,17 @@ MonoBehaviour:
         <DetectableLayer>k__BackingField:
           serializedVersion: 2
           m_Bits: 512
+    - rid: 4372344982429761544
+      type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageData
+        attackData:
+        - name: Attack 1
+          damageAmount: 10
+        - name: Attack 2
+          damageAmount: 15
+        - name: Attack 3
+          damageAmount: 16
     - rid: 5662276240811753472
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
