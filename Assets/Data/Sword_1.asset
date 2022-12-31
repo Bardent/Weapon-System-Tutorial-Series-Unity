@@ -30,8 +30,7 @@ MonoBehaviour:
         - <Direction>k__BackingField: {x: 1, y: 5}
           <Velocity>k__BackingField: 5
     - rid: 5662276240811753472
-      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components,
-        asm: Assembly-CSharp}
+      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         <AttackData>k__BackingField:
         - <Sprites>k__BackingField:
