@@ -17,10 +17,34 @@ MonoBehaviour:
   - rid: 5662276240811753472
   - rid: 4372344435206258688
   - rid: 4372344958183276546
-  - rid: 4372344982429761544
+  - rid: 3124256838490259456
+  - rid: 3124256974708408322
   references:
     version: 2
     RefIds:
+    - rid: 3124256838490259456
+      type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageData
+        attackData:
+        - name: Attack 1
+          damageAmount: 0
+        - name: Attack 2
+          damageAmount: 0
+        - name: Attack 3
+          damageAmount: 0
+        testString: Bardent.Weapons.Components.ExampleHitBox
+    - rid: 3124256974708408322
+      type: {class: ExampleHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ExampleHitBoxData
+        attackData:
+        - name: Attack 1
+          testString: 
+        - name: Attack 2
+          testString: 
+        - name: Attack 3
+          testString: 
     - rid: 4372344435206258688
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -64,17 +88,6 @@ MonoBehaviour:
         <DetectableLayer>k__BackingField:
           serializedVersion: 2
           m_Bits: 512
-    - rid: 4372344982429761544
-      type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
-      data:
-        name: DamageData
-        attackData:
-        - name: Attack 1
-          damageAmount: 10
-        - name: Attack 2
-          damageAmount: 15
-        - name: Attack 3
-          damageAmount: 16
     - rid: 5662276240811753472
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:

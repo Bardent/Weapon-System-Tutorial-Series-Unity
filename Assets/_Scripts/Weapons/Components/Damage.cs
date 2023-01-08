@@ -6,8 +6,6 @@ namespace Bardent.Weapons.Components
 {
     public class Damage : WeaponComponent<DamageData, AttackDamage>
     {
-        public Type providerType = typeof(ActionHitBox);
-        
         private ICollider2DArrayProvider provider;
         
         private void HandleDetectCollider2D(Collider2D[] colliders)
@@ -18,7 +16,14 @@ namespace Bardent.Weapons.Components
         protected override void Awake()
         {
             base.Awake();
-            provider = GetComponent(providerType) as ICollider2DArrayProvider;
+
+            print($"Attempting to create Type from string: {data.ProviderType}");
+            
+            var t = Type.GetType(data.ProviderType);
+            
+            print($"Got type: {t}");    
+
+            provider = GetComponent(t) as ICollider2DArrayProvider;
         }
 
         protected override void OnEnable()

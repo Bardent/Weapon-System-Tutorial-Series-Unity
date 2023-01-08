@@ -73,6 +73,7 @@ MonoBehaviour:
           damageAmount: 10
         - name: Attack 2
           damageAmount: 15
+        testString: Bardent.Weapons.Components.ActionHitBox
     - rid: 5662276240811753473
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
