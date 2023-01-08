@@ -10,7 +10,10 @@ namespace Bardent.Weapons.Components
         {
             foreach (var item in colliders)
             {
-                print($"Detected Item: {item.name}");
+                if (item.TryGetComponent(out IDamageable damageable))
+                {
+                    damageable.Damage(currentAttackData.Amount);
+                }
             }
         }
 
