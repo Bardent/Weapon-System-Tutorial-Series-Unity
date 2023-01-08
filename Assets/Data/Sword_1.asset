@@ -23,32 +23,40 @@ MonoBehaviour:
     - rid: 4372344435206258688
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <AttackData>k__BackingField:
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        name: MovementData
+        attackData:
+        - name: Attack 1
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 3
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        - name: Attack 2
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 4
-        - <Direction>k__BackingField: {x: 1, y: 5}
+        - name: Attack 3
+          <Direction>k__BackingField: {x: 1, y: 5}
           <Velocity>k__BackingField: 5
     - rid: 4372345045472247809
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <AttackData>k__BackingField:
-        - Debug: 0
+        name: ActionHitBoxData
+        attackData:
+        - name: Attack 1
+          Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.11
             y: -0.9
             width: 1.94
             height: 1.41
-        - Debug: 0
+        - name: Attack 2
+          Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.11
             y: -0.9
             width: 1.94
             height: 1.41
-        - Debug: 0
+        - name: Attack 3
+          Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0
@@ -61,20 +69,24 @@ MonoBehaviour:
     - rid: 5662276240811753472
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <AttackData>k__BackingField:
-        - <Sprites>k__BackingField:
+        name: WeaponSpriteData
+        attackData:
+        - name: Attack 1
+          <Sprites>k__BackingField:
           - {fileID: -1780751373, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 577957028, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -509565249, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 680478193, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 365328359, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-        - <Sprites>k__BackingField:
+        - name: Attack 2
+          <Sprites>k__BackingField:
           - {fileID: 1469980136, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 1160239679, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -1537962721, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 342834816, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: 683960273, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-        - <Sprites>k__BackingField:
+        - name: Attack 3
+          <Sprites>k__BackingField:
           - {fileID: -84422829, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -1669289994, guid: 3179c16b297295440b9749aff89377e2, type: 3}
           - {fileID: -312529561, guid: 3179c16b297295440b9749aff89377e2, type: 3}
