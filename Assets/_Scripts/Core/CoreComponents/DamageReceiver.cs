@@ -6,14 +6,14 @@ namespace Bardent.CoreSystem
     {
         [SerializeField] private GameObject damageParticles;
         
-        private CoreComp<Stats> stats;
-        private CoreComp<ParticleManager> particleManager;
+        private Stats stats;
+        private ParticleManager particleManager;
 
         public void Damage(float amount)
         {
             Debug.Log(core.transform.parent.name + " Damaged!");
-            stats.Comp?.DecreaseHealth(amount);
-            particleManager.Comp?.StartParticlesWithRandomRotation(damageParticles);
+            stats?.DecreaseHealth(amount);
+            particleManager?.StartParticlesWithRandomRotation(damageParticles);
         }
 
         protected override void Awake()

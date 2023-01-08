@@ -18,5 +18,7 @@ namespace Bardent.CoreSystem
             
             this.core = core;
         }
+
+        public static implicit operator T(CoreComp<T> comp) => comp.Comp;
     }
 }

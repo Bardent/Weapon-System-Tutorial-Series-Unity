@@ -2,12 +2,12 @@
 
 namespace Bardent.CoreSystem
 {
-    public class Combat : CoreComponent, IKnockbackable
+    public class KnockBackReceiver : CoreComponent, IKnockbackable
     {
         [SerializeField] private float maxKnockBackTime = 0.2f;
 
-        private CoreComp<Movement> movement;
-        private CoreComp<CollisionSenses> collisionSenses;
+        private Movement movement;
+        private CollisionSenses collisionSenses;
 
         private bool isKnockBackActive;
         private float knockBackStartTime;
@@ -19,8 +19,8 @@ namespace Bardent.CoreSystem
 
         public void KnockBack(Vector2 angle, float strength, int direction)
         {
-            movement.Comp?.SetVelocity(strength, angle, direction);
-            movement.Comp.CanSetVelocity = false;
+            movement?.SetVelocity(strength, angle, direction);
+            movement.CanSetVelocity = false;
             isKnockBackActive = true;
             knockBackStartTime = Time.time;
         }
@@ -29,12 +29,12 @@ namespace Bardent.CoreSystem
         {
             if (
                 isKnockBackActive &&
-                ((movement.Comp?.CurrentVelocity.y <= 0.01f && collisionSenses.Comp.Ground) ||
+                ((movement?.CurrentVelocity.y <= 0.01f && collisionSenses.Ground) ||
                  Time.time >= knockBackStartTime + maxKnockBackTime)
             )
             {
                 isKnockBackActive = false;
-                movement.Comp.CanSetVelocity = true;
+                movement.CanSetVelocity = true;
             }
         }
 
