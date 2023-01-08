@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6240072112886026648}
   - component: {fileID: 6240072112886026651}
   m_Layer: 0
-  m_Name: Enemy1HitParticle
+  m_Name: HitBloodParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
