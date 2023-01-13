@@ -17,8 +17,8 @@ namespace Bardent.Weapons.Components
         private void HandleAttackAction()
         {
             offset.Set(
-                transform.position.x + (currentAttackData.HitBox.x * movement.Comp.FacingDirection),
-                transform.position.y + currentAttackData.HitBox.y
+                transform.position.x + (currentAttackData.HitBox.center.x * movement.Comp.FacingDirection),
+                transform.position.y + currentAttackData.HitBox.center.y
             );
 
             detected = Physics2D.OverlapBoxAll(offset, currentAttackData.HitBox.size, 0f, data.DetectableLayers);
