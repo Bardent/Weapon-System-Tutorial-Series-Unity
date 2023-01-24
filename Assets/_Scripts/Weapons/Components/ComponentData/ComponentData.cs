@@ -8,6 +8,10 @@ namespace Bardent.Weapons.Components
     {
         [SerializeField, HideInInspector] private string name;
 
+        public Type Dependency => dependency;
+        
+        protected Type dependency; 
+
         public ComponentData()
         {
             SetComponentName();

@@ -7,6 +7,8 @@ public class PlayerAttackState : PlayerAbilityState
 {
     private Weapon weapon;
 
+    public bool CanAttack => weapon.Data != null;
+
     public PlayerAttackState(
         Player player,
         PlayerStateMachine stateMachine,
