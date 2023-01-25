@@ -76,6 +76,15 @@ namespace Bardent.Weapons
         {
             GenerateWeapon(data);
         }
+
+        [ContextMenu("Remove All Weapon Components")]
+        private void RemoveAllWeaponComponents()
+        {
+            foreach (var component in GetComponents<WeaponComponent>())
+            {
+                DestroyImmediate(component);
+            }
+        }
         #endif
     }
 }
