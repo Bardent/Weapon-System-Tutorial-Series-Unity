@@ -25,7 +25,8 @@ namespace Bardent.Weapons
 
             foreach (var dependency in componentDependencies)
             {
-                
+                if(componentsAddedToWeapon.FirstOrDefault(component => component.GetType() == dependency))
+                    continue;
             }
         }
     }
