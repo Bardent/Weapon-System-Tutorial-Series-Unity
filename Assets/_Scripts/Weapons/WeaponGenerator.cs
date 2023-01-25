@@ -19,8 +19,8 @@ namespace Bardent.Weapons
             componentsAlreadyOnWeapon.Clear();
             componentsAddedToWeapon.Clear();
             componentDependencies.Clear();
-            
-            
+
+            componentsAlreadyOnWeapon = GetComponents<WeaponComponent>().ToList();
         }
     }
 }
