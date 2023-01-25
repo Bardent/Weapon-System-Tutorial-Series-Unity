@@ -24,16 +24,16 @@ namespace Bardent.Weapons.Components
         {
             base.OnEnable();
 
-            eventHandler.OnStartMovement += HandleStartMovement;
-            eventHandler.OnStopMovement += HandleStopMovement;
+            EventHandler.OnStartMovement += HandleStartMovement;
+            EventHandler.OnStopMovement += HandleStopMovement;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             
-            eventHandler.OnStartMovement -= HandleStartMovement;
-            eventHandler.OnStopMovement -= HandleStopMovement;
+            EventHandler.OnStartMovement -= HandleStartMovement;
+            EventHandler.OnStopMovement -= HandleStopMovement;
         }
     }
 }

@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCounterResetCooldown: 0
+  <EventHandler>k__BackingField: {fileID: 7004377421334843877}
 --- !u!114 &3864662185661644459
 MonoBehaviour:
   m_ObjectHideFlags: 0

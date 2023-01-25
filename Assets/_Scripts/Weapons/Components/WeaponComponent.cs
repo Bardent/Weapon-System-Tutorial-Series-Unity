@@ -6,20 +6,25 @@ namespace Bardent.Weapons.Components
 {
     public abstract class WeaponComponent : MonoBehaviour
     {
+        protected bool isInitialized;
+        
         protected Weapon weapon;
 
-        // TODO: Fix this when finishing weapon data
-        // protected AnimationEventHandler EventHandler => weapon.EventHandler;
-        protected AnimationEventHandler eventHandler;
+        protected AnimationEventHandler EventHandler => weapon.EventHandler;
+        
         protected Core Core => weapon.Core;
 
         protected bool isAttackActive;
 
+        public virtual void Init()
+        {
+            isInitialized = true;
+            SubscribeHandlers();
+        }
+        
         protected virtual void Awake()
         {
             weapon = GetComponent<Weapon>();
-
-            eventHandler = GetComponentInChildren<AnimationEventHandler>();
         }
         
         protected virtual void Start(){}
@@ -34,10 +39,17 @@ namespace Bardent.Weapons.Components
             isAttackActive = false;
         }
 
-        protected virtual void OnEnable()
+        protected virtual void SubscribeHandlers()
         {
             weapon.OnEnter += HandleEnter;
             weapon.OnExit += HandleExit;
+        }
+
+        protected virtual void OnEnable()
+        {
+            if(!isInitialized) return;
+            
+            SubscribeHandlers();
         }
 
         protected virtual void OnDisable()
@@ -59,9 +71,9 @@ namespace Bardent.Weapons.Components
             currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
         }
 
-        protected override void Awake()
+        public override void Init()
         {
-            base.Awake();
+            base.Init();
 
             data = weapon.Data.GetData<T1>();
         }

@@ -15,7 +15,7 @@ namespace Bardent.Weapons
         private List<WeaponComponent> componentsAddedToWeapon = new List<WeaponComponent>();
         private List<Type> componentDependencies = new List<Type>();
 
-        private void Awake()
+        private void Start()
         {
             GenerateWeapon(data);
         }
@@ -23,12 +23,17 @@ namespace Bardent.Weapons
         public void GenerateWeapon(WeaponDataSO data)
         {
             weapon.SetData(data);
-            
+
             InitializeListsAndDependencies(data);
 
             AddNewDependencies();
 
             RemoveOldDependencies();
+            
+            foreach (var component in componentsAddedToWeapon)
+            {
+                component.Init();
+            }
         }
 
         private void RemoveOldDependencies()
@@ -39,10 +44,9 @@ namespace Bardent.Weapons
             {
 #if UNITY_EDITOR
                 DestroyImmediate(component);
-                continue;
-#endif
-
+#else
                 Destroy(component);
+#endif
             }
         }
 
@@ -74,8 +78,8 @@ namespace Bardent.Weapons
             componentsAlreadyOnWeapon = GetComponents<WeaponComponent>().ToList();
             componentDependencies = data.GetAllDependencies();
         }
-        
-        #if UNITY_EDITOR
+
+#if UNITY_EDITOR
         [ContextMenu("Generate Weapon")]
         private void GenerateWeaponFromEditor()
         {
@@ -90,6 +94,6 @@ namespace Bardent.Weapons
                 DestroyImmediate(component);
             }
         }
-        #endif
+#endif
     }
 }

@@ -39,13 +39,13 @@ namespace Bardent.Weapons.Components
         protected override void OnEnable()
         {
             base.OnEnable();
-            eventHandler.OnAttackAction += HandleAttackAction;
+            EventHandler.OnAttackAction += HandleAttackAction;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            eventHandler.OnAttackAction -= HandleAttackAction;
+            EventHandler.OnAttackAction -= HandleAttackAction;
         }
 
         private void OnDrawGizmosSelected()
