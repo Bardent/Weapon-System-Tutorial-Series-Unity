@@ -8,6 +8,7 @@ namespace Bardent.Weapons
 {
     public class WeaponGenerator : MonoBehaviour
     {
+        [SerializeField] private WeaponDataSO data;
         [SerializeField] private Weapon weapon;
 
         private List<WeaponComponent> componentsAlreadyOnWeapon = new List<WeaponComponent>();
@@ -16,6 +17,8 @@ namespace Bardent.Weapons
 
         public void GenerateWeapon(WeaponDataSO data)
         {
+            weapon.SetData(data);
+            
             InitializeListsAndDependencies(data);
 
             AddNewDependencies();
@@ -66,5 +69,13 @@ namespace Bardent.Weapons
             componentsAlreadyOnWeapon = GetComponents<WeaponComponent>().ToList();
             componentDependencies = data.GetAllDependencies();
         }
+        
+        #if UNITY_EDITOR
+        [ContextMenu("Generate Weapon")]
+        private void GenerateWeaponFromEditor()
+        {
+            GenerateWeapon(data);
+        }
+        #endif
     }
 }
