@@ -16,13 +16,30 @@ namespace Bardent.Weapons
 
         public void GenerateWeapon(WeaponDataSO data)
         {
-            componentsAlreadyOnWeapon.Clear();
-            componentsAddedToWeapon.Clear();
-            componentDependencies.Clear();
+            InitializeListsAndDependencies(data);
 
-            componentsAlreadyOnWeapon = GetComponents<WeaponComponent>().ToList();
-            componentDependencies = data.GetAllDependencies();
+            AddNewDependencies();
 
+            RemoveOldDependencies();
+        }
+
+        private void RemoveOldDependencies()
+        {
+            var componentsToRemove = componentsAlreadyOnWeapon.Except(componentsAddedToWeapon);
+
+            foreach (var component in componentsToRemove)
+            {
+#if UNITY_EDITOR
+                DestroyImmediate(component);
+                continue;
+#endif
+
+                Destroy(component);
+            }
+        }
+
+        private void AddNewDependencies()
+        {
             foreach (var dependency in componentDependencies)
             {
                 if (componentsAddedToWeapon.FirstOrDefault(component => component.GetType() == dependency))
@@ -38,18 +55,16 @@ namespace Bardent.Weapons
 
                 componentsAddedToWeapon.Add(weaponComponent);
             }
+        }
 
-            var componentsToRemove = componentsAlreadyOnWeapon.Except(componentsAddedToWeapon);
+        private void InitializeListsAndDependencies(WeaponDataSO data)
+        {
+            componentsAlreadyOnWeapon.Clear();
+            componentsAddedToWeapon.Clear();
+            componentDependencies.Clear();
 
-            foreach (var component in componentsToRemove)
-            {
-#if UNITY_EDITOR
-                DestroyImmediate(component);
-                continue;
-#endif
-                
-                Destroy(component);
-            }
+            componentsAlreadyOnWeapon = GetComponents<WeaponComponent>().ToList();
+            componentDependencies = data.GetAllDependencies();
         }
     }
 }
