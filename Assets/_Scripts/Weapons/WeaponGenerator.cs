@@ -30,6 +30,11 @@ namespace Bardent.Weapons
 
                 var weaponComponent =
                     componentsAlreadyOnWeapon.FirstOrDefault(component => component.GetType() == dependency);
+
+                if (weaponComponent == null)
+                {
+                    weaponComponent = gameObject.AddComponent(dependency) as WeaponComponent;
+                }
             }
         }
     }
