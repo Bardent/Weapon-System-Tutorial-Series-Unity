@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bardent.Weapons.Components;
 using UnityEngine;
@@ -23,6 +24,11 @@ namespace Bardent.Weapons
                 return;
             
             ComponentData.Add(data);
+        }
+
+        public List<Type> GetAllDependencies()
+        {
+            return ComponentData.Select(component => component.ComponentDependency).ToList();
         }
     }
 }
