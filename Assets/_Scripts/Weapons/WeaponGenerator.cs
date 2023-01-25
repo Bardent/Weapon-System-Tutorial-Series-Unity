@@ -25,7 +25,7 @@ namespace Bardent.Weapons
 
             foreach (var dependency in componentDependencies)
             {
-                if(componentsAddedToWeapon.FirstOrDefault(component => component.GetType() == dependency))
+                if (componentsAddedToWeapon.FirstOrDefault(component => component.GetType() == dependency))
                     continue;
 
                 var weaponComponent =
@@ -35,6 +35,20 @@ namespace Bardent.Weapons
                 {
                     weaponComponent = gameObject.AddComponent(dependency) as WeaponComponent;
                 }
+
+                componentsAddedToWeapon.Add(weaponComponent);
+            }
+
+            var componentsToRemove = componentsAlreadyOnWeapon.Except(componentsAddedToWeapon);
+
+            foreach (var component in componentsToRemove)
+            {
+#if UNITY_EDITOR
+                DestroyImmediate(component);
+                continue;
+#endif
+                
+                Destroy(component);
             }
         }
     }
