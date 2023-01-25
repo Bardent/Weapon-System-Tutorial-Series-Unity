@@ -27,6 +27,9 @@ namespace Bardent.Weapons
             {
                 if(componentsAddedToWeapon.FirstOrDefault(component => component.GetType() == dependency))
                     continue;
+
+                var weaponComponent =
+                    componentsAlreadyOnWeapon.FirstOrDefault(component => component.GetType() == dependency);
             }
         }
     }
