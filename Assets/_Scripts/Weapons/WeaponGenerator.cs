@@ -15,6 +15,11 @@ namespace Bardent.Weapons
         private List<WeaponComponent> componentsAddedToWeapon = new List<WeaponComponent>();
         private List<Type> componentDependencies = new List<Type>();
 
+        private void Awake()
+        {
+            GenerateWeapon(data);
+        }
+
         public void GenerateWeapon(WeaponDataSO data)
         {
             weapon.SetData(data);
