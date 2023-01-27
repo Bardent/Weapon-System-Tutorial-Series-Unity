@@ -17,17 +17,16 @@ namespace Bardent.Weapons.Components
             }
         }
 
-        protected override void Awake()
+        public override void Init()
         {
-            base.Awake();
-
             hitBox = GetComponent<ActionHitBox>();
+
+            base.Init();
         }
 
-        protected override void OnEnable()
+        protected override void SubscribeHandlers()
         {
-            base.OnEnable();
-
+            base.SubscribeHandlers();
             hitBox.OnDetectedCollider2D += HandleDetectCollider2D;
         }
 

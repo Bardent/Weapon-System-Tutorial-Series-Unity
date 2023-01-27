@@ -8,13 +8,13 @@ namespace Bardent.Weapons.Components
     {
         private SpriteRenderer baseSpriteRenderer;
         private SpriteRenderer weaponSpriteRenderer;
-        
+
         private int currentWeaponSpriteIndex;
 
         protected override void HandleEnter()
         {
             base.HandleEnter();
-            
+
             currentWeaponSpriteIndex = 0;
         }
 
@@ -33,7 +33,7 @@ namespace Bardent.Weapons.Components
                 Debug.LogWarning($"{weapon.name} weapon sprites length mismatch");
                 return;
             }
-            
+
             weaponSpriteRenderer.sprite = currentAttackSprites[currentWeaponSpriteIndex];
 
             currentWeaponSpriteIndex++;
@@ -43,29 +43,33 @@ namespace Bardent.Weapons.Components
         {
             base.Awake();
 
-            baseSpriteRenderer = transform.Find("Base").GetComponent<SpriteRenderer>();
-            weaponSpriteRenderer = transform.Find("WeaponSprite").GetComponent<SpriteRenderer>();
+            baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
+            weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
+        }
 
+        public override void Init()
+        {
             data = weapon.Data.GetData<WeaponSpriteData>();
 
-            // TODO: Fix this when we create weapon data
-            // baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
-            // weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
+            base.Init();
+        }
+
+        protected override void SubscribeHandlers()
+        {
+            base.SubscribeHandlers();
+            baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
+            weapon.OnEnter += HandleEnter;
         }
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            
-            baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
-
-            weapon.OnEnter += HandleEnter;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            
+
             baseSpriteRenderer.UnregisterSpriteChangeCallback(HandleBaseSpriteChange);
 
             weapon.OnEnter -= HandleEnter;

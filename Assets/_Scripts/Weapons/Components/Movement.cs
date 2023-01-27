@@ -20,20 +20,19 @@ namespace Bardent.Weapons.Components
             CoreMovement.SetVelocityZero();
         }
 
-        protected override void OnEnable()
+        protected override void SubscribeHandlers()
         {
-            base.OnEnable();
-
-            eventHandler.OnStartMovement += HandleStartMovement;
-            eventHandler.OnStopMovement += HandleStopMovement;
+            base.SubscribeHandlers();
+            EventHandler.OnStartMovement += HandleStartMovement;
+            EventHandler.OnStopMovement += HandleStopMovement;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             
-            eventHandler.OnStartMovement -= HandleStartMovement;
-            eventHandler.OnStopMovement -= HandleStopMovement;
+            EventHandler.OnStartMovement -= HandleStartMovement;
+            EventHandler.OnStopMovement -= HandleStopMovement;
         }
     }
 }

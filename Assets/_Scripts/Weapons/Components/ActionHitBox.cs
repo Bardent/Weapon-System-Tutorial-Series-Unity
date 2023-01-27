@@ -36,16 +36,16 @@ namespace Bardent.Weapons.Components
             movement = new CoreComp<CoreSystem.Movement>(Core);
         }
 
-        protected override void OnEnable()
+        protected override void SubscribeHandlers()
         {
-            base.OnEnable();
-            eventHandler.OnAttackAction += HandleAttackAction;
+            base.SubscribeHandlers();
+            EventHandler.OnAttackAction += HandleAttackAction;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            eventHandler.OnAttackAction -= HandleAttackAction;
+            EventHandler.OnAttackAction -= HandleAttackAction;
         }
 
         private void OnDrawGizmosSelected()
