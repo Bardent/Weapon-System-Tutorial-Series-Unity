@@ -15,14 +15,23 @@ namespace Bardent.Weapons.Components
 
         protected bool isAttackActive;
 
+        public virtual void Init()
+        {
+            
+        }
+        
         protected virtual void Awake()
         {
             weapon = GetComponent<Weapon>();
 
             eventHandler = GetComponentInChildren<AnimationEventHandler>();
         }
-        
-        protected virtual void Start(){}
+
+        protected virtual void Start()
+        {
+            weapon.OnEnter += HandleEnter;
+            weapon.OnExit += HandleExit;
+        }
 
         protected virtual void HandleEnter()
         {
@@ -34,13 +43,7 @@ namespace Bardent.Weapons.Components
             isAttackActive = false;
         }
 
-        protected virtual void OnEnable()
-        {
-            weapon.OnEnter += HandleEnter;
-            weapon.OnExit += HandleExit;
-        }
-
-        protected virtual void OnDisable()
+        protected virtual void OnDestroy()
         {
             weapon.OnEnter -= HandleEnter;
             weapon.OnExit -= HandleExit;
@@ -59,9 +62,9 @@ namespace Bardent.Weapons.Components
             currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
         }
 
-        protected override void Awake()
+        public override void Init()
         {
-            base.Awake();
+            base.Init();
 
             data = weapon.Data.GetData<T1>();
         }
