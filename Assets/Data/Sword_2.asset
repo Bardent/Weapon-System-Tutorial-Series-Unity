@@ -18,9 +18,21 @@ MonoBehaviour:
   - rid: 4372344435206258689
   - rid: 4372345045472247810
   - rid: 3124257199506325505
+  - rid: 2516071312619208705
   references:
     version: 2
     RefIds:
+    - rid: 2516071312619208705
+      type: {class: KnockBackData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: KnockBackData
+        attackData:
+        - name: Attack 1
+          <Angle>k__BackingField: {x: 1, y: 1}
+          <Strength>k__BackingField: 10
+        - name: Attack 2
+          <Angle>k__BackingField: {x: 1, y: 1}
+          <Strength>k__BackingField: 15
     - rid: 3124257199506325505
       type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
