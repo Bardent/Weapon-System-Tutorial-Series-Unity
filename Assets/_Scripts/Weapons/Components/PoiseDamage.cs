@@ -8,7 +8,13 @@ namespace Bardent.Weapons.Components
 
         private void HandleDetectCollider2D(Collider2D[] colliders)
         {
-            
+            foreach (var item in colliders)
+            {
+                if (item.TryGetComponent(out IPoiseDamageable poiseDamageable))
+                {
+                    poiseDamageable.DamagePoise(currentAttackData.Amount);
+                }
+            }
         }
         
         protected override void Start()
