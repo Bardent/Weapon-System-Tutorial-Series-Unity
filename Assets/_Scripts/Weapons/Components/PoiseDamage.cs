@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Bardent.Interfaces;
+using UnityEngine;
 
 namespace Bardent.Weapons.Components
 {
