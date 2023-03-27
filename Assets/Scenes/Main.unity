@@ -799,6 +799,7 @@ GameObject:
   - component: {fileID: 336397105}
   - component: {fileID: 336397107}
   - component: {fileID: 336397106}
+  - component: {fileID: 336397108}
   m_Layer: 9
   m_Name: Combat
   m_TagString: Untagged
@@ -874,6 +875,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61,
     type: 3}
+--- !u!114 &336397108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336397103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2db3bcd9824e9b91c7cc392da9aa07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &387086605
 GameObject:
   m_ObjectHideFlags: 0
@@ -44677,6 +44690,7 @@ GameObject:
   - component: {fileID: 2016511929}
   - component: {fileID: 2016511927}
   - component: {fileID: 2016511928}
+  - component: {fileID: 2016511930}
   m_Layer: 9
   m_Name: Combat
   m_TagString: Untagged
@@ -44752,6 +44766,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61,
     type: 3}
+--- !u!114 &2016511930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016511925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2db3bcd9824e9b91c7cc392da9aa07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2044105987
 GameObject:
   m_ObjectHideFlags: 0

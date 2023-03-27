@@ -19,6 +19,7 @@ MonoBehaviour:
   - rid: 4372345045472247809
   - rid: 3124257199506325504
   - rid: 2516071312619208704
+  - rid: 2516071364630675456
   references:
     version: 2
     RefIds:
@@ -36,6 +37,17 @@ MonoBehaviour:
         - name: Attack 3
           <Angle>k__BackingField: {x: 1, y: 3}
           <Strength>k__BackingField: 20
+    - rid: 2516071364630675456
+      type: {class: PoiseDamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: PoiseDamageData
+        attackData:
+        - name: Attack 1
+          <Amount>k__BackingField: 100
+        - name: Attack 2
+          <Amount>k__BackingField: 100
+        - name: Attack 3
+          <Amount>k__BackingField: 100
     - rid: 3124257199506325504
       type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
