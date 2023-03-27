@@ -10,7 +10,7 @@ namespace Bardent.CoreSystem
 
         public void DamagePoise(float amount)
         {
-               
+            stats.Poise.Decrease(amount);
         }
 
         protected override void Awake()
