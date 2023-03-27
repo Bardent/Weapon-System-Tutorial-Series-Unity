@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Bardent.CoreSystem;
 using UnityEngine;
 
 public class Enemy1 : Entity
@@ -13,26 +15,17 @@ public class Enemy1 : Entity
     public E1_StunState stunState { get; private set; }
     public E1_DeadState deadState { get; private set; }
 
-    [SerializeField]
-    private D_IdleState idleStateData;
-    [SerializeField]
-    private D_MoveState moveStateData;
-    [SerializeField]
-    private D_PlayerDetected playerDetectedData;
-    [SerializeField]
-    private D_ChargeState chargeStateData;
-    [SerializeField]
-    private D_LookForPlayer lookForPlayerStateData;
-    [SerializeField]
-    private D_MeleeAttack meleeAttackStateData;
-    [SerializeField]
-    private D_StunState stunStateData;
-    [SerializeField]
-    private D_DeadState deadStateData;
+    [SerializeField] private D_IdleState idleStateData;
+    [SerializeField] private D_MoveState moveStateData;
+    [SerializeField] private D_PlayerDetected playerDetectedData;
+    [SerializeField] private D_ChargeState chargeStateData;
+    [SerializeField] private D_LookForPlayer lookForPlayerStateData;
+    [SerializeField] private D_MeleeAttack meleeAttackStateData;
+    [SerializeField] private D_StunState stunStateData;
+    [SerializeField] private D_DeadState deadStateData;
 
 
-    [SerializeField]
-    private Transform meleeAttackPosition;
+    [SerializeField] private Transform meleeAttackPosition;
 
     public override void Awake()
     {
@@ -40,19 +33,29 @@ public class Enemy1 : Entity
 
         moveState = new E1_MoveState(this, stateMachine, "move", moveStateData, this);
         idleState = new E1_IdleState(this, stateMachine, "idle", idleStateData, this);
-        playerDetectedState = new E1_PlayerDetectedState(this, stateMachine, "playerDetected", playerDetectedData, this);
+        playerDetectedState =
+            new E1_PlayerDetectedState(this, stateMachine, "playerDetected", playerDetectedData, this);
         chargeState = new E1_ChargeState(this, stateMachine, "charge", chargeStateData, this);
-        lookForPlayerState = new E1_LookForPlayerState(this, stateMachine, "lookForPlayer", lookForPlayerStateData, this);
-        meleeAttackState = new E1_MeleeAttackState(this, stateMachine, "meleeAttack", meleeAttackPosition, meleeAttackStateData, this);
+        lookForPlayerState =
+            new E1_LookForPlayerState(this, stateMachine, "lookForPlayer", lookForPlayerStateData, this);
+        meleeAttackState = new E1_MeleeAttackState(this, stateMachine, "meleeAttack", meleeAttackPosition,
+            meleeAttackStateData, this);
         stunState = new E1_StunState(this, stateMachine, "stun", stunStateData, this);
         deadState = new E1_DeadState(this, stateMachine, "dead", deadStateData, this);
 
-       
+        stats.Poise.OnCurrentValueZero += HandlePoiseZero;
     }
+
+    private void OnDestroy()
+    {
+        stats.Poise.OnCurrentValueZero -= HandlePoiseZero;
+    }
+
+    private void HandlePoiseZero() => stateMachine.ChangeState(stunState);
 
     private void Start()
     {
-        stateMachine.Initialize(moveState);        
+        stateMachine.Initialize(moveState);
     }
 
     public override void OnDrawGizmos()
