@@ -11,7 +11,7 @@ namespace Bardent.CoreSystem
 
         public void Damage(float amount) {
             Debug.Log(core.transform.parent.name + " Damaged!");
-            stats.Comp?.DecreaseHealth(amount);
+            stats.Comp?.Health.Decrease(amount);
             particleManager.Comp?.StartParticlesWithRandomRotation(damageParticles);
         }
 
