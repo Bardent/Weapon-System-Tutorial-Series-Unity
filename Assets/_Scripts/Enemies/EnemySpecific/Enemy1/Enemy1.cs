@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,12 +48,22 @@ public class Enemy1 : Entity
         stunState = new E1_StunState(this, stateMachine, "stun", stunStateData, this);
         deadState = new E1_DeadState(this, stateMachine, "dead", deadStateData, this);
 
-       
+        stats.Poise.OnCurrentValueZero += HandlePoiseZero;
+    }
+
+    private void HandlePoiseZero()
+    {
+        stateMachine.ChangeState(stunState);
     }
 
     private void Start()
     {
         stateMachine.Initialize(moveState);        
+    }
+
+    private void OnDestroy()
+    {
+        stats.Poise.OnCurrentValueZero -= HandlePoiseZero;
     }
 
     public override void OnDrawGizmos()
