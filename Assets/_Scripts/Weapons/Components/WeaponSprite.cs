@@ -22,7 +22,7 @@ namespace Bardent.Weapons.Components
             currentWeaponSpriteIndex = 0;
         }
 
-        private void HandlePhaseChange(AttackPhases phase)
+        private void HandleEnterAttackPhase(AttackPhases phase)
         {
             currentWeaponSpriteIndex = 0;
             currentPhaseSprites = currentAttackData.PhaseSprites.FirstOrDefault(data => data.Phase == phase).Sprites;
@@ -59,6 +59,8 @@ namespace Bardent.Weapons.Components
             data = weapon.Data.GetData<WeaponSpriteData>();
             
             baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
+
+            eventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
         }
 
         protected override void OnDestroy()
@@ -66,6 +68,8 @@ namespace Bardent.Weapons.Components
             base.OnDestroy();
             
             baseSpriteRenderer.UnregisterSpriteChangeCallback(HandleBaseSpriteChange);
+            
+            eventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
         }
     }
 }
