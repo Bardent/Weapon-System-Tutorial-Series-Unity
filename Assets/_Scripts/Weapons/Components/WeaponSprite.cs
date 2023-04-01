@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Bardent.Weapons.Components;
+using Bardent.Weapons.Enums;
 using UnityEngine;
 
 namespace Bardent.Weapons.Components
@@ -11,11 +13,19 @@ namespace Bardent.Weapons.Components
         
         private int currentWeaponSpriteIndex;
 
+        private Sprite[] currentPhaseSprites;
+
         protected override void HandleEnter()
         {
             base.HandleEnter();
             
             currentWeaponSpriteIndex = 0;
+        }
+
+        private void HandlePhaseChange(AttackPhases phase)
+        {
+            currentWeaponSpriteIndex = 0;
+            currentPhaseSprites = currentAttackData.PhaseSprites.FirstOrDefault(data => data.Phase == phase).Sprites;
         }
 
         private void HandleBaseSpriteChange(SpriteRenderer sr)
@@ -26,7 +36,7 @@ namespace Bardent.Weapons.Components
                 return;
             }
 
-            var currentAttackSprites = currentAttackData.Sprites;
+            var currentAttackSprites = currentAttackData.PhaseSprites;
 
             if (currentWeaponSpriteIndex >= currentAttackSprites.Length)
             {
@@ -34,7 +44,7 @@ namespace Bardent.Weapons.Components
                 return;
             }
             
-            weaponSpriteRenderer.sprite = currentAttackSprites[currentWeaponSpriteIndex];
+            weaponSpriteRenderer.sprite = currentPhaseSprites[currentWeaponSpriteIndex];
 
             currentWeaponSpriteIndex++;
         }

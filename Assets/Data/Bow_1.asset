@@ -13,7 +13,28 @@ MonoBehaviour:
   m_Name: Bow_1
   m_EditorClassIdentifier: 
   <NumberOfAttacks>k__BackingField: 1
-  <ComponentData>k__BackingField: []
+  <ComponentData>k__BackingField:
+  - rid: 6785866945001947137
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 6785866945001947137
+      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: WeaponSpriteData
+        attackData:
+        - name: Attack 1
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 0
+            <Sprites>k__BackingField:
+            - {fileID: 498886632, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
+            - {fileID: -377421759, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
+          - <Phase>k__BackingField: 1
+            <Sprites>k__BackingField:
+            - {fileID: -377421759, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: -479699444, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
+            - {fileID: 928773640, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
+            - {fileID: 125764254, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
+            - {fileID: 1327480601, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
