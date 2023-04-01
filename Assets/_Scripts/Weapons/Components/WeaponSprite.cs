@@ -36,9 +36,7 @@ namespace Bardent.Weapons.Components
                 return;
             }
 
-            var currentAttackSprites = currentAttackData.PhaseSprites;
-
-            if (currentWeaponSpriteIndex >= currentAttackSprites.Length)
+            if (currentWeaponSpriteIndex >= currentPhaseSprites.Length)
             {
                 Debug.LogWarning($"{weapon.name} weapon sprites length mismatch");
                 return;
