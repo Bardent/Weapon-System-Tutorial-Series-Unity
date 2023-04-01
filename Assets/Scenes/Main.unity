@@ -799,6 +799,7 @@ GameObject:
   - component: {fileID: 336397105}
   - component: {fileID: 336397107}
   - component: {fileID: 336397106}
+  - component: {fileID: 336397108}
   m_Layer: 9
   m_Name: Combat
   m_TagString: Untagged
@@ -874,6 +875,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61,
     type: 3}
+--- !u!114 &336397108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336397103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd18f63918404c95511f101e4c8aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &387086605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1763,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b855a94ad4b374daa7555873414221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  <Health>k__BackingField:
+    <MaxValue>k__BackingField: 50
+  <Poise>k__BackingField:
+    <MaxValue>k__BackingField: 25
+  poiseRecoveryRate: 5
 --- !u!1 &630730810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,7 +2082,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b855a94ad4b374daa7555873414221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  <Health>k__BackingField:
+    <MaxValue>k__BackingField: 50
+  <Poise>k__BackingField:
+    <MaxValue>k__BackingField: 25
+  poiseRecoveryRate: 5
 --- !u!1 &883747681
 GameObject:
   m_ObjectHideFlags: 0
@@ -10244,7 +10265,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b855a94ad4b374daa7555873414221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  <Health>k__BackingField:
+    <MaxValue>k__BackingField: 100
+  <Poise>k__BackingField:
+    <MaxValue>k__BackingField: 100
+  poiseRecoveryRate: 25
 --- !u!1 &931385144
 GameObject:
   m_ObjectHideFlags: 3
@@ -44603,7 +44628,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7365854, y: 1}
+    m_SensorSize: {x: 1.6552845, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -44668,6 +44693,7 @@ GameObject:
   - component: {fileID: 2016511929}
   - component: {fileID: 2016511927}
   - component: {fileID: 2016511928}
+  - component: {fileID: 2016511930}
   m_Layer: 9
   m_Name: Combat
   m_TagString: Untagged
@@ -44743,6 +44769,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61,
     type: 3}
+--- !u!114 &2016511930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016511925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd18f63918404c95511f101e4c8aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2044105987
 GameObject:
   m_ObjectHideFlags: 0
@@ -45012,97 +45050,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f51a02b584a07454c88b3eb7c2cd1180,
         type: 2}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[0]
-      value: 
-      objectReference: {fileID: -1420518866, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[1]
-      value: 
-      objectReference: {fileID: -1505483480, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[2]
-      value: 
-      objectReference: {fileID: 2084821773, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[3]
-      value: 
-      objectReference: {fileID: 521349678, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[4]
-      value: 
-      objectReference: {fileID: 1335786267, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[0]
-      value: 
-      objectReference: {fileID: -809262849, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[1]
-      value: 
-      objectReference: {fileID: -42819579, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[2]
-      value: 
-      objectReference: {fileID: 1645220379, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[3]
-      value: 
-      objectReference: {fileID: -837185620, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[4]
-      value: 
-      objectReference: {fileID: 1231312736, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[0]
-      value: 
-      objectReference: {fileID: -134458099, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[1]
-      value: 
-      objectReference: {fileID: -93232612, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[2]
-      value: 
-      objectReference: {fileID: -32343913, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[3]
-      value: 
-      objectReference: {fileID: -1451863314, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[4]
-      value: 
-      objectReference: {fileID: 1661298058, guid: 3f6ae8b3fa4b36e48b63b3edc225fda0,
-        type: 3}
     - target: {fileID: 5037866840169384086, guid: 09ad0fb67dd07c849958ce1a5b26b0ca,
         type: 3}
       propertyPath: numberOfAttacks
@@ -45195,97 +45142,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4a936cdbbada63143b9a868912282179,
         type: 2}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[0]
-      value: 
-      objectReference: {fileID: -1780751373, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[1]
-      value: 
-      objectReference: {fileID: 577957028, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[2]
-      value: 
-      objectReference: {fileID: -509565249, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[3]
-      value: 
-      objectReference: {fileID: 680478193, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[0].<Sprites>k__BackingField.Array.data[4]
-      value: 
-      objectReference: {fileID: 365328359, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[0]
-      value: 
-      objectReference: {fileID: 1469980136, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[1]
-      value: 
-      objectReference: {fileID: 1160239679, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[2]
-      value: 
-      objectReference: {fileID: -1537962721, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[3]
-      value: 
-      objectReference: {fileID: 342834816, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[1].<Sprites>k__BackingField.Array.data[4]
-      value: 
-      objectReference: {fileID: 683960273, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[0]
-      value: 
-      objectReference: {fileID: -84422829, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[1]
-      value: 
-      objectReference: {fileID: -1669289994, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[2]
-      value: 
-      objectReference: {fileID: -312529561, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[3]
-      value: 
-      objectReference: {fileID: -1032906865, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: weaponSprites.Array.data[2].<Sprites>k__BackingField.Array.data[4]
-      value: 
-      objectReference: {fileID: 621078435, guid: 3179c16b297295440b9749aff89377e2,
-        type: 3}
     - target: {fileID: 5037866840169384086, guid: 09ad0fb67dd07c849958ce1a5b26b0ca,
         type: 3}
       propertyPath: numberOfAttacks
