@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Bow_1
   m_EditorClassIdentifier: 
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 1089e6ad3ab9c034382f2409dbcddd6c,
+    type: 2}
   <NumberOfAttacks>k__BackingField: 1
   <ComponentData>k__BackingField:
   - rid: 6785866945001947137

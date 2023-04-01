@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Sword_2
   m_EditorClassIdentifier: 
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 95b2394cafcd7ac4eb455b8d8735c661,
+    type: 2}
   <NumberOfAttacks>k__BackingField: 2
   <ComponentData>k__BackingField:
   - rid: 5662276240811753473
