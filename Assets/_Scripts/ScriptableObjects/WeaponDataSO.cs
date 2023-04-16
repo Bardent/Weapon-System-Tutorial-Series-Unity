@@ -9,6 +9,7 @@ namespace Bardent.Weapons
     [CreateAssetMenu(fileName = "newWeaponData", menuName = "Data/Weapon Data/Basic Weapon Data", order = 0)]
     public class WeaponDataSO : ScriptableObject
     {
+        [field: SerializeField] public RuntimeAnimatorController AnimatorController { get; private set; }
         [field: SerializeField] public int NumberOfAttacks { get; private set; }
 
         [field: SerializeReference] public List<ComponentData> ComponentData { get; private set; }

@@ -34,6 +34,7 @@ namespace Bardent.Weapons
         
         public void Enter()
         {
+            Debug.Break();
             print($"{transform.name} enter");
             
             attackCounterResetTimer.StopTimer();
