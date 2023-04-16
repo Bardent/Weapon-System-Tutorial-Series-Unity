@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Bardent.Weapons.Components;
 using UnityEngine;
 
@@ -11,11 +12,20 @@ namespace Bardent.Weapons.Components
         
         private int currentWeaponSpriteIndex;
 
+        private Sprite[] currentPhaseSprites;
+
         protected override void HandleEnter()
         {
             base.HandleEnter();
             
             currentWeaponSpriteIndex = 0;
+        }
+
+        private void HandleEnterAttackPhase(AttackPhases phase)
+        {
+            currentWeaponSpriteIndex = 0;
+
+            currentPhaseSprites = currentAttackData.PhaseSprites.FirstOrDefault(data => data.Phase == phase).Sprites;
         }
 
         private void HandleBaseSpriteChange(SpriteRenderer sr)
@@ -26,15 +36,13 @@ namespace Bardent.Weapons.Components
                 return;
             }
 
-            var currentAttackSprites = currentAttackData.Sprites;
-
-            if (currentWeaponSpriteIndex >= currentAttackSprites.Length)
+            if (currentWeaponSpriteIndex >= currentPhaseSprites.Length)
             {
                 Debug.LogWarning($"{weapon.name} weapon sprites length mismatch");
                 return;
             }
             
-            weaponSpriteRenderer.sprite = currentAttackSprites[currentWeaponSpriteIndex];
+            weaponSpriteRenderer.sprite = currentPhaseSprites[currentWeaponSpriteIndex];
 
             currentWeaponSpriteIndex++;
         }
@@ -49,6 +57,8 @@ namespace Bardent.Weapons.Components
             data = weapon.Data.GetData<WeaponSpriteData>();
             
             baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
+
+            eventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
         }
 
         protected override void OnDestroy()
@@ -56,6 +66,8 @@ namespace Bardent.Weapons.Components
             base.OnDestroy();
             
             baseSpriteRenderer.UnregisterSpriteChangeCallback(HandleBaseSpriteChange);
+            
+            eventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
         }
     }
 }

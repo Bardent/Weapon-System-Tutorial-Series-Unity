@@ -17,8 +17,11 @@ namespace Bardent.Weapons
 
         private List<Type> componentDependencies = new List<Type>();
 
+        private Animator anim;
+        
         private void Start()
         {
+            anim = GetComponentInChildren<Animator>();
             GenerateWeapon(data);
         }
 
@@ -64,6 +67,8 @@ namespace Bardent.Weapons
             {
                 Destroy(weaponComponent);
             }
+
+            anim.runtimeAnimatorController = data.AnimatorController;
         }
     }
 }
