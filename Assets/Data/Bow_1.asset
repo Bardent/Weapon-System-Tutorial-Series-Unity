@@ -17,6 +17,7 @@ MonoBehaviour:
   <NumberOfAttacks>k__BackingField: 1
   <ComponentData>k__BackingField:
   - rid: 6785867263041863682
+  - rid: 6785867404348227586
   references:
     version: 2
     RefIds:
@@ -40,3 +41,7 @@ MonoBehaviour:
             - {fileID: -1283868207, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
             - {fileID: 1236258007, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
             - {fileID: -1815128578, guid: 8f07a39de0d02784e8b263b4d66d7956, type: 3}
+    - rid: 6785867404348227586
+      type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: InputHoldData

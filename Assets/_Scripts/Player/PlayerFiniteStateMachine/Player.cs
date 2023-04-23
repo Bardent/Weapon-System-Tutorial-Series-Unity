@@ -74,8 +74,8 @@ public class Player : MonoBehaviour
         DashState = new PlayerDashState(this, StateMachine, playerData, "inAir");
         CrouchIdleState = new PlayerCrouchIdleState(this, StateMachine, playerData, "crouchIdle");
         CrouchMoveState = new PlayerCrouchMoveState(this, StateMachine, playerData, "crouchMove");
-        PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon);
-        SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon);
+        PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
+        SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
     }
 
     private void Start()
