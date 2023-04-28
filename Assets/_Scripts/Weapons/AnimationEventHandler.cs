@@ -10,6 +10,7 @@ namespace Bardent.Weapons
         public event Action OnStopMovement;
         public event Action OnAttackAction;
         public event Action OnMinHoldPassed;
+        public event Action OnUseInput;
         
         public event Action<AttackPhases> OnEnterAttackPhase; 
 
@@ -18,6 +19,7 @@ namespace Bardent.Weapons
         private void StopMovementTrigger() => OnStopMovement?.Invoke();
         private void AttackActionTrigger() => OnAttackAction?.Invoke();
         private void MinHoldPassedTrigger() => OnMinHoldPassed?.Invoke();
+        private void UseInputTrigger() => OnUseInput?.Invoke();
         
         private void EnterAttackPhase(AttackPhases phase) => OnEnterAttackPhase?.Invoke(phase);
     }

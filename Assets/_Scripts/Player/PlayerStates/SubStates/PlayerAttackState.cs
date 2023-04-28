@@ -8,7 +8,7 @@ public class PlayerAttackState : PlayerAbilityState
     private Weapon weapon;
 
     private int inputIndex;
-    
+
     public PlayerAttackState(
         Player player,
         PlayerStateMachine stateMachine,
@@ -22,7 +22,8 @@ public class PlayerAttackState : PlayerAbilityState
 
         inputIndex = (int)input;
 
-        weapon.OnExit += ExitHandler;
+        weapon.OnExit += HandleExit;
+        weapon.OnUseInput += HandleUseInput;
     }
 
     public override void LogicUpdate()
@@ -35,14 +36,17 @@ public class PlayerAttackState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
-        
+
         weapon.Enter();
     }
 
-    private void ExitHandler()
+    private void HandleUseInput()
     {
         player.InputHandler.UseAttackInput(inputIndex);
-        
+    }
+
+    private void HandleExit()
+    {
         AnimationFinishTrigger();
         isAbilityDone = true;
     }

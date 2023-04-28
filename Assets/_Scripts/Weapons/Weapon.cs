@@ -9,6 +9,10 @@ namespace Bardent.Weapons
     {
         public event Action<bool> OnCurrentInputChange;
         
+        public event Action OnEnter;
+        public event Action OnExit;
+        public event Action OnUseInput;
+        
         [SerializeField] private float attackCounterResetCooldown;
 
         public WeaponDataSO Data { get; private set; }
@@ -32,8 +36,6 @@ namespace Bardent.Weapons
             }
         }
 
-        public event Action OnEnter;
-        public event Action OnExit;
         
         private Animator anim;
         public GameObject BaseGameObject { get; private set; }
@@ -107,13 +109,17 @@ namespace Bardent.Weapons
         private void OnEnable()
         {
             EventHandler.OnFinish += Exit;
+            EventHandler.OnUseInput += HandleUseInput;
             attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
         }
 
         private void OnDisable()
         {
             EventHandler.OnFinish -= Exit;
+            EventHandler.OnUseInput -= HandleUseInput;
             attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
         }
+
+        private void HandleUseInput() => OnUseInput?.Invoke();
     }
 }
