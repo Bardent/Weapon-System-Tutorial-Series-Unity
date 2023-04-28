@@ -22,9 +22,31 @@ namespace Bardent.ProjectileSystem.Components
         
         #region Plumbing
 
-        private void Awake()
+        protected virtual void Awake()
         {
             projectile = GetComponent<Projectile>();
+
+            projectile.OnInit += Init;
+        }
+
+        protected virtual void Start()
+        {
+            
+        }
+
+        protected virtual void Update()
+        {
+            
+        }
+
+        protected virtual void FixedUpdate()
+        {
+            
+        }
+
+        protected virtual void OnDestroy()
+        {
+            projectile.OnInit -= Init;
         }
 
         #endregion

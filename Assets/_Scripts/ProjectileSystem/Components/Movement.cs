@@ -12,6 +12,7 @@ namespace Bardent.ProjectileSystem.Components
         [field: SerializeField] public bool ApplyContinuously { get; private set; }
         [field: SerializeField] public float Speed { get; private set; }
 
+        // On Init, set projectile velocity once
         protected override void Init()
         {
             base.Init();
@@ -21,8 +22,10 @@ namespace Bardent.ProjectileSystem.Components
 
         private void SetVelocity() => rb.velocity = Speed * transform.right;
 
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
+            
             if (!ApplyContinuously)
                 return;
             
