@@ -120,6 +120,9 @@ namespace Bardent.Weapons
             attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
         }
 
+        /// <summary>
+        /// Invokes event to pass along information from the AnimationEventHandler to a non-weapon class.
+        /// </summary>
         private void HandleUseInput() => OnUseInput?.Invoke();
     }
 }
