@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Bardent.ProjectileSystem
 {
@@ -7,6 +8,15 @@ namespace Bardent.ProjectileSystem
     /// </summary>
     public class Projectile : MonoBehaviour
     {
-        
+        public Rigidbody2D Rigidbody2D { get; private set; }
+
+        #region Plumbing
+
+        private void Awake()
+        {
+            Rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+
+        #endregion
     }
 }
