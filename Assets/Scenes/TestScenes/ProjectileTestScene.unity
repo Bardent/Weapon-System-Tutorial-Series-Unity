@@ -238,8 +238,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 205616101
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -780757743, guid: cbcf3bd84a6c0724dbbb289ce667cbc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -484,6 +484,7 @@ MonoBehaviour:
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
+  <InactiveSortingLayerName>k__BackingField: InactiveProjectile
   <CheckDistance>k__BackingField: 2
 --- !u!1 &2043450582
 GameObject:
@@ -559,8 +560,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1667960627
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

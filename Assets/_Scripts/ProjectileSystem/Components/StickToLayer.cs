@@ -10,11 +10,16 @@ namespace Bardent.ProjectileSystem.Components
     public class StickToLayer : ProjectileComponent
     {
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
+        [field: SerializeField] public string InactiveSortingLayerName { get; private set; }
         [field: SerializeField] public float CheckDistance { get; private set; }
 
         private bool isStuck;
 
         private HitBox hitBox;
+
+        private string activeSortingLayerName;
+
+        private SpriteRenderer sr;
 
         private void HandleRaycastHit2D(RaycastHit2D[] hits)
         {
@@ -27,6 +32,7 @@ namespace Bardent.ProjectileSystem.Components
 
             // Remove velocity and set body to static so that it is not affected by other things. This might have to be adjusted
             // depending on the behavior you want
+            sr.sortingLayerName = InactiveSortingLayerName;
             rb.velocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Static;
 
@@ -52,6 +58,7 @@ namespace Bardent.ProjectileSystem.Components
             }
 
             // If there is nothing to get stuck in, set isStuck to false and make body dynamic again so it will fall
+            sr.sortingLayerName = activeSortingLayerName;
             isStuck = false;
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
@@ -68,6 +75,9 @@ namespace Bardent.ProjectileSystem.Components
         protected override void Awake()
         {
             base.Awake();
+
+            sr = GetComponentInChildren<SpriteRenderer>();
+            activeSortingLayerName = sr.sortingLayerName;
 
             hitBox = GetComponent<HitBox>();
 
