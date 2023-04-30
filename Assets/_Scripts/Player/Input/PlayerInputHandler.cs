@@ -137,6 +137,11 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void UseDashInput() => DashInput = false;
 
+    /// <summary>
+    /// Used to set the specific attack input back to false. Usually passed through the player attack state from an animation event.
+    /// </summary>
+    public void UseAttackInput(int i) => AttackInputs[i] = false;
+
     private void CheckJumpInputHoldTime()
     {
         if(Time.time >= jumpInputStartTime + inputHoldTime)
