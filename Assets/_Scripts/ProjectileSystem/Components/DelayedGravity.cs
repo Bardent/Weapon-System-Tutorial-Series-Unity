@@ -26,6 +26,7 @@ namespace Bardent.ProjectileSystem.Components
         {
             base.Init();
             
+            rb.gravityScale = 0f;
             distanceNotifier.Init(transform.position, Distance);
         }
 
@@ -36,13 +37,6 @@ namespace Bardent.ProjectileSystem.Components
             base.Awake();
             
             distanceNotifier.OnNotify += HandleNotify;
-        }
-
-        protected override void Start()
-        {
-            base.Start();
-            
-            rb.gravityScale = 0f;
         }
 
         protected override void Update()

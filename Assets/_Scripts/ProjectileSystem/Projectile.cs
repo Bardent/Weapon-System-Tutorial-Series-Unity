@@ -11,6 +11,7 @@ namespace Bardent.ProjectileSystem
     {
         // This event is used to notify all projectile components that Init has been called
         public event Action OnInit;
+        public event Action OnReset;
 
         public event Action<ProjectileDataPackage> OnReceiveDataPackage;
 
@@ -19,6 +20,11 @@ namespace Bardent.ProjectileSystem
         public void Init()
         {
             OnInit?.Invoke();
+        }
+
+        public void Reset()
+        {
+            OnReset?.Invoke();
         }
 
         /* This function is called before Init from the weapon. Any weapon component can use this to function to pass along information that the projectile might need that is

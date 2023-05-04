@@ -1,4 +1,5 @@
 ﻿using System;
+using Bardent.ObjectPoolSystem;
 using Bardent.ProjectileSystem.DataPackages;
 using UnityEngine;
 
@@ -10,21 +11,58 @@ namespace Bardent.ProjectileSystem
      */
     public class ProjectileTester : MonoBehaviour
     {
-        public Projectile Projectile;
+        public Projectile ProjectilePrefab;
 
         public DamageDataPackage DamageDataPackage;
 
+        public float ShotCooldown;
+
+        private ObjectPool objectPool;
+
+        private float lastFireTime;
+
+        private ObjectPool<Projectile> pool;
+
+        private void Awake()
+        {
+            objectPool = FindObjectOfType<ObjectPool>();
+        }
+
         private void Start()
         {
-            if (!Projectile)
+            if (!ProjectilePrefab)
             {
                 Debug.LogWarning("No Projectile To Test");
                 return;
             }
+
+            pool = objectPool.GetPool(ProjectilePrefab);
+
+            FireProjectile();
+        }
+
+        private void FireProjectile()
+        {
+            var projectile = pool.GetObject();
+
+            projectile.Reset();
             
-            Projectile.SendDataPackage(DamageDataPackage);
+            projectile.transform.position = transform.position;
+            projectile.transform.rotation = transform.rotation;
             
-            Projectile.Init();
+            projectile.SendDataPackage(DamageDataPackage);
+
+            projectile.Init();
+
+            lastFireTime = Time.time;
+        }
+
+        private void Update()
+        {
+            if (Time.time >= lastFireTime + ShotCooldown)
+            {
+                FireProjectile();
+            }
         }
     }
 }

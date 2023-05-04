@@ -118,12 +118,18 @@ namespace Bardent.ProjectileSystem.Components
             subscribedToDisableNotifier = false;
         }
 
+        protected override void Reset()
+        {
+            base.Reset();
+            
+            SetUnstuck();
+        }
+
 
         protected override void Init()
         {
             base.Init();
 
-            isStuck = false;
         }
 
         #region Plumbing

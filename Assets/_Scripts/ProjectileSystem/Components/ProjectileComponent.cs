@@ -20,6 +20,11 @@ namespace Bardent.ProjectileSystem.Components
             
         }
 
+        protected virtual void Reset()
+        {
+            
+        }
+
         /* Handles receiving specific data from the weapon. Implemented in any component that needs to use it. Automatically subscribed for all projectile
         components by this base class (see Awake and OnDestroy) */
         protected virtual void HandleReceiveDataPackage(ProjectileDataPackage dataPackage)
@@ -34,6 +39,7 @@ namespace Bardent.ProjectileSystem.Components
             projectile = GetComponent<Projectile>();
 
             projectile.OnInit += Init;
+            projectile.OnReset += Reset;
             projectile.OnReceiveDataPackage += HandleReceiveDataPackage;
         }
 
@@ -55,6 +61,7 @@ namespace Bardent.ProjectileSystem.Components
         protected virtual void OnDestroy()
         {
             projectile.OnInit -= Init;
+            projectile.OnReset -= Reset;
             projectile.OnReceiveDataPackage -= HandleReceiveDataPackage;
         }
 
