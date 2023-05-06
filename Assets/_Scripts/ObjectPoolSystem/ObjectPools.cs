@@ -22,6 +22,11 @@ namespace Bardent.ObjectPoolSystem
 
             return (ObjectPool<T>)pools[prefab.name];
         }
+
+        public T GetObject<T>(T prefab, int startCount = 1) where T: Component
+        {
+            return GetPool(prefab, startCount).GetObject();
+        }
         
         public void ReturnObject<T>(T obj) where T : Component
         {

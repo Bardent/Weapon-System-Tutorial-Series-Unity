@@ -1,96 +1,97 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Projectile : MonoBehaviour
+namespace Bardent.Projectiles
 {
-    //private AttackDetails attackDetails;
-
-    private float speed;
-    private float travelDistance;
-    private float xStartPos;
-
-    [SerializeField]
-    private float gravity;
-    [SerializeField]
-    private float damageRadius;
-
-    private Rigidbody2D rb;
-
-    private bool isGravityOn;
-    private bool hasHitGround;
-
-    [SerializeField]
-    private LayerMask whatIsGround;
-    [SerializeField]
-    private LayerMask whatIsPlayer;
-    [SerializeField]
-    private Transform damagePosition;
-
-    private void Start()
+    public class Projectile : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
+        //private AttackDetails attackDetails;
 
-        rb.gravityScale = 0.0f;
-        rb.velocity = transform.right * speed;
+        private float speed;
+        private float travelDistance;
+        private float xStartPos;
 
-        isGravityOn = false;
+        [SerializeField]
+        private float gravity;
+        [SerializeField]
+        private float damageRadius;
 
-        xStartPos = transform.position.x;
-    }
+        private Rigidbody2D rb;
 
-    private void Update()
-    {
-        if (!hasHitGround)
+        private bool isGravityOn;
+        private bool hasHitGround;
+
+        [SerializeField]
+        private LayerMask whatIsGround;
+        [SerializeField]
+        private LayerMask whatIsPlayer;
+        [SerializeField]
+        private Transform damagePosition;
+
+        private void Start()
         {
-            //attackDetails.position = transform.position;
+            rb = GetComponent<Rigidbody2D>();
 
-            if (isGravityOn)
+            rb.gravityScale = 0.0f;
+            rb.velocity = transform.right * speed;
+
+            isGravityOn = false;
+
+            xStartPos = transform.position.x;
+        }
+
+        private void Update()
+        {
+            if (!hasHitGround)
             {
-                float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                //attackDetails.position = transform.position;
+
+                if (isGravityOn)
+                {
+                    float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
             }
         }
-    }
 
-    private void FixedUpdate()
-    {
-        if (!hasHitGround)
+        private void FixedUpdate()
         {
-            Collider2D damageHit = Physics2D.OverlapCircle(damagePosition.position, damageRadius, whatIsPlayer);
-            Collider2D groundHit = Physics2D.OverlapCircle(damagePosition.position, damageRadius, whatIsGround);
-
-            if (damageHit)
+            if (!hasHitGround)
             {
-                //damageHit.transform.SendMessage("Damage", attackDetails);
-                Destroy(gameObject);
-            }
+                Collider2D damageHit = Physics2D.OverlapCircle(damagePosition.position, damageRadius, whatIsPlayer);
+                Collider2D groundHit = Physics2D.OverlapCircle(damagePosition.position, damageRadius, whatIsGround);
 
-            if (groundHit)
-            {
-                hasHitGround = true;
-                rb.gravityScale = 0f;
-                rb.velocity = Vector2.zero;
-            }
+                if (damageHit)
+                {
+                    //damageHit.transform.SendMessage("Damage", attackDetails);
+                    Destroy(gameObject);
+                }
+
+                if (groundHit)
+                {
+                    hasHitGround = true;
+                    rb.gravityScale = 0f;
+                    rb.velocity = Vector2.zero;
+                }
 
 
-            if (Mathf.Abs(xStartPos - transform.position.x) >= travelDistance && !isGravityOn)
-            {
-                isGravityOn = true;
-                rb.gravityScale = gravity;
-            }
-        }        
-    }
+                if (Mathf.Abs(xStartPos - transform.position.x) >= travelDistance && !isGravityOn)
+                {
+                    isGravityOn = true;
+                    rb.gravityScale = gravity;
+                }
+            }        
+        }
 
-    public void FireProjectile(float speed, float travelDistance, float damage)
-    {
-        this.speed = speed;
-        this.travelDistance = travelDistance;
-        //attackDetails.damageAmount = damage;
-    }
+        public void FireProjectile(float speed, float travelDistance, float damage)
+        {
+            this.speed = speed;
+            this.travelDistance = travelDistance;
+            //attackDetails.damageAmount = damage;
+        }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(damagePosition.position, damageRadius);
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(damagePosition.position, damageRadius);
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace Bardent.ProjectileSystem.Components
          */
         [SerializeField] public UnityEvent setStuck;
         [SerializeField] public UnityEvent setUnstuck;
-        
+
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
 
         // SpriteRenderer sorting to be used when projectile is stuck
@@ -43,6 +43,7 @@ namespace Bardent.ProjectileSystem.Components
         private Vector3 offsetPosition;
         private Quaternion offsetRotation;
 
+        private float gravityScale;
 
         private void HandleRaycastHit2D(RaycastHit2D[] hits)
         {
@@ -115,7 +116,8 @@ namespace Bardent.ProjectileSystem.Components
 
             sr.sortingLayerName = activeSortingLayerName;
             rb.bodyType = RigidbodyType2D.Dynamic;
-            
+            rb.gravityScale = gravityScale;
+
             setUnstuck?.Invoke();
         }
 
@@ -134,22 +136,18 @@ namespace Bardent.ProjectileSystem.Components
         protected override void Reset()
         {
             base.Reset();
-            
+
             SetUnstuck();
         }
 
-
-        protected override void Init()
-        {
-            base.Init();
-
-        }
 
         #region Plumbing
 
         protected override void Awake()
         {
             base.Awake();
+
+            gravityScale = rb.gravityScale;
 
             _transform = transform;
 
@@ -169,6 +167,12 @@ namespace Bardent.ProjectileSystem.Components
                 return;
 
             // Update position and rotation based on reference transform
+            if (!referenceTransform)
+            {
+                SetUnstuck();
+                return;
+            }
+
             var referenceRotation = referenceTransform.rotation;
             _transform.position = referenceTransform.position + referenceRotation * offsetPosition;
             _transform.rotation = referenceRotation * offsetRotation;

@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 1775009464070235439}
   - component: {fileID: 1775009464070235436}
   - component: {fileID: 1775009464070235437}
-  - component: {fileID: -4465142352541603579}
   - component: {fileID: 7473774155926503612}
   m_Layer: 0
   m_Name: Projectile
@@ -57,7 +56,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -101,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd35de8a572f4128af7b649fc3675a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Gravity>k__BackingField: 4
   <Distance>k__BackingField: 2
 --- !u!114 &1775009464070235438
 MonoBehaviour:
@@ -148,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920b12f0e6084a48b20c2e2a1f2d2c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnSetStuck:
+  setStuck:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1775009464070235437}
@@ -164,19 +162,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnSetUnstuck:
+      - m_Target: {fileID: 7473774155926503612}
+        m_TargetAssemblyTypeName: Bardent.ObjectPoolSystem.ObjectPoolItem, Assembly-CSharp
+        m_MethodName: ReturnItem
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  setUnstuck:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1775009464070235437}
         m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
           Assembly-CSharp
-        m_MethodName: SetActiveNextFrame
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 5
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
@@ -202,19 +212,6 @@ MonoBehaviour:
     m_Bits: 512
   <SetInactiveAfterDamage>k__BackingField: 0
   <Cooldown>k__BackingField: 3
---- !u!114 &-4465142352541603579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775009464070235412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0bc7db2738046b09820050c6ca11177, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToReturn: 20
 --- !u!114 &7473774155926503612
 MonoBehaviour:
   m_ObjectHideFlags: 0

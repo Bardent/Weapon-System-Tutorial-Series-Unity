@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Bardent.Interfaces;
 using UnityEngine;
 
@@ -12,7 +14,19 @@ namespace Bardent.ObjectPoolSystem
         private ObjectPool objectPool;
         private Component component;
 
-        public void ReturnItem()
+        // Other components can call this to return object to pool, either immediately or with a delay
+        public void ReturnItem(float delay = 0f)
+        {
+            if (delay > 0)
+            {
+                StartCoroutine(ReturnItemWithDelay(delay));
+                return;
+            }
+            
+            ReturnItemToPool();
+        }
+
+        private void ReturnItemToPool()
         {
             // If pool reference is set, return to pool
             if (objectPool != null)
@@ -24,6 +38,14 @@ namespace Bardent.ObjectPoolSystem
             {
                 Destroy(gameObject);
             }
+            
+        }
+
+        private IEnumerator ReturnItemWithDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            ReturnItemToPool();
         }
 
         public void SetObjectPool<T>(ObjectPool pool, T comp) where T : Component

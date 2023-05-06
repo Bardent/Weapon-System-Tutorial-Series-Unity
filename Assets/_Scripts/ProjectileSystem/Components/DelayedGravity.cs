@@ -10,15 +10,16 @@ namespace Bardent.ProjectileSystem.Components
     /// </summary>
     public class DelayedGravity : ProjectileComponent
     {
-        [field: SerializeField] public float Gravity { get; private set; } = 4f;
         [field: SerializeField] public float Distance { get; private set; } = 10f;
 
         private DistanceNotifier distanceNotifier = new DistanceNotifier();
 
+        private float gravity;
+
         // Once projectile has travelled Distance, set gravity to Gravity value
         private void HandleNotify()
         {
-            rb.gravityScale = Gravity;
+            rb.gravityScale = gravity;
         }
         
         // On Init, enable the distance notifier to trigger once distance has been travelled.
@@ -35,6 +36,8 @@ namespace Bardent.ProjectileSystem.Components
         protected override void Awake()
         {
             base.Awake();
+
+            gravity = rb.gravityScale;
             
             distanceNotifier.OnNotify += HandleNotify;
         }
