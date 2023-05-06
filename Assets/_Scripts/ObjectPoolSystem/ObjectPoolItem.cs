@@ -29,6 +29,8 @@ namespace Bardent.ObjectPoolSystem
         public void SetObjectPool<T>(ObjectPool pool, T comp) where T : Component
         {
             objectPool = pool;
+            
+            // Reference the object that the pool is actually interested in so we can return it
             component = GetComponent(comp.GetType());
         }
 
