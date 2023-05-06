@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Bardent.Interfaces;
 using UnityEngine;
 
 namespace Bardent.ObjectPoolSystem
@@ -37,19 +38,28 @@ namespace Bardent.ObjectPoolSystem
 
             for (var i = 0; i < startCount; i++)
             {
-                var obj = Object.Instantiate(prefab);
-                obj.name = prefab.name;
-                obj.gameObject.SetActive(false);
+                var obj = InstantiateNewObject();
+
                 poolStack.Enqueue(obj);
             }
+        }
+
+        private T InstantiateNewObject()
+        {
+            var obj =  Object.Instantiate(prefab);
+            obj.name = prefab.name;
+            
+            var objectPoolItem = obj.GetComponent<IObjectPoolItem>();
+            objectPoolItem.SetObjectPool(this);
+
+            return obj;
         }
 
         public T GetObject()
         {
             if (!poolStack.TryDequeue(out var obj))
             {
-                obj =  Object.Instantiate(prefab);
-                obj.name = prefab.name;
+                obj = InstantiateNewObject();
                 return obj;
             }
 

@@ -17,16 +17,9 @@ namespace Bardent.ProjectileSystem
 
         public float ShotCooldown;
 
-        private ObjectPool objectPool;
+        private ObjectPool objectPool = new ObjectPool();
 
         private float lastFireTime;
-
-        private ObjectPool<Projectile> pool;
-
-        private void Awake()
-        {
-            objectPool = FindObjectOfType<ObjectPool>();
-        }
 
         private void Start()
         {
@@ -36,14 +29,12 @@ namespace Bardent.ProjectileSystem
                 return;
             }
 
-            pool = objectPool.GetPool(ProjectilePrefab);
-
             FireProjectile();
         }
 
         private void FireProjectile()
         {
-            var projectile = pool.GetObject();
+            var projectile = objectPool.GetPool(ProjectilePrefab).GetObject();
 
             projectile.Reset();
             

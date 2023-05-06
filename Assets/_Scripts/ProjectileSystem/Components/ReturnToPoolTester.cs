@@ -30,7 +30,7 @@ namespace Bardent.ProjectileSystem.Components
 
         public void SetObjectPool<T>(ObjectPool<T> pool) where T : Component
         {
-            objectPool = pool;
+            objectPool = pool as ObjectPool<Projectile>;
         }
     }
 }
