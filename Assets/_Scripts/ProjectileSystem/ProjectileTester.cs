@@ -17,7 +17,7 @@ namespace Bardent.ProjectileSystem
 
         public float ShotCooldown;
 
-        private ObjectPool objectPool = new ObjectPool();
+        private ObjectPools objectPools = new ObjectPools();
 
         private float lastFireTime;
 
@@ -34,7 +34,7 @@ namespace Bardent.ProjectileSystem
 
         private void FireProjectile()
         {
-            var projectile = objectPool.GetPool(ProjectilePrefab).GetObject();
+            var projectile = objectPools.GetPool(ProjectilePrefab).GetObject();
 
             projectile.Reset();
             
@@ -54,6 +54,13 @@ namespace Bardent.ProjectileSystem
             {
                 FireProjectile();
             }
+        }
+
+        [ContextMenu("Destroy Pools")]
+        private void DestroyPool()
+        {
+            lastFireTime = Mathf.Infinity;
+            objectPools.Release();
         }
     }
 }

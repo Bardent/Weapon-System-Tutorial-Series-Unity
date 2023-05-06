@@ -201,7 +201,7 @@ MonoBehaviour:
     type: 3}
   DamageDataPackage:
     <Amount>k__BackingField: 10
-  ShotCooldown: 0.5
+  ShotCooldown: 0.11
 --- !u!4 &1179625812
 Transform:
   m_ObjectHideFlags: 0
