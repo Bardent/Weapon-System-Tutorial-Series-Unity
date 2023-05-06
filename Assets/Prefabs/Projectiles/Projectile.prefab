@@ -148,6 +148,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920b12f0e6084a48b20c2e2a1f2d2c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnSetStuck:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1775009464070235437}
+        m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
+          Assembly-CSharp
+        m_MethodName: SetActiveNextFrame
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSetUnstuck:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1775009464070235437}
+        m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
+          Assembly-CSharp
+        m_MethodName: SetActiveNextFrame
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 768
@@ -168,6 +200,8 @@ MonoBehaviour:
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <SetInactiveAfterDamage>k__BackingField: 0
+  <Cooldown>k__BackingField: 3
 --- !u!114 &-4465142352541603579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bc7db2738046b09820050c6ca11177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToReturn: 20
 --- !u!114 &7473774155926503612
 MonoBehaviour:
   m_ObjectHideFlags: 0

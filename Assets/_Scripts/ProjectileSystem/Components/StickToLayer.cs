@@ -2,6 +2,8 @@
 using System.Collections;
 using Bardent.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Bardent.ProjectileSystem.Components
 {
@@ -11,6 +13,13 @@ namespace Bardent.ProjectileSystem.Components
     [RequireComponent(typeof(HitBox))]
     public class StickToLayer : ProjectileComponent
     {
+        /*
+         * Unity events are used to facilitate building some logic in the editor. For example: Setting the Damage Component to Inactive
+         * when stuck, and active again when unstuck
+         */
+        [SerializeField] public UnityEvent setStuck;
+        [SerializeField] public UnityEvent setUnstuck;
+        
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
 
         // SpriteRenderer sorting to be used when projectile is stuck
@@ -95,6 +104,8 @@ namespace Bardent.ProjectileSystem.Components
             sr.sortingLayerName = InactiveSortingLayerName;
             rb.velocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Static;
+
+            setStuck?.Invoke();
         }
 
         // Set Rigidbody2D bodyType to dynamic so that it is affected by gravity again and set sorting layer such that projectile appears in front of other items
@@ -104,6 +115,8 @@ namespace Bardent.ProjectileSystem.Components
 
             sr.sortingLayerName = activeSortingLayerName;
             rb.bodyType = RigidbodyType2D.Dynamic;
+            
+            setUnstuck?.Invoke();
         }
 
         // If the body we are stuck in gets disabled or destroyed, make projectile dynamic again

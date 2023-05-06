@@ -11,6 +11,8 @@ namespace Bardent.ProjectileSystem.Components
      */
     public class ReturnToPoolTester : ProjectileComponent
     {
+        public float timeToReturn;
+        
         private ObjectPoolItem objectPoolItem;
 
         protected override void Awake()
@@ -30,7 +32,7 @@ namespace Bardent.ProjectileSystem.Components
 
         private IEnumerator ReturnToPool()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(timeToReturn);
 
             objectPoolItem.ReturnItem();
         }

@@ -11,23 +11,51 @@ namespace Bardent.ProjectileSystem.Components
     public class Damage : ProjectileComponent
     {
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
-        
+        [field: SerializeField] public bool SetInactiveAfterDamage { get; private set; }
+        [field: SerializeField] public float Cooldown { get; private set; }
+
         private HitBox hitBox;
 
         private float amount;
 
+        private float lastDamageTime;
+
+        protected override void Init()
+        {
+            base.Init();
+
+            SetActive(true);
+
+            lastDamageTime = Mathf.NegativeInfinity;
+        }
+
         private void HandleRaycastHit2D(RaycastHit2D[] hits)
         {
+            if (!Active)
+                return;
+
+            if (Time.time < lastDamageTime + Cooldown)
+                return;
+
             foreach (var hit in hits)
             {
                 // Is the object under consideration part of the LayerMask that we can damage?
                 if (!LayerMaskUtilities.IsLayerInMask(hit, LayerMask))
-                    return;
-                
-                if (hit.transform.TryGetComponent(out IDamageable damageable))
+                    continue;
+
+                if (!hit.transform.TryGetComponent(out IDamageable damageable))
+                    continue;
+
+                damageable.Damage(amount);
+
+                lastDamageTime = Time.time;
+
+                if (SetInactiveAfterDamage)
                 {
-                    damageable.Damage(amount);
+                    SetActive(false);
                 }
+
+                return;
             }
         }
 
