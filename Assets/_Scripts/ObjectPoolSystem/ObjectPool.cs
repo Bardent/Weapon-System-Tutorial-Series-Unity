@@ -12,6 +12,8 @@ namespace Bardent.ObjectPoolSystem
     public abstract class ObjectPool
     {
         public abstract void Release();
+
+        public abstract void ReturnObject(Component comp);
     }
 
     /*
@@ -54,15 +56,18 @@ namespace Bardent.ObjectPoolSystem
             obj.name = prefab.name;
 
             if (!obj.TryGetComponent<IObjectPoolItem>(out var objectPoolItem))
+            {
+                Debug.LogWarning($"{obj.name} does not have a component that implements IObjectPoolItem");
                 return obj;
+            }
 
             // If object has the IObjectPool interface, set this ObjectPool as it's pool and store in list
-            objectPoolItem.SetObjectPool(this);
+            objectPoolItem.SetObjectPool(this, obj);
             allItems.Add(objectPoolItem);
 
             return obj;
         }
-        
+
         public T GetObject()
         {
             // Try to get item from the queue. TryDequeue returns true if object available and false if not
@@ -79,10 +84,13 @@ namespace Bardent.ObjectPoolSystem
         }
 
         // Return object to the queue. Usually called from the component that implements the IObjectPoolItem interface
-        public void ReturnObject(T obj)
+        public override void ReturnObject(Component comp)
         {
-            obj.gameObject.SetActive(false);
-            pool.Enqueue(obj);
+            if (comp is not T compObj)
+                return;
+            
+            compObj.gameObject.SetActive(false);
+            pool.Enqueue(compObj);
         }
 
         /*
