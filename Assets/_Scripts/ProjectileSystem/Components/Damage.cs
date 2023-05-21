@@ -1,6 +1,7 @@
 ﻿using Bardent.ProjectileSystem.DataPackages;
 using Bardent.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Bardent.ProjectileSystem.Components
 {
@@ -10,6 +11,8 @@ namespace Bardent.ProjectileSystem.Components
      */
     public class Damage : ProjectileComponent
     {
+        public UnityEvent OnDamage;
+        
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
         [field: SerializeField] public bool SetInactiveAfterDamage { get; private set; }
         [field: SerializeField] public float Cooldown { get; private set; }
@@ -43,10 +46,13 @@ namespace Bardent.ProjectileSystem.Components
                 if (!LayerMaskUtilities.IsLayerInMask(hit, LayerMask))
                     continue;
 
-                if (!hit.transform.TryGetComponent(out IDamageable damageable))
+                // NOTE: We need to use .collider.transform instead of just .transform to get the GameObject the collider we detected is attached to, otherwise it returns the parent
+                if (!hit.collider.transform.gameObject.TryGetComponent(out IDamageable damageable))
                     continue;
-
+                
                 damageable.Damage(amount);
+                
+                OnDamage?.Invoke();
 
                 lastDamageTime = Time.time;
 
