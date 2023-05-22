@@ -63,6 +63,8 @@ MonoBehaviour:
             <KnockBackData>k__BackingField:
               Strength: 10
               Angle: {x: 1, y: 1}
+            <PoiseDamageData>k__BackingField:
+              <Amount>k__BackingField: 10
     - rid: 6827812331027955713
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
