@@ -24,7 +24,8 @@ namespace Bardent.Weapons.Components
         // The projectile prefab, notice that the type is Projectile and not GameObject
         [field: SerializeField] public Projectile ProjectilePrefab { get; private set; }
         
-        // The damage data to be passed to the projectile when it is spawned
+        // The data to be passed to the projectile when it is spawned
         [field: SerializeField] public  DamageDataPackage DamageData { get; private set; }
+        [field: SerializeField] public KnockBackDataPackage KnockBackData { get; private set; }
     }
 }

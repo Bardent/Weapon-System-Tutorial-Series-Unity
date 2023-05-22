@@ -20,7 +20,7 @@ namespace Bardent.ProjectileSystem.Components
         // This function is called whenever the projectile is fired, indicating the start of it's journey
         protected virtual void Init()
         {
-            
+            SetActive(true);
         }
 
         protected virtual void Reset()
