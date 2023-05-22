@@ -64,7 +64,10 @@ MonoBehaviour:
               Strength: 10
               Angle: {x: 1, y: 1}
             <PoiseDamageData>k__BackingField:
-              <Amount>k__BackingField: 10
+              <Amount>k__BackingField: 5
+            <SpriteDataPackage>k__BackingField:
+              <Sprite>k__BackingField: {fileID: 469599486, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
+                type: 3}
     - rid: 6827812331027955713
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
