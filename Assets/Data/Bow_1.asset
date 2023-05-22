@@ -20,9 +20,19 @@ MonoBehaviour:
   - rid: 6785867404348227586
   - rid: 6827812331027955712
   - rid: 6827812331027955713
+  - rid: 3076622070731767808
   references:
     version: 2
     RefIds:
+    - rid: 3076622070731767808
+      type: {class: OptionalSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: OptionalSpriteData
+        attackData:
+        - name: Attack 1
+          <UseOptionalSprite>k__BackingField: 1
+          <Sprite>k__BackingField: {fileID: 469599486, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
+            type: 3}
     - rid: 6785867263041863682
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -54,12 +64,20 @@ MonoBehaviour:
         attackData:
         - name: Attack 1
           <SpawnInfos>k__BackingField:
-          - <Offset>k__BackingField: {x: 1.24, y: 0.28}
+          - <Offset>k__BackingField: {x: 1.24, y: 0.2}
             <Direction>k__BackingField: {x: 1, y: 0}
             <ProjectilePrefab>k__BackingField: {fileID: 1775009464070235410, guid: 8efb570eb9ce57045beb8be00e677b2b,
               type: 3}
             <DamageData>k__BackingField:
               <Amount>k__BackingField: 15
+            <KnockBackData>k__BackingField:
+              Strength: 10
+              Angle: {x: 1, y: 1}
+            <PoiseDamageData>k__BackingField:
+              <Amount>k__BackingField: 5
+            <SpriteDataPackage>k__BackingField:
+              <Sprite>k__BackingField: {fileID: 469599486, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
+                type: 3}
     - rid: 6827812331027955713
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:

@@ -45,6 +45,9 @@ namespace Bardent.Weapons.Components
                 currentProjectile.Reset();
 
                 currentProjectile.SendDataPackage(projectileSpawnInfo.DamageData);
+                currentProjectile.SendDataPackage(projectileSpawnInfo.KnockBackData);
+                currentProjectile.SendDataPackage(projectileSpawnInfo.PoiseDamageData);
+                currentProjectile.SendDataPackage(projectileSpawnInfo.SpriteDataPackage);
 
                 currentProjectile.Init();
             }
