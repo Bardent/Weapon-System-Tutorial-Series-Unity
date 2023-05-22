@@ -16,6 +16,8 @@ namespace Bardent.Weapons
         /// Generally this animation event is added to the first "action" frame of an animation. e.g the first sword strike frame, or the frame where the bow is released.
         /// </summary>
         public event Action OnUseInput;
+
+        public event Action<bool> OnSetOptionalSpriteActive;
         
         public event Action<AttackPhases> OnEnterAttackPhase; 
 
@@ -25,6 +27,9 @@ namespace Bardent.Weapons
         private void AttackActionTrigger() => OnAttackAction?.Invoke();
         private void MinHoldPassedTrigger() => OnMinHoldPassed?.Invoke();
         private void UseInputTrigger() => OnUseInput?.Invoke();
+
+        private void SetOptionalSpriteEnabled() => OnSetOptionalSpriteActive?.Invoke(true);
+        private void SetOptionalSpriteDisabled() => OnSetOptionalSpriteActive?.Invoke(false);
         
         private void EnterAttackPhase(AttackPhases phase) => OnEnterAttackPhase?.Invoke(phase);
     }
