@@ -18,6 +18,8 @@ MonoBehaviour:
   <ComponentData>k__BackingField:
   - rid: 6785867263041863682
   - rid: 6785867404348227586
+  - rid: 6827812331027955712
+  - rid: 6827812331027955713
   references:
     version: 2
     RefIds:
@@ -45,3 +47,24 @@ MonoBehaviour:
       type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: InputHoldData
+    - rid: 6827812331027955712
+      type: {class: ProjectileSpawnerData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ProjectileSpawnerData
+        attackData:
+        - name: Attack 1
+          <SpawnInfos>k__BackingField:
+          - <Offset>k__BackingField: {x: 1.24, y: 0.28}
+            <Direction>k__BackingField: {x: 1, y: 0}
+            <ProjectilePrefab>k__BackingField: {fileID: 1775009464070235410, guid: 8efb570eb9ce57045beb8be00e677b2b,
+              type: 3}
+            <DamageData>k__BackingField:
+              <Amount>k__BackingField: 15
+    - rid: 6827812331027955713
+      type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: MovementData
+        attackData:
+        - name: Attack 1
+          <Direction>k__BackingField: {x: 0, y: 0}
+          <Velocity>k__BackingField: 0

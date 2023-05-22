@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.Projectiles;
 using UnityEngine;
 
 public class RangedAttackState : AttackState

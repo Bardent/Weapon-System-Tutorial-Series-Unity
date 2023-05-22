@@ -11,7 +11,8 @@
                     "id": "09b57423-a270-4c30-bd70-cc34b7ca47a9",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "0f9d76e3-7a4e-4d5f-851a-b6b267db8877",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Grab",
@@ -27,7 +29,8 @@
                     "id": "ee8c4c69-67eb-4e6d-b014-3691699bc132",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Dash",
@@ -35,7 +38,8 @@
                     "id": "27e4504b-4984-4ca0-b4a5-0a9d03a9083d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "DashDirection",
@@ -43,7 +47,8 @@
                     "id": "4f82a0cb-8525-49a6-99f9-b2785d6dc619",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "PrimaryAttack",
@@ -51,7 +56,8 @@
                     "id": "726bea11-c4b5-46d7-ab92-51e4954f04f1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "SecondaryAttack",
@@ -59,7 +65,8 @@
                     "id": "10d86b8a-51f4-4b82-83a6-9d27277fb0bc",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -241,6 +248,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2bb171e7-95f3-46d2-ad20-f2682dff32c0",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PrimaryAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4d45ce02-8b58-44bf-82ad-721c8c65e616",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -257,6 +275,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "SecondaryAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1eac1598-00ed-4dd3-8ad5-5d9ae46b893f",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "SecondaryAttack",
                     "isComposite": false,
                     "isPartOfComposite": false

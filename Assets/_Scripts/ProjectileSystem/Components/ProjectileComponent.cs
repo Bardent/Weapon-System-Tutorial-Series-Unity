@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Bardent.ProjectileSystem.DataPackages;
 using UnityEngine;
 
@@ -12,10 +13,17 @@ namespace Bardent.ProjectileSystem.Components
         protected Projectile projectile;
 
         protected Rigidbody2D rb => projectile.Rigidbody2D;
+        
+        public bool Active { get; private set; }
 
       
         // This function is called whenever the projectile is fired, indicating the start of it's journey
         protected virtual void Init()
+        {
+            
+        }
+
+        protected virtual void Reset()
         {
             
         }
@@ -27,6 +35,19 @@ namespace Bardent.ProjectileSystem.Components
             
         }
         
+        public virtual void SetActive(bool value) => Active = value;
+
+        public virtual void SetActiveNextFrame(bool value)
+        {
+            StartCoroutine(SetActiveNextFrameCoroutine(value));
+        }
+        
+        public IEnumerator SetActiveNextFrameCoroutine(bool value)
+        {
+            yield return null;
+            SetActive(value);
+        }
+        
         #region Plumbing
 
         protected virtual void Awake()
@@ -34,6 +55,7 @@ namespace Bardent.ProjectileSystem.Components
             projectile = GetComponent<Projectile>();
 
             projectile.OnInit += Init;
+            projectile.OnReset += Reset;
             projectile.OnReceiveDataPackage += HandleReceiveDataPackage;
         }
 
@@ -55,6 +77,7 @@ namespace Bardent.ProjectileSystem.Components
         protected virtual void OnDestroy()
         {
             projectile.OnInit -= Init;
+            projectile.OnReset -= Reset;
             projectile.OnReceiveDataPackage -= HandleReceiveDataPackage;
         }
 
