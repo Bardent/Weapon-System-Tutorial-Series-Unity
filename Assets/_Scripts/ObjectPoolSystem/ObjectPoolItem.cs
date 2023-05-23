@@ -22,7 +22,7 @@ namespace Bardent.ObjectPoolSystem
                 StartCoroutine(ReturnItemWithDelay(delay));
                 return;
             }
-            
+
             ReturnItemToPool();
         }
 
@@ -38,20 +38,19 @@ namespace Bardent.ObjectPoolSystem
             {
                 Destroy(gameObject);
             }
-            
         }
 
         private IEnumerator ReturnItemWithDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            
+
             ReturnItemToPool();
         }
 
         public void SetObjectPool<T>(ObjectPool pool, T comp) where T : Component
         {
             objectPool = pool;
-            
+
             // Reference the object that the pool is actually interested in so we can return it
             component = GetComponent(comp.GetType());
         }
@@ -59,6 +58,11 @@ namespace Bardent.ObjectPoolSystem
         public void Release()
         {
             objectPool = null;
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
         }
     }
 }
