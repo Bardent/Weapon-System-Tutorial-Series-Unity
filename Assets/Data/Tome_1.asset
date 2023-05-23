@@ -18,6 +18,7 @@ MonoBehaviour:
   <ComponentData>k__BackingField:
   - rid: 3076622070731767811
   - rid: 3076622070731767812
+  - rid: 3076622070731767813
   references:
     version: 2
     RefIds:
@@ -68,3 +69,11 @@ MonoBehaviour:
             - {fileID: 1990419840, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
             - {fileID: -956591025, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
             - {fileID: -1999440277, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+    - rid: 3076622070731767813
+      type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: MovementData
+        attackData:
+        - name: Attack 1
+          <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 1
