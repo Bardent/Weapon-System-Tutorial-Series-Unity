@@ -15,7 +15,56 @@ MonoBehaviour:
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 80caa8ced50a9af45801404d8bcc2e1c,
     type: 2}
   <NumberOfAttacks>k__BackingField: 1
-  <ComponentData>k__BackingField: []
+  <ComponentData>k__BackingField:
+  - rid: 3076622070731767811
+  - rid: 3076622070731767812
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3076622070731767811
+      type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: InputHoldData
+    - rid: 3076622070731767812
+      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: WeaponSpriteData
+        attackData:
+        - name: Attack 1
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 0
+            <Sprites>k__BackingField:
+            - {fileID: -1972318644, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1624254888, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -422725046, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1928067016, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1136480887, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 623875901, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -1815826719, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 14647472, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 758018684, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -793480092, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -280534478, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+          - <Phase>k__BackingField: 1
+            <Sprites>k__BackingField:
+            - {fileID: -1597890272, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1648229189, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -1291669430, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -2110132375, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1161048954, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: 1384852364, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -500706448, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1404415310, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 385331426, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1516044982, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -1362943872, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1746901272, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+          - <Phase>k__BackingField: 3
+            <Sprites>k__BackingField:
+            - {fileID: -204124892, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -1112314707, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: 1990419840, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -956591025, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
+            - {fileID: -1999440277, guid: 445ba39c27416744a8e405e06042ef7f, type: 3}
