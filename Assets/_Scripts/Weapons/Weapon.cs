@@ -36,6 +36,7 @@ namespace Bardent.Weapons
             }
         }
 
+        public float AttackStartTime { get; private set; }
         
         private Animator anim;
         public GameObject BaseGameObject { get; private set; }
@@ -54,6 +55,8 @@ namespace Bardent.Weapons
         public void Enter()
         {            
             print($"{transform.name} enter");
+
+            AttackStartTime = Time.time;
             
             attackCounterResetTimer.StopTimer();
             

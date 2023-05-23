@@ -16,6 +16,10 @@ namespace Bardent.ProjectileSystem.Components
 
         private float gravity;
 
+        // Used so other projectile components, such as DrawModifyDelayedGravity, can modify how far the projectile travels before being affected by gravity
+        [HideInInspector]
+        public float distanceMultiplier = 1;
+
         // Once projectile has travelled Distance, set gravity to Gravity value
         private void HandleNotify()
         {
@@ -28,7 +32,8 @@ namespace Bardent.ProjectileSystem.Components
             base.Init();
             
             rb.gravityScale = 0f;
-            distanceNotifier.Init(transform.position, Distance);
+            distanceNotifier.Init(transform.position, Distance * distanceMultiplier);
+            distanceMultiplier = 1;
         }
 
         #region Plumbing
