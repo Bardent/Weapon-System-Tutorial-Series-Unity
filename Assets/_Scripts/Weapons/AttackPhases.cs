@@ -4,6 +4,7 @@
     {
         Anticipation,
         Idle,
-        Action
+        Action,
+        Cancel
     }
 }
