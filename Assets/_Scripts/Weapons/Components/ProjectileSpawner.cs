@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Bardent.ObjectPoolSystem;
 using Bardent.ProjectileSystem;
 using UnityEngine;
@@ -7,6 +8,9 @@ namespace Bardent.Weapons.Components
 {
     public class ProjectileSpawner : WeaponComponent<ProjectileSpawnerData, AttackProjectileSpawner>
     {
+        // Event fired off for each projectile before we call the Init() function on that projectile to allow other components to also pass through some data
+        public event Action<Projectile> OnSpawnProjectile;
+        
         // Working variables
         private Vector2 spawnPos;
         private Vector2 spawnDir;
@@ -49,6 +53,9 @@ namespace Bardent.Weapons.Components
                 currentProjectile.SendDataPackage(projectileSpawnInfo.PoiseDamageData);
                 currentProjectile.SendDataPackage(projectileSpawnInfo.SpriteDataPackage);
 
+                // Broadcast before Init so other components can send data to the projectile.
+                OnSpawnProjectile?.Invoke(currentProjectile);
+                
                 currentProjectile.Init();
             }
         }

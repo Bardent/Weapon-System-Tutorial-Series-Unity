@@ -21,6 +21,7 @@ MonoBehaviour:
   - rid: 6827812331027955712
   - rid: 6827812331027955713
   - rid: 3076622070731767808
+  - rid: 3076622070731767809
   references:
     version: 2
     RefIds:
@@ -33,6 +34,37 @@ MonoBehaviour:
           <UseOptionalSprite>k__BackingField: 1
           <Sprite>k__BackingField: {fileID: 469599486, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
             type: 3}
+    - rid: 3076622070731767809
+      type: {class: DrawData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DrawData
+        attackData:
+        - name: Attack 1
+          <DrawCurve>k__BackingField:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          <DrawTime>k__BackingField: 0.26666668
     - rid: 6785867263041863682
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
