@@ -157,7 +157,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1775009464070235437}
         m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
           Assembly-CSharp
-        m_MethodName: SetActive
+        m_MethodName: SetActiveNextFrame
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -170,7 +170,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1548317406426355311}
         m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
           Assembly-CSharp
-        m_MethodName: SetActive
+        m_MethodName: SetActiveNextFrame
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -183,7 +183,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3548454430631855132}
         m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
           Assembly-CSharp
-        m_MethodName: SetActive
+        m_MethodName: SetActiveNextFrame
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
