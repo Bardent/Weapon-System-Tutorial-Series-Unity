@@ -19,6 +19,9 @@ MonoBehaviour:
   - rid: 3076622070731767811
   - rid: 3076622070731767812
   - rid: 3076622070731767813
+  - rid: 3076622091185029120
+  - rid: 3076622091185029121
+  - rid: 3076622091185029123
   references:
     version: 2
     RefIds:
@@ -77,3 +80,74 @@ MonoBehaviour:
         - name: Attack 1
           <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 1
+    - rid: 3076622091185029120
+      type: {class: TargeterData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: TargeterData
+        attackData:
+        - name: Attack 1
+          <Area>k__BackingField:
+            serializedVersion: 2
+            x: -10
+            y: -1.88
+            width: 20
+            height: 5
+          <DamageableLayer>k__BackingField:
+            serializedVersion: 2
+            m_Bits: 512
+          <GroundLayer>k__BackingField:
+            serializedVersion: 2
+            m_Bits: 256
+    - rid: 3076622091185029121
+      type: {class: TargeterToProjectileData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: TargeterToProjectileData
+    - rid: 3076622091185029123
+      type: {class: ProjectileSpawnerData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ProjectileSpawnerData
+        attackData:
+        - name: Attack 1
+          <SpawnInfos>k__BackingField:
+          - <Offset>k__BackingField: {x: 0.81, y: 0.42}
+            <Direction>k__BackingField: {x: 1, y: 0.25}
+            <ProjectilePrefab>k__BackingField: {fileID: 1775009464070235410, guid: baf2173d260384d4a8618e73167535db,
+              type: 3}
+            <DamageData>k__BackingField:
+              <Amount>k__BackingField: 0
+            <KnockBackData>k__BackingField:
+              Strength: 0
+              Angle: {x: 0, y: 0}
+            <PoiseDamageData>k__BackingField:
+              <Amount>k__BackingField: 0
+            <SpriteDataPackage>k__BackingField:
+              <Sprite>k__BackingField: {fileID: 1691212920, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
+                type: 3}
+          - <Offset>k__BackingField: {x: 0.81, y: 0.42}
+            <Direction>k__BackingField: {x: 1, y: 0}
+            <ProjectilePrefab>k__BackingField: {fileID: 1775009464070235410, guid: baf2173d260384d4a8618e73167535db,
+              type: 3}
+            <DamageData>k__BackingField:
+              <Amount>k__BackingField: 0
+            <KnockBackData>k__BackingField:
+              Strength: 0
+              Angle: {x: 0, y: 0}
+            <PoiseDamageData>k__BackingField:
+              <Amount>k__BackingField: 0
+            <SpriteDataPackage>k__BackingField:
+              <Sprite>k__BackingField: {fileID: 1691212920, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
+                type: 3}
+          - <Offset>k__BackingField: {x: 0.81, y: 0.42}
+            <Direction>k__BackingField: {x: 1, y: 0.5}
+            <ProjectilePrefab>k__BackingField: {fileID: 1775009464070235410, guid: baf2173d260384d4a8618e73167535db,
+              type: 3}
+            <DamageData>k__BackingField:
+              <Amount>k__BackingField: 0
+            <KnockBackData>k__BackingField:
+              Strength: 0
+              Angle: {x: 0, y: 0}
+            <PoiseDamageData>k__BackingField:
+              <Amount>k__BackingField: 0
+            <SpriteDataPackage>k__BackingField:
+              <Sprite>k__BackingField: {fileID: 1691212920, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
+                type: 3}
