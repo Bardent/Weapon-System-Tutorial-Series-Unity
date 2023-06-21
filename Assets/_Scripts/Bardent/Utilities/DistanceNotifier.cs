@@ -16,7 +16,6 @@ namespace Bardent.Utilities
         public event Action OnNotify;
 
         private Vector3 referencePos;
-        private float distance;
         private float sqrDistance;
         
         private bool enabled;
@@ -29,7 +28,6 @@ namespace Bardent.Utilities
             bool triggerContinuously = false)
         {
             this.referencePos = referencePos;
-            this.distance = distance;
 
             sqrDistance = distance * distance;
 
