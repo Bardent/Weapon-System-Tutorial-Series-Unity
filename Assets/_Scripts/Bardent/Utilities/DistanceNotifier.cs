@@ -18,10 +18,11 @@ namespace Bardent.Utilities
         private Vector3 referencePos;
         private float distance;
         private float sqrDistance;
-
-        // This boolean determines if we fire off the event when we are closer than distance (true) or further than distance (false)
-        private bool checkInside;
+        
         private bool enabled;
+
+        // Action to hold function that determines if we notify when we are inside or outside of the distance
+        private Action<float> notifierCondition;
 
         // Initializes the notifier with a new reference position and distance
         public void Init(Vector3 referencePos, float distance, bool checkInside = false,
@@ -32,7 +33,15 @@ namespace Bardent.Utilities
 
             sqrDistance = distance * distance;
 
-            this.checkInside = checkInside;
+            // Store relevant function in Action.
+            if (checkInside)
+            {
+                notifierCondition = CheckInside;
+            }
+            else
+            {
+                notifierCondition = CheckOutside;
+            }
 
             enabled = true;
 
@@ -59,15 +68,9 @@ namespace Bardent.Utilities
 
             // We are using the square of distances as square root function is expensive
             var currentSqrDistance = (referencePos - pos).sqrMagnitude;
-
-            if (checkInside)
-            {
-                CheckInside(currentSqrDistance);
-            }
-            else
-            {
-                CheckOutside(currentSqrDistance);
-            }
+            
+            // Pass current distance to function stored within the Action. Avoids having to do an if else check every tick and instead moves that check to constructor.
+            notifierCondition.Invoke(currentSqrDistance);
         }
 
         private void CheckInside(float dist)
