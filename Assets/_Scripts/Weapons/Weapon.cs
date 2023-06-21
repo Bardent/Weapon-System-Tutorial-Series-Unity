@@ -58,7 +58,7 @@ namespace Bardent.Weapons
 
             AttackStartTime = Time.time;
             
-            attackCounterResetTimeNotifier.StopTimer();
+            attackCounterResetTimeNotifier.Disable();
             
             anim.SetBool("active", true);
             anim.SetInteger("counter", currentAttackCounter);
@@ -81,7 +81,7 @@ namespace Bardent.Weapons
             anim.SetBool("active", false);
 
             CurrentAttackCounter++;
-            attackCounterResetTimeNotifier.StartTimer();
+            attackCounterResetTimeNotifier.Init(attackCounterResetCooldown);
             
             OnExit?.Invoke();
         }
@@ -95,7 +95,7 @@ namespace Bardent.Weapons
 
             EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
-            attackCounterResetTimeNotifier = new TimeNotifier(attackCounterResetCooldown);
+            attackCounterResetTimeNotifier = new TimeNotifier();
         }
 
         private void Update()
