@@ -22,9 +22,20 @@ MonoBehaviour:
   - rid: 3076622091185029120
   - rid: 3076622091185029121
   - rid: 3076622091185029123
+  - rid: 2299549901438320640
   references:
     version: 2
     RefIds:
+    - rid: 2299549901438320640
+      type: {class: ChargeData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ChargeData
+        attackData:
+        - name: Attack 1
+          <ChargeTime>k__BackingField: 0
+          <NumberOfCharges>k__BackingField: 0
+          <ChargeIncreaseIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+          <FullyChargedIndicatorParticlePrefab>k__BackingField: {fileID: 0}
     - rid: 3076622070731767811
       type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:

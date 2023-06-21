@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Bardent.Utilities
 {
-    public class Timer
+    public class TimeNotifier
     {
-        public event Action OnTimerDone;
+        public event Action OnNotify;
         
         private float startTime;
         private float duration;
@@ -13,7 +13,7 @@ namespace Bardent.Utilities
 
         private bool isActive;
         
-        public Timer(float duration)
+        public TimeNotifier(float duration)
         {
             this.duration = duration;
         }
@@ -36,7 +36,7 @@ namespace Bardent.Utilities
 
             if (Time.time >= targetTime)
             {
-                OnTimerDone?.Invoke();
+                OnNotify?.Invoke();
                 StopTimer();
             }
         }
