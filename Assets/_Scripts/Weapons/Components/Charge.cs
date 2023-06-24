@@ -1,4 +1,5 @@
-﻿using Bardent.Utilities;
+﻿using System;
+using Bardent.Utilities;
 
 namespace Bardent.Weapons.Components
 {
@@ -8,12 +9,14 @@ namespace Bardent.Weapons.Components
 
         private TimeNotifier timeNotifier;
 
+        public int CurrentCharge => currentCharge;
+
         protected override void HandleEnter()
         {
             base.HandleEnter();
 
             currentCharge = currentAttackData.InitialChargeAmount;
-            
+
             timeNotifier.Init(currentAttackData.ChargeTime, true);
         }
 
@@ -37,9 +40,10 @@ namespace Bardent.Weapons.Components
         protected override void HandleExit()
         {
             base.HandleExit();
-            
+
             timeNotifier.Disable();
         }
+
 
         #region Plumbing
 
@@ -52,10 +56,15 @@ namespace Bardent.Weapons.Components
             timeNotifier.OnNotify += HandleNotify;
         }
 
+        private void Update()
+        {
+            timeNotifier.Tick();
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            
+
             timeNotifier.OnNotify -= HandleNotify;
         }
 

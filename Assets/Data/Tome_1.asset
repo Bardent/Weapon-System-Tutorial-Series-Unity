@@ -23,6 +23,7 @@ MonoBehaviour:
   - rid: 3076622091185029121
   - rid: 3076622091185029123
   - rid: 2299549901438320640
+  - rid: 2299549950738432000
   references:
     version: 2
     RefIds:
@@ -32,10 +33,19 @@ MonoBehaviour:
         name: ChargeData
         attackData:
         - name: Attack 1
-          <ChargeTime>k__BackingField: 0
-          <NumberOfCharges>k__BackingField: 0
+          <ChargeTime>k__BackingField: 1
+          <InitialChargeAmount>k__BackingField: 0
+          <NumberOfCharges>k__BackingField: 3
           <ChargeIncreaseIndicatorParticlePrefab>k__BackingField: {fileID: 0}
           <FullyChargedIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+    - rid: 2299549950738432000
+      type: {class: ChargeToProjectileSpawnerData, ns: Bardent.Weapons.Components,
+        asm: Assembly-CSharp}
+      data:
+        name: ChargeToProjectileSpawnerData
+        attackData:
+        - name: Attack 1
+          <AngleVariation>k__BackingField: 15
     - rid: 3076622070731767811
       type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -119,34 +129,6 @@ MonoBehaviour:
           <SpawnInfos>k__BackingField:
           - <Offset>k__BackingField: {x: 0.81, y: 0.42}
             <Direction>k__BackingField: {x: 1, y: 0.25}
-            <ProjectilePrefab>k__BackingField: {fileID: 1775009464070235410, guid: baf2173d260384d4a8618e73167535db,
-              type: 3}
-            <DamageData>k__BackingField:
-              <Amount>k__BackingField: 0
-            <KnockBackData>k__BackingField:
-              Strength: 0
-              Angle: {x: 0, y: 0}
-            <PoiseDamageData>k__BackingField:
-              <Amount>k__BackingField: 0
-            <SpriteDataPackage>k__BackingField:
-              <Sprite>k__BackingField: {fileID: 1691212920, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
-                type: 3}
-          - <Offset>k__BackingField: {x: 0.81, y: 0.42}
-            <Direction>k__BackingField: {x: 1, y: 0}
-            <ProjectilePrefab>k__BackingField: {fileID: 1775009464070235410, guid: baf2173d260384d4a8618e73167535db,
-              type: 3}
-            <DamageData>k__BackingField:
-              <Amount>k__BackingField: 0
-            <KnockBackData>k__BackingField:
-              Strength: 0
-              Angle: {x: 0, y: 0}
-            <PoiseDamageData>k__BackingField:
-              <Amount>k__BackingField: 0
-            <SpriteDataPackage>k__BackingField:
-              <Sprite>k__BackingField: {fileID: 1691212920, guid: cbcf3bd84a6c0724dbbb289ce667cbc3,
-                type: 3}
-          - <Offset>k__BackingField: {x: 0.81, y: 0.42}
-            <Direction>k__BackingField: {x: 1, y: 0.5}
             <ProjectilePrefab>k__BackingField: {fileID: 1775009464070235410, guid: baf2173d260384d4a8618e73167535db,
               type: 3}
             <DamageData>k__BackingField:
