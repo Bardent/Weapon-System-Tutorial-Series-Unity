@@ -18,6 +18,11 @@ namespace Bardent.Weapons.Components
 
         private bool hasReadCharge;
 
+        /*
+         * The custom strategy we use to spawn projectiles based on the number of charges we have. To broaden your mind a little, we could encapsulate the strategy
+         * in a scriptable object and allow us to spawn out the custom strategy that this component used. It's not needed here, but there are applications. E.G: I did that
+         * in my game jam project (https://bardent.itch.io/the-road-to-sanctuary) to assign reload strategies to weapons
+         */
         private ChargeProjectileSpawnerStrategy chargeProjectileSpawnerStrategy = new ChargeProjectileSpawnerStrategy();
 
         protected override void HandleEnter()

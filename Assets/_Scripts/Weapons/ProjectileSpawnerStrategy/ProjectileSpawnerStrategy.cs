@@ -32,16 +32,18 @@ namespace Bardent.Weapons
         )
         {
             // Simply spawns one projectile based on the passed in parameters
-            SpawnProjectile(projectileSpawnInfo, spawnerPos, facingDirection, objectPools, OnSpawnProjectile);
+            SpawnProjectile(projectileSpawnInfo, projectileSpawnInfo.Direction, spawnerPos, facingDirection,
+                objectPools, OnSpawnProjectile);
         }
 
         // Spawn a projectile
-        protected virtual void SpawnProjectile(ProjectileSpawnInfo projectileSpawnInfo, Vector3 spawnerPos,
+        protected virtual void SpawnProjectile(ProjectileSpawnInfo projectileSpawnInfo, Vector2 spawnDirection,
+            Vector3 spawnerPos,
             int facingDirection,
             ObjectPools objectPools, Action<Projectile> OnSpawnProjectile)
         {
             SetSpawnPosition(spawnerPos, projectileSpawnInfo.Offset, facingDirection);
-            SetSpawnDirection(projectileSpawnInfo.Direction, facingDirection);
+            SetSpawnDirection(spawnDirection, facingDirection);
             GetProjectileAndSetPositionAndRotation(objectPools, projectileSpawnInfo.ProjectilePrefab);
             InitializeProjectile(projectileSpawnInfo, OnSpawnProjectile);
         }

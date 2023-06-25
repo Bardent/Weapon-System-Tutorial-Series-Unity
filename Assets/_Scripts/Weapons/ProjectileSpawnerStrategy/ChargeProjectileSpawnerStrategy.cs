@@ -29,7 +29,7 @@ namespace Bardent.Weapons
             ObjectPools objectPools, Action<Projectile> OnSpawnProjectile)
         {
             // If there are no charges, we don't spawn any projectiles.
-            if(ChargeAmount <= 0)
+            if (ChargeAmount <= 0)
                 return;
 
             // If there is only one charge, the direction to spawn the projectile in is the same as the direction that has been passed in.
@@ -45,8 +45,8 @@ namespace Bardent.Weapons
                  * This creates the initialRotationQuaternion. By multiplying this by the passed in spawn direction, we get a new direction that
                  * has been rotated anti-clockwise by that amount.
                  */
-                var initialRotationQuaternion = Quaternion.Euler(0f, 0f, -((ChargeAmount - 1f)  * AngleVariation / 2f));
-                
+                var initialRotationQuaternion = Quaternion.Euler(0f, 0f, -((ChargeAmount - 1f) * AngleVariation / 2f));
+
                 // Rotate the vector to set our first spawn direction
                 currentDirection = initialRotationQuaternion * projectileSpawnInfo.Direction;
             }
@@ -57,7 +57,8 @@ namespace Bardent.Weapons
             for (var i = 0; i < ChargeAmount; i++)
             {
                 // Projectile spawn methods. See ProjectileSpawnerStrategy class for more details
-                SpawnProjectile(projectileSpawnInfo, spawnerPos, facingDirection, objectPools, OnSpawnProjectile);
+                SpawnProjectile(projectileSpawnInfo, currentDirection, spawnerPos, facingDirection, objectPools,
+                    OnSpawnProjectile);
 
                 // Rotate the spawn direction for next projectile.
                 currentDirection = rotationQuaternion * currentDirection;
