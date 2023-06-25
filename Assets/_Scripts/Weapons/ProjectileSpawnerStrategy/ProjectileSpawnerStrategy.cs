@@ -6,6 +6,14 @@ using UnityEngine;
 
 namespace Bardent.Weapons
 {
+    /*
+     * This is the base ProjectileSpawnerStrategy class, or, the Default spawn method. It simply spawns a projectile as requested and does nothing else.
+     *
+     * A strategy is an encapsulated algorithm for doing something. By encapsulating it like this, it means we can swap out our logic at runtime. We need a spawn strategy
+     * because we want our Charge weapon component to be able to adjust how many projectiles are spawned per attack.
+     *
+     * For more info on the Strategy Pattern, check out this article: https://refactoring.guru/design-patterns/strategy
+     */
     public class ProjectileSpawnerStrategy : IProjectileSpawnerStrategy
     {
         // Working variables
@@ -13,8 +21,24 @@ namespace Bardent.Weapons
         private Vector2 spawnDir;
         private Projectile currentProjectile;
 
-        public virtual void SpawnProjectile(ProjectileSpawnInfo projectileSpawnInfo, Vector3 spawnerPos,
-            int facingDirection, ObjectPools objectPools, Action<Projectile> OnSpawnProjectile)
+        // The function used to initiate the strategy
+        public virtual void ExecuteSpawnStrategy
+        (
+            ProjectileSpawnInfo projectileSpawnInfo,
+            Vector3 spawnerPos,
+            int facingDirection,
+            ObjectPools objectPools,
+            Action<Projectile> OnSpawnProjectile
+        )
+        {
+            // Simply spawns one projectile based on the passed in parameters
+            SpawnProjectile(projectileSpawnInfo, spawnerPos, facingDirection, objectPools, OnSpawnProjectile);
+        }
+
+        // Spawn a projectile
+        protected virtual void SpawnProjectile(ProjectileSpawnInfo projectileSpawnInfo, Vector3 spawnerPos,
+            int facingDirection,
+            ObjectPools objectPools, Action<Projectile> OnSpawnProjectile)
         {
             SetSpawnPosition(spawnerPos, projectileSpawnInfo.Offset, facingDirection);
             SetSpawnDirection(projectileSpawnInfo.Direction, facingDirection);
@@ -37,15 +61,19 @@ namespace Bardent.Weapons
         protected virtual void InitializeProjectile(ProjectileSpawnInfo projectileSpawnInfo,
             Action<Projectile> OnSpawnProjectile)
         {
+            // Reset projectile from pool
             currentProjectile.Reset();
 
+            // Send through new data packages
             currentProjectile.SendDataPackage(projectileSpawnInfo.DamageData);
             currentProjectile.SendDataPackage(projectileSpawnInfo.KnockBackData);
             currentProjectile.SendDataPackage(projectileSpawnInfo.PoiseDamageData);
             currentProjectile.SendDataPackage(projectileSpawnInfo.SpriteDataPackage);
 
+            // Broadcast new projectile has been spawned so other components can  pass through data packages
             OnSpawnProjectile?.Invoke(currentProjectile);
 
+            // Initialize the projectile
             currentProjectile.Init();
         }
 

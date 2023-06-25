@@ -17,6 +17,7 @@ namespace Bardent.Weapons.Components
         // Object pool to store projectiles so we don't have to keep instantiating new ones
         private readonly ObjectPools objectPools = new ObjectPools();
 
+        // The strategy we use to spawn a projectile
         private IProjectileSpawnerStrategy projectileSpawnerStrategy;
 
         public void SetProjectileSpawnerStrategy(IProjectileSpawnerStrategy newStrategy)
@@ -29,21 +30,23 @@ namespace Bardent.Weapons.Components
         {
             foreach (var projectileSpawnInfo in currentAttackData.SpawnInfos)
             {
-                projectileSpawnerStrategy.SpawnProjectile(projectileSpawnInfo, transform.position,
+                // Spawn projectile based on the current strategy
+                projectileSpawnerStrategy.ExecuteSpawnStrategy(projectileSpawnInfo, transform.position,
                     movement.FacingDirection, objectPools, OnSpawnProjectile);
             }
         }
 
         private void SetDefaultProjectileSpawnStrategy()
         {
+            // The default spawn strategy is the base ProjectileSpawnerStrategy class. It simply spawns one projectile based on the data per request
             projectileSpawnerStrategy = new ProjectileSpawnerStrategy();
-            // projectileSpawnerStrategy = new ChargeProjectileSpawnerStrategy();
         }
 
         protected override void HandleExit()
         {
             base.HandleExit();
             
+            // Reset the spawner strategy every time the attack finishes in case some other component adjusted it
             SetDefaultProjectileSpawnStrategy();
         }
 
@@ -62,14 +65,14 @@ namespace Bardent.Weapons.Components
 
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
 
-            eventHandler.OnAttackAction += HandleAttackAction;
+            EventHandler.OnAttackAction += HandleAttackAction;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            eventHandler.OnAttackAction -= HandleAttackAction;
+            EventHandler.OnAttackAction -= HandleAttackAction;
         }
 
         private void OnDrawGizmosSelected()

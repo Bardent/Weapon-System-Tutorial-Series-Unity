@@ -38,6 +38,7 @@ namespace Bardent.CoreSystem
             return StartParticles(particlePrefab, transform.position, randomRotation);
         }
 
+        // Spawns particles relative to transform based on offset (input parameter) and FacingDirection
         public GameObject StartParticlesRelative(GameObject particlePrefab, Vector2 offset, Quaternion rotation)
         {
             var pos = FindPointRelativeToPositionAndFacingDirection(offset);
