@@ -1,4 +1,6 @@
-﻿namespace Bardent.Weapons.Components
+﻿using UnityEngine;
+
+namespace Bardent.Weapons.Components
 {
     public class ChargeToProjectileSpawner : WeaponComponent<ChargeToProjectileSpawnerData, AttackChargeToProjectileSpawner>
     {
@@ -18,9 +20,9 @@
         {
             if(newInput || hasReadCharge)
                 return;
-
+            
             var newStrategy =
-                new ChargeProjectileSpawnerStrategy(currentAttackData.AngleVariation, charge.CurrentCharge);
+                new ChargeProjectileSpawnerStrategy(currentAttackData.AngleVariation, charge.TakeFinalChargeReading());
 
             projectileSpawner.SetProjectileSpawnerStrategy(newStrategy);
 

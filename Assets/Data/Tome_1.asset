@@ -36,8 +36,11 @@ MonoBehaviour:
           <ChargeTime>k__BackingField: 1
           <InitialChargeAmount>k__BackingField: 0
           <NumberOfCharges>k__BackingField: 3
-          <ChargeIncreaseIndicatorParticlePrefab>k__BackingField: {fileID: 0}
-          <FullyChargedIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+          <ChargeIncreaseIndicatorParticlePrefab>k__BackingField: {fileID: 6762676686280720063,
+            guid: 19758c9f67bb0264e8437296ed15d9ee, type: 3}
+          <FullyChargedIndicatorParticlePrefab>k__BackingField: {fileID: 6762676686280720063,
+            guid: 19758c9f67bb0264e8437296ed15d9ee, type: 3}
+          <Offset>k__BackingField: {x: 0, y: 0}
     - rid: 2299549950738432000
       type: {class: ChargeToProjectileSpawnerData, ns: Bardent.Weapons.Components,
         asm: Assembly-CSharp}

@@ -11,5 +11,6 @@ namespace Bardent.Weapons.Components
         [field: SerializeField] public int NumberOfCharges { get; private set; }
         [field: SerializeField] public GameObject ChargeIncreaseIndicatorParticlePrefab { get; private set; }
         [field: SerializeField] public GameObject FullyChargedIndicatorParticlePrefab { get; private set; }
+        [field: SerializeField] public Vector2 Offset { get; private set; }
     }
 }
