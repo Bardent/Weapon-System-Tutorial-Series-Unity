@@ -28,7 +28,9 @@ namespace Bardent.Weapons.Components
     [Serializable]
     public abstract class ComponentData<T> : ComponentData where T : AttackData
     {
+        // True if component data is the same for every attack, avoiding the issue of having to set up repeat data
         [SerializeField] private bool repeatData;
+        
         [SerializeField] private T[] attackData;
 
         // Use this to get the data of a specific attack. Accounts for components that repeats data for all attacks.
