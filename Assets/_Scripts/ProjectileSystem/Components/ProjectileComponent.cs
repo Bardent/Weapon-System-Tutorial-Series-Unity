@@ -23,7 +23,7 @@ namespace Bardent.ProjectileSystem.Components
             SetActive(true);
         }
 
-        protected virtual void Reset()
+        protected virtual void ResetProjectile()
         {
             
         }
@@ -55,7 +55,7 @@ namespace Bardent.ProjectileSystem.Components
             projectile = GetComponent<Projectile>();
 
             projectile.OnInit += Init;
-            projectile.OnReset += Reset;
+            projectile.OnReset += ResetProjectile;
             projectile.OnReceiveDataPackage += HandleReceiveDataPackage;
         }
 
@@ -77,7 +77,7 @@ namespace Bardent.ProjectileSystem.Components
         protected virtual void OnDestroy()
         {
             projectile.OnInit -= Init;
-            projectile.OnReset -= Reset;
+            projectile.OnReset -= ResetProjectile;
             projectile.OnReceiveDataPackage -= HandleReceiveDataPackage;
         }
 

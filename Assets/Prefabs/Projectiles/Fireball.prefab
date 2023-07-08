@@ -12,18 +12,15 @@ GameObject:
   - component: {fileID: 1775009464070235408}
   - component: {fileID: 1775009464070235410}
   - component: {fileID: 1775009464070235411}
-  - component: {fileID: 1775009464070235409}
-  - component: {fileID: 1775009464070235438}
   - component: {fileID: 1775009464070235439}
-  - component: {fileID: 1775009464070235436}
   - component: {fileID: 1775009464070235437}
   - component: {fileID: 7473774155926503612}
   - component: {fileID: 1548317406426355311}
   - component: {fileID: 3548454430631855132}
   - component: {fileID: 7709550137505407433}
-  - component: {fileID: 4158015932804817621}
+  - component: {fileID: 1706826702810989724}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,34 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b535246cbcb4ee5b216453f6bf8cf5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ApplyContinuously>k__BackingField: 0
-  <Speed>k__BackingField: 25
---- !u!114 &1775009464070235409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775009464070235412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd35de8a572f4128af7b649fc3675a20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Distance>k__BackingField: 5
-  distanceMultiplier: 1
---- !u!114 &1775009464070235438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775009464070235412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab523a4b01d948bca01941f5d2070eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  <ApplyContinuously>k__BackingField: 1
+  <Speed>k__BackingField: 13
 --- !u!114 &1775009464070235439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,100 +103,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HitBoxRect>k__BackingField:
     serializedVersion: 2
-    x: -1.05
-    y: -0.125
-    width: 1.35
-    height: 0.25
+    x: -0.97
+    y: -0.375
+    width: 1.1875
+    height: 0.75
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 768
---- !u!114 &1775009464070235436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775009464070235412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 920b12f0e6084a48b20c2e2a1f2d2c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  setStuck:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1775009464070235437}
-        m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
-          Assembly-CSharp
-        m_MethodName: SetActiveNextFrame
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1548317406426355311}
-        m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
-          Assembly-CSharp
-        m_MethodName: SetActiveNextFrame
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3548454430631855132}
-        m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
-          Assembly-CSharp
-        m_MethodName: SetActiveNextFrame
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7473774155926503612}
-        m_TargetAssemblyTypeName: Bardent.ObjectPoolSystem.ObjectPoolItem, Assembly-CSharp
-        m_MethodName: ReturnItem
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 5
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  setUnstuck:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1775009464070235437}
-        m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
-          Assembly-CSharp
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 5
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  <LayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 256
-  <InactiveSortingLayerName>k__BackingField: InactiveProjectile
-  <CheckDistance>k__BackingField: 2
 --- !u!114 &1775009464070235437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff15bbb6f5d94da2963e50a8bd5de344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4158015932804817621
+--- !u!114 &1706826702810989724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,9 +211,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1775009464070235412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 413973b844e8496fa79e4f757864d387, type: 3}
+  m_Script: {fileID: 11500000, guid: 920b12f0e6084a48b20c2e2a1f2d2c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setStuck:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7473774155926503612}
+        m_TargetAssemblyTypeName: Bardent.ObjectPoolSystem.ObjectPoolItem, Assembly-CSharp
+        m_MethodName: ReturnItem
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  setUnstuck:
+    m_PersistentCalls:
+      m_Calls: []
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
+  <InactiveSortingLayerName>k__BackingField: 
+  <CheckDistance>k__BackingField: 0
 --- !u!1 &1775009465610879425
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +310,7 @@ SpriteRenderer:
   m_SortingLayerID: 205616101
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: -780757743, guid: cbcf3bd84a6c0724dbbb289ce667cbc3, type: 3}
+  m_Sprite: {fileID: -1211227257, guid: cbcf3bd84a6c0724dbbb289ce667cbc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

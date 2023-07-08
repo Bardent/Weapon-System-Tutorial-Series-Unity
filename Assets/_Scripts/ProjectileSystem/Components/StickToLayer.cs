@@ -133,9 +133,9 @@ namespace Bardent.ProjectileSystem.Components
             subscribedToDisableNotifier = false;
         }
 
-        protected override void Reset()
+        protected override void ResetProjectile()
         {
-            base.Reset();
+            base.ResetProjectile();
 
             SetUnstuck();
         }
