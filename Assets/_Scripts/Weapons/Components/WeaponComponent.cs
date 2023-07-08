@@ -56,7 +56,7 @@ namespace Bardent.Weapons.Components
         {
             base.HandleEnter();
 
-            currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
+            currentAttackData = data.GetAttackData(weapon.CurrentAttackCounter);
         }
 
         public override void Init()

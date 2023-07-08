@@ -49,7 +49,7 @@ namespace Bardent.Weapons.Components
             if (data == null)
                 return;
 
-            foreach (var item in data.AttackData)
+            foreach (var item in data.GetAllAttackData())
             {
                 if (!item.Debug)
                     continue;

@@ -80,7 +80,7 @@ namespace Bardent.Weapons.Components
             if (data == null || !Application.isPlaying)
                 return;
 
-            foreach (var item in data.AttackData)
+            foreach (var item in data.GetAllAttackData())
             {
                 foreach (var point in item.SpawnInfos)
                 {

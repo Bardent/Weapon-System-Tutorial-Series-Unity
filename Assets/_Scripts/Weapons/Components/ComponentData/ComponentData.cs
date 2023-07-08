@@ -28,16 +28,21 @@ namespace Bardent.Weapons.Components
     [Serializable]
     public abstract class ComponentData<T> : ComponentData where T : AttackData
     {
+        [SerializeField] private bool repeatData;
         [SerializeField] private T[] attackData;
-        public T[] AttackData { get => attackData; private set => attackData = value; }
 
+        // Use this to get the data of a specific attack. Accounts for components that repeats data for all attacks.
+        public T GetAttackData(int index) => attackData[repeatData ? 0 : index];
+
+        public T[] GetAllAttackData() => attackData;
+        
         public override void SetAttackDataNames()
         {
             base.SetAttackDataNames();
             
-            for (var i = 0; i < AttackData.Length; i++)
+            for (var i = 0; i < attackData.Length; i++)
             {
-                AttackData[i].SetAttackName(i + 1);
+                attackData[i].SetAttackName(i + 1);
             }
         }
         
@@ -45,14 +50,16 @@ namespace Bardent.Weapons.Components
         {
             base.InitializeAttackData(numberOfAttacks);
 
+            var newLen = repeatData ? 1 : numberOfAttacks;
+            
             var oldLen = attackData != null ? attackData.Length : 0;
             
-            if(oldLen == numberOfAttacks)
+            if(oldLen == newLen)
                 return;
             
-            Array.Resize(ref attackData, numberOfAttacks);
+            Array.Resize(ref attackData, newLen);
 
-            if (oldLen < numberOfAttacks)
+            if (oldLen < newLen)
             {
                 for (var i = oldLen; i < attackData.Length; i++)
                 {
