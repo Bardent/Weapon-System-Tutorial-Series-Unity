@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 7709550137505407433}
   - component: {fileID: 4158015932804817621}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,6 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66d1afcc13b47179e0659e098fbdd85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnRaycastHit2D:
+    m_PersistentCalls:
+      m_Calls: []
   <HitBoxRect>k__BackingField:
     serializedVersion: 2
     x: -1.05

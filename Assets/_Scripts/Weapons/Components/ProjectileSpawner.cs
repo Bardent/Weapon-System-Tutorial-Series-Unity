@@ -10,54 +10,53 @@ namespace Bardent.Weapons.Components
     {
         // Event fired off for each projectile before we call the Init() function on that projectile to allow other components to also pass through some data
         public event Action<Projectile> OnSpawnProjectile;
-        
-        // Working variables
-        private Vector2 spawnPos;
-        private Vector2 spawnDir;
-        
+
         // Movement Core Comp needed to get FacingDirection
         private CoreSystem.Movement movement;
 
         // Object pool to store projectiles so we don't have to keep instantiating new ones
         private readonly ObjectPools objectPools = new ObjectPools();
 
+        // The strategy we use to spawn a projectile
+        private IProjectileSpawnerStrategy projectileSpawnerStrategy;
+
+        public void SetProjectileSpawnerStrategy(IProjectileSpawnerStrategy newStrategy)
+        {
+            projectileSpawnerStrategy = newStrategy;
+        }
+        
         // Weapon Action Animation Event is used to trigger firing the projectiles
         private void HandleAttackAction()
         {
             foreach (var projectileSpawnInfo in currentAttackData.SpawnInfos)
             {
-                // Add offset to player position, accounting for FacingDirection
-                spawnPos = transform.position;
-                spawnPos.Set(
-                    spawnPos.x + projectileSpawnInfo.Offset.x * movement.FacingDirection,
-                    spawnPos.y + projectileSpawnInfo.Offset.y
-                );
-
-                // Change spawn direction based on FacingDirection
-                spawnDir.Set(projectileSpawnInfo.Direction.x * movement.FacingDirection,
-                    projectileSpawnInfo.Direction.y);
-
-                // Get projectile from pool
-                var currentProjectile = objectPools.GetObject(projectileSpawnInfo.ProjectilePrefab);
-
-                // Set position, rotation, and other related info
-                currentProjectile.transform.position = spawnPos;
-
-                var angle = Mathf.Atan2(spawnDir.y, spawnDir.x) * Mathf.Rad2Deg;
-                currentProjectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-                currentProjectile.Reset();
-
-                currentProjectile.SendDataPackage(projectileSpawnInfo.DamageData);
-                currentProjectile.SendDataPackage(projectileSpawnInfo.KnockBackData);
-                currentProjectile.SendDataPackage(projectileSpawnInfo.PoiseDamageData);
-                currentProjectile.SendDataPackage(projectileSpawnInfo.SpriteDataPackage);
-
-                // Broadcast before Init so other components can send data to the projectile.
-                OnSpawnProjectile?.Invoke(currentProjectile);
-                
-                currentProjectile.Init();
+                // Spawn projectile based on the current strategy
+                projectileSpawnerStrategy.ExecuteSpawnStrategy(projectileSpawnInfo, transform.position,
+                    movement.FacingDirection, objectPools, OnSpawnProjectile);
             }
+        }
+
+        private void SetDefaultProjectileSpawnStrategy()
+        {
+            // The default spawn strategy is the base ProjectileSpawnerStrategy class. It simply spawns one projectile based on the data per request
+            projectileSpawnerStrategy = new ProjectileSpawnerStrategy();
+        }
+
+        protected override void HandleExit()
+        {
+            base.HandleExit();
+            
+            // Reset the spawner strategy every time the attack finishes in case some other component adjusted it
+            SetDefaultProjectileSpawnStrategy();
+        }
+
+        #region Plumbing
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            SetDefaultProjectileSpawnStrategy();
         }
 
         protected override void Start()
@@ -66,14 +65,14 @@ namespace Bardent.Weapons.Components
 
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
 
-            eventHandler.OnAttackAction += HandleAttackAction;
+            EventHandler.OnAttackAction += HandleAttackAction;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            eventHandler.OnAttackAction -= HandleAttackAction;
+            EventHandler.OnAttackAction -= HandleAttackAction;
         }
 
         private void OnDrawGizmosSelected()
@@ -81,7 +80,7 @@ namespace Bardent.Weapons.Components
             if (data == null || !Application.isPlaying)
                 return;
 
-            foreach (var item in data.AttackData)
+            foreach (var item in data.GetAllAttackData())
             {
                 foreach (var point in item.SpawnInfos)
                 {
@@ -94,5 +93,7 @@ namespace Bardent.Weapons.Components
                 }
             }
         }
+
+        #endregion
     }
 }

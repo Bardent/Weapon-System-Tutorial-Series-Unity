@@ -48,7 +48,7 @@ namespace Bardent.Weapons
 
         private int currentAttackCounter;
 
-        private Timer attackCounterResetTimer;
+        private TimeNotifier attackCounterResetTimeNotifier;
 
         private bool currentInput;
         
@@ -58,7 +58,7 @@ namespace Bardent.Weapons
 
             AttackStartTime = Time.time;
             
-            attackCounterResetTimer.StopTimer();
+            attackCounterResetTimeNotifier.Disable();
             
             anim.SetBool("active", true);
             anim.SetInteger("counter", currentAttackCounter);
@@ -81,7 +81,7 @@ namespace Bardent.Weapons
             anim.SetBool("active", false);
 
             CurrentAttackCounter++;
-            attackCounterResetTimer.StartTimer();
+            attackCounterResetTimeNotifier.Init(attackCounterResetCooldown);
             
             OnExit?.Invoke();
         }
@@ -95,12 +95,12 @@ namespace Bardent.Weapons
 
             EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
-            attackCounterResetTimer = new Timer(attackCounterResetCooldown);
+            attackCounterResetTimeNotifier = new TimeNotifier();
         }
 
         private void Update()
         {
-            attackCounterResetTimer.Tick();
+            attackCounterResetTimeNotifier.Tick();
         }
 
         private void ResetAttackCounter()
@@ -113,14 +113,14 @@ namespace Bardent.Weapons
         {
             EventHandler.OnFinish += Exit;
             EventHandler.OnUseInput += HandleUseInput;
-            attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
+            attackCounterResetTimeNotifier.OnNotify += ResetAttackCounter;
         }
 
         private void OnDisable()
         {
             EventHandler.OnFinish -= Exit;
             EventHandler.OnUseInput -= HandleUseInput;
-            attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
+            attackCounterResetTimeNotifier.OnNotify -= ResetAttackCounter;
         }
 
         /// <summary>

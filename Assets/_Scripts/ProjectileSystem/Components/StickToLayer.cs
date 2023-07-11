@@ -133,9 +133,9 @@ namespace Bardent.ProjectileSystem.Components
             subscribedToDisableNotifier = false;
         }
 
-        protected override void Reset()
+        protected override void ResetProjectile()
         {
-            base.Reset();
+            base.ResetProjectile();
 
             SetUnstuck();
         }
@@ -156,7 +156,7 @@ namespace Bardent.ProjectileSystem.Components
 
             hitBox = GetComponent<HitBox>();
 
-            hitBox.OnRaycastHit2D += HandleRaycastHit2D;
+            hitBox.OnRaycastHit2D.AddListener(HandleRaycastHit2D);
         }
 
         protected override void Update()
@@ -182,7 +182,7 @@ namespace Bardent.ProjectileSystem.Components
         {
             base.OnDestroy();
 
-            hitBox.OnRaycastHit2D -= HandleRaycastHit2D;
+            hitBox.OnRaycastHit2D.RemoveListener(HandleRaycastHit2D);
 
             if (subscribedToDisableNotifier)
             {

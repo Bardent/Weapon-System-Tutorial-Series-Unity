@@ -58,7 +58,7 @@ namespace Bardent.Weapons.Components
             
             baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
 
-            eventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
+            EventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
         }
 
         protected override void OnDestroy()
@@ -67,7 +67,7 @@ namespace Bardent.Weapons.Components
             
             baseSpriteRenderer.UnregisterSpriteChangeCallback(HandleBaseSpriteChange);
             
-            eventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
+            EventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
         }
     }
 }
