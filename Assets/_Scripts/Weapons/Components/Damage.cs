@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Bardent.Combat.Damage;
+using UnityEngine;
 
 namespace Bardent.Weapons.Components
 {
@@ -12,7 +13,7 @@ namespace Bardent.Weapons.Components
             {
                 if (item.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.Damage(currentAttackData.Amount);
+                    damageable.Damage(new Combat.Damage.DamageData(currentAttackData.Amount, Core.Root));
                 }
             }
         }

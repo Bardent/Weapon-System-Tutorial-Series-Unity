@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.Combat.Damage;
 using Bardent.CoreSystem;
 using UnityEngine;
 
@@ -15,31 +16,7 @@ public class MeleeAttackState : AttackState {
 	public MeleeAttackState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttack stateData) : base(etity, stateMachine, animBoolName, attackPosition) {
 		this.stateData = stateData;
 	}
-
-	public override void DoChecks() {
-		base.DoChecks();
-	}
-
-	public override void Enter() {
-		base.Enter();
-	}
-
-	public override void Exit() {
-		base.Exit();
-	}
-
-	public override void FinishAttack() {
-		base.FinishAttack();
-	}
-
-	public override void LogicUpdate() {
-		base.LogicUpdate();
-	}
-
-	public override void PhysicsUpdate() {
-		base.PhysicsUpdate();
-	}
-
+	
 	public override void TriggerAttack() {
 		base.TriggerAttack();
 
@@ -49,7 +26,7 @@ public class MeleeAttackState : AttackState {
 			IDamageable damageable = collider.GetComponent<IDamageable>();
 
 			if (damageable != null) {
-				damageable.Damage(stateData.attackDamage);
+				damageable.Damage(new DamageData(stateData.attackDamage, core.Root));
 			}
 
 			IKnockBackable knockBackable = collider.GetComponent<IKnockBackable>();

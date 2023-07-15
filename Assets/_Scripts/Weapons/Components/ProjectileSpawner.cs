@@ -65,14 +65,14 @@ namespace Bardent.Weapons.Components
 
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
 
-            EventHandler.OnAttackAction += HandleAttackAction;
+            AnimationEventHandler.OnAttackAction += HandleAttackAction;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            EventHandler.OnAttackAction -= HandleAttackAction;
+            AnimationEventHandler.OnAttackAction -= HandleAttackAction;
         }
 
         private void OnDrawGizmosSelected()

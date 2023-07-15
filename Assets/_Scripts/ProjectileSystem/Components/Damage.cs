@@ -1,4 +1,5 @@
-﻿using Bardent.ProjectileSystem.DataPackages;
+﻿using Bardent.Combat.Damage;
+using Bardent.ProjectileSystem.DataPackages;
 using Bardent.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,7 +50,7 @@ namespace Bardent.ProjectileSystem.Components
                 if (!hit.collider.transform.gameObject.TryGetComponent(out IDamageable damageable))
                     continue;
                 
-                damageable.Damage(amount);
+                damageable.Damage(new DamageData(amount, projectile.gameObject));
                 
                 OnDamage?.Invoke(damageable);
                 OnRaycastHit?.Invoke(hit);

@@ -1,4 +1,5 @@
 ﻿using System;
+using Bardent.Combat.Damage;
 using Bardent.ProjectileSystem.Components;
 using UnityEngine;
 
@@ -9,9 +10,9 @@ namespace Bardent.ProjectileSystem
      */
     public class TestDamageable : MonoBehaviour, IDamageable
     {
-        public void Damage(float amount)
+        public void Damage(DamageData data)
         {
-            print($"{gameObject.name} Damaged: {amount}");
+            print($"{gameObject.name} Damaged: {data.Amount}");
         }
     }
 }

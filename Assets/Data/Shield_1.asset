@@ -18,6 +18,8 @@ MonoBehaviour:
   <ComponentData>k__BackingField:
   - rid: 1263952740535762944
   - rid: 1263952740535762945
+  - rid: 1263952740535762946
+  - rid: 1263952740535762947
   references:
     version: 2
     RefIds:
@@ -67,3 +69,25 @@ MonoBehaviour:
       type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: InputHoldData
+    - rid: 1263952740535762946
+      type: {class: BlockData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: BlockData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <BlockDirectionInformation>k__BackingField:
+          - MinAngle: -90
+            MaxAngle: 90
+            DamageAbsorption: 0.75
+            KnockBackAbsorption: 0.25
+            PoiseDamageAbsorption: 0.75
+    - rid: 1263952740535762947
+      type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: MovementData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 0

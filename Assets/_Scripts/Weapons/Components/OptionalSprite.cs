@@ -42,14 +42,14 @@ namespace Bardent.Weapons.Components
         {
             base.Start();
 
-            EventHandler.OnSetOptionalSpriteActive += HandleSetOptionalSpriteActive;
+            AnimationEventHandler.OnSetOptionalSpriteActive += HandleSetOptionalSpriteActive;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            EventHandler.OnSetOptionalSpriteActive -= HandleSetOptionalSpriteActive;
+            AnimationEventHandler.OnSetOptionalSpriteActive -= HandleSetOptionalSpriteActive;
         }
 
         #endregion
