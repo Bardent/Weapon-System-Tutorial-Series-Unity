@@ -15,24 +15,14 @@ namespace Bardent.Weapons.Modifiers.BlockModifiers
     {
         // Event that fires off if the block was actually successful
         public event Action<GameObject> OnBlock;
-        
-        // The current attacks block information
-        private AttackBlock attackBlock;
-        
-        // Used to get the facing direction
-        private readonly Movement movement;
-        
-        // Transform of the player to determine that angle of an incoming attack
-        private readonly Transform receiverTransform;
 
-        public BlockDamageModifier(Movement movement, Transform receiverTransform)
+        // The function that we call to determine if a block was successful. 
+        private readonly BlockConditionDelegate isBlocked;
+
+        public BlockDamageModifier(BlockConditionDelegate isBlocked)
         {
-            this.movement = movement;
-            this.receiverTransform = receiverTransform;
+            this.isBlocked = isBlocked;
         }
-
-        // Block info gets updated to new info when attack starts
-        public void SetAttackBlock(AttackBlock attackBlock) => this.attackBlock = attackBlock;
 
         /*
          * The meat and potatoes. Damage data is passed in when player gets damaged (before damage is applied). This modifier then
@@ -41,13 +31,7 @@ namespace Bardent.Weapons.Modifiers.BlockModifiers
          */
         public override DamageData ModifyValue(DamageData value)
         {
-            var angleOfAttacker = AngleUtilities.AngleFromFacingDirection(
-                receiverTransform,
-                value.Source.transform,
-                movement.FacingDirection
-            );
-
-            if (attackBlock.IsBlocked(angleOfAttacker, out var blockDirectionInformation))
+            if (isBlocked(value.Source.transform, out var blockDirectionInformation))
             {
                 value.SetAmount(value.Amount * (1 - blockDirectionInformation.DamageAbsorption));
                 OnBlock?.Invoke(value.Source);

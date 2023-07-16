@@ -1,5 +1,6 @@
 ﻿using System;
 using Bardent.CoreSystem;
+using Bardent.Utilities;
 using Bardent.Weapons.Modifiers.BlockModifiers;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ namespace Bardent.Weapons.Components
         // The modifier that we give the DamageReceiver when the block window is active.
         private BlockDamageModifier damageModifier;
 
+        private CoreSystem.Movement movement;
+
         // When the animation event is invoked with the Block AnimationWindows enum as a parameter, we add the modifier
         private void HandleStartAnimationWindow(AnimationWindows window)
         {
@@ -23,6 +26,18 @@ namespace Bardent.Weapons.Components
                 return;
 
             damageReceiver.Modifiers.AddModifier(damageModifier);
+        }
+
+        // Checks if source falls withing any blocked regions for the current attack. Also returns the block information
+        private bool IsAttackBlocked(Transform source, out BlockDirectionInformation blockDirectionInformation)
+        {
+            var angleOfAttacker = AngleUtilities.AngleFromFacingDirection(
+                Core.Root.transform,
+                source,
+                movement.FacingDirection
+            );
+
+            return currentAttackData.IsBlocked(angleOfAttacker, out blockDirectionInformation);
         }
 
         // When the animation event is invoked with the Block AnimationWindows enum as a parameter, we remove the modifier
@@ -37,24 +52,17 @@ namespace Bardent.Weapons.Components
         /*
          * The modifier is what tells us if a block was performed. It fires off an event when used. This handles that event and broadcasts
          * that information further
-         */ 
+         */
         private void HandleBlock(GameObject source) => OnBlock?.Invoke(source);
 
-        /*
-         * Update the block information the modifier uses to determine if an attack gets blocked or not
-         */
-        protected override void HandleEnter()
-        {
-            base.HandleEnter();
-
-            damageModifier.SetAttackBlock(currentAttackData);
-        }
 
         #region Plumbing
 
         protected override void Start()
         {
             base.Start();
+
+            movement = Core.GetCoreComponent<CoreSystem.Movement>();
 
             AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
@@ -63,8 +71,7 @@ namespace Bardent.Weapons.Components
 
             // Create the modifier object.
             damageModifier = new BlockDamageModifier(
-                Core.GetCoreComponent<CoreSystem.Movement>(),
-                Core.Root.transform
+                IsAttackBlocked
             );
 
             damageModifier.OnBlock += HandleBlock;

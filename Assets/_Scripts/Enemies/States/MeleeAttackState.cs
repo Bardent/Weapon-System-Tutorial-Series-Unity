@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Bardent.Combat.Damage;
+using Bardent.Combat.KnockBack;
 using Bardent.CoreSystem;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ public class MeleeAttackState : AttackState {
 			IKnockBackable knockBackable = collider.GetComponent<IKnockBackable>();
 
 			if (knockBackable != null) {
-				knockBackable.KnockBack(stateData.knockbackAngle, stateData.knockbackStrength, Movement.FacingDirection);
+				knockBackable.KnockBack(new KnockBackData(stateData.knockbackAngle, stateData.knockbackStrength, Movement.FacingDirection, core.Root));
 			}
 		}
 	}
