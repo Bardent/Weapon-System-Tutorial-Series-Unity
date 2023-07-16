@@ -80,7 +80,7 @@ MonoBehaviour:
           - MinAngle: -90
             MaxAngle: 90
             DamageAbsorption: 0.75
-            KnockBackAbsorption: 0.25
+            KnockBackAbsorption: 0.5
             PoiseDamageAbsorption: 0.75
     - rid: 1263952740535762947
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}

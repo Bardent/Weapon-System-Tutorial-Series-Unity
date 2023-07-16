@@ -14,8 +14,11 @@ namespace Bardent.Weapons.Components
         // The players DamageReceiver core component. We use the damage receiver's modifiers to modify the amount of damage successfully blocked attacks deal.
         private DamageReceiver damageReceiver;
 
+        private KnockBackReceiver knockBackReceiver;
+
         // The modifier that we give the DamageReceiver when the block window is active.
         private BlockDamageModifier damageModifier;
+        private BlockKnockBackModifier knockBackModifier;
 
         private CoreSystem.Movement movement;
 
@@ -26,6 +29,17 @@ namespace Bardent.Weapons.Components
                 return;
 
             damageReceiver.Modifiers.AddModifier(damageModifier);
+            knockBackReceiver.Modifiers.AddModifier(knockBackModifier);
+        }
+
+        // When the animation event is invoked with the Block AnimationWindows enum as a parameter, we remove the modifier
+        private void HandleStopAnimationWindow(AnimationWindows window)
+        {
+            if (window != AnimationWindows.Block)
+                return;
+
+            damageReceiver.Modifiers.RemoveModifier(damageModifier);
+            knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
         }
 
         // Checks if source falls withing any blocked regions for the current attack. Also returns the block information
@@ -38,15 +52,6 @@ namespace Bardent.Weapons.Components
             );
 
             return currentAttackData.IsBlocked(angleOfAttacker, out blockDirectionInformation);
-        }
-
-        // When the animation event is invoked with the Block AnimationWindows enum as a parameter, we remove the modifier
-        private void HandleStopAnimationWindow(AnimationWindows window)
-        {
-            if (window != AnimationWindows.Block)
-                return;
-
-            damageReceiver.Modifiers.RemoveModifier(damageModifier);
         }
 
         /*
@@ -63,16 +68,16 @@ namespace Bardent.Weapons.Components
             base.Start();
 
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
+            knockBackReceiver = Core.GetCoreComponent<KnockBackReceiver>();
+            damageReceiver = Core.GetCoreComponent<DamageReceiver>();
 
             AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
 
-            damageReceiver = Core.GetCoreComponent<DamageReceiver>();
 
-            // Create the modifier object.
-            damageModifier = new BlockDamageModifier(
-                IsAttackBlocked
-            );
+            // Create the modifier objects.
+            damageModifier = new BlockDamageModifier(IsAttackBlocked);
+            knockBackModifier = new BlockKnockBackModifier(IsAttackBlocked);
 
             damageModifier.OnBlock += HandleBlock;
         }
