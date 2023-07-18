@@ -74,7 +74,6 @@ namespace Bardent.Weapons.Components
             AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
 
-
             // Create the modifier objects.
             damageModifier = new BlockDamageModifier(IsAttackBlocked);
             knockBackModifier = new BlockKnockBackModifier(IsAttackBlocked);
