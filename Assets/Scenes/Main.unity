@@ -10270,7 +10270,7 @@ MonoBehaviour:
   <Health>k__BackingField:
     <MaxValue>k__BackingField: 100
   <Poise>k__BackingField:
-    <MaxValue>k__BackingField: 100
+    <MaxValue>k__BackingField: 50
   poiseRecoveryRate: 25
 --- !u!1 &931385144
 GameObject:
@@ -43685,9 +43685,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348919689}
+  - component: {fileID: 1348919690}
   - component: {fileID: 1348919691}
   - component: {fileID: 1348919692}
-  - component: {fileID: 1348919690}
+  - component: {fileID: 1348919693}
   m_Layer: 11
   m_Name: Combat
   m_TagString: Untagged
@@ -43763,6 +43764,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61,
     type: 3}
+--- !u!114 &1348919693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348919688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd18f63918404c95511f101e4c8aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1372236343
 GameObject:
   m_ObjectHideFlags: 0

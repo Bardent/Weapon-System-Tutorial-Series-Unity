@@ -1,4 +1,5 @@
-﻿using Bardent.Interfaces;
+﻿using Bardent.Combat.PoiseDamage;
+using Bardent.Interfaces;
 using Bardent.ProjectileSystem.DataPackages;
 using Bardent.Utilities;
 using UnityEngine;
@@ -35,7 +36,7 @@ namespace Bardent.ProjectileSystem.Components
                 if (!hit.collider.transform.gameObject.TryGetComponent(out IPoiseDamageable poiseDamageable))
                     continue;
                 
-                poiseDamageable.DamagePoise(amount);
+                poiseDamageable.DamagePoise(new PoiseDamageData(amount, projectile.gameObject));
                 
                 OnPoiseDamage?.Invoke();
 

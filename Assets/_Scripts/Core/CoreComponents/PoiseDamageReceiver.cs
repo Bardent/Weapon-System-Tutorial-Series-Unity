@@ -1,14 +1,19 @@
-﻿using Bardent.Interfaces;
+﻿using Bardent.Combat.PoiseDamage;
+ using Bardent.ModifierSystem;
 
 namespace Bardent.CoreSystem
 {
     public class PoiseDamageReceiver : CoreComponent, IPoiseDamageable
     {
         private Stats stats;
-        
-        public void DamagePoise(float amount)
+
+        public Modifiers<Modifier<PoiseDamageData>, PoiseDamageData> Modifiers { get; } = new();
+
+        public void DamagePoise(PoiseDamageData data)
         {
-            stats.Poise.Decrease(amount);
+            data = Modifiers.ApplyAllModifiers(data);
+            
+            stats.Poise.Decrease(data.Amount);
         }
 
         protected override void Awake()

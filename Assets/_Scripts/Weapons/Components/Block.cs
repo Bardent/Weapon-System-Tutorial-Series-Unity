@@ -13,12 +13,13 @@ namespace Bardent.Weapons.Components
 
         // The players DamageReceiver core component. We use the damage receiver's modifiers to modify the amount of damage successfully blocked attacks deal.
         private DamageReceiver damageReceiver;
-
         private KnockBackReceiver knockBackReceiver;
+        private PoiseDamageReceiver poiseDamageReceiver;
 
         // The modifier that we give the DamageReceiver when the block window is active.
         private BlockDamageModifier damageModifier;
         private BlockKnockBackModifier knockBackModifier;
+        private BlockPoiseDamageModifier poiseDamageModifier;
 
         private CoreSystem.Movement movement;
 
@@ -30,6 +31,8 @@ namespace Bardent.Weapons.Components
 
             damageReceiver.Modifiers.AddModifier(damageModifier);
             knockBackReceiver.Modifiers.AddModifier(knockBackModifier);
+            poiseDamageReceiver.Modifiers.AddModifier(poiseDamageModifier);
+            
         }
 
         // When the animation event is invoked with the Block AnimationWindows enum as a parameter, we remove the modifier
@@ -40,6 +43,7 @@ namespace Bardent.Weapons.Components
 
             damageReceiver.Modifiers.RemoveModifier(damageModifier);
             knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
+            poiseDamageReceiver.Modifiers.RemoveModifier(poiseDamageModifier);
         }
 
         // Checks if source falls withing any blocked regions for the current attack. Also returns the block information
@@ -70,6 +74,7 @@ namespace Bardent.Weapons.Components
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
             knockBackReceiver = Core.GetCoreComponent<KnockBackReceiver>();
             damageReceiver = Core.GetCoreComponent<DamageReceiver>();
+            poiseDamageReceiver = Core.GetCoreComponent<PoiseDamageReceiver>();
 
             AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
@@ -77,6 +82,7 @@ namespace Bardent.Weapons.Components
             // Create the modifier objects.
             damageModifier = new BlockDamageModifier(IsAttackBlocked);
             knockBackModifier = new BlockKnockBackModifier(IsAttackBlocked);
+            poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackBlocked);
 
             damageModifier.OnBlock += HandleBlock;
         }

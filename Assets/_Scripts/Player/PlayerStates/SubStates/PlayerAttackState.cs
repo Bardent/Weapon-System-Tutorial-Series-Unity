@@ -47,7 +47,6 @@ public class PlayerAttackState : PlayerAbilityState
 
         if (xInput != 0 || attackInputs[0] || attackInputs[1])
         {
-            Debug.Break();
             isAbilityDone = true;
         }
     }
