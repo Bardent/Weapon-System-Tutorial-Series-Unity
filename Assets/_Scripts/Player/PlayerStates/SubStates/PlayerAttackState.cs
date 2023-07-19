@@ -9,6 +9,8 @@ public class PlayerAttackState : PlayerAbilityState
 
     private int inputIndex;
 
+    private bool canInterrupt;
+
     public PlayerAttackState(
         Player player,
         PlayerStateMachine stateMachine,
@@ -22,30 +24,54 @@ public class PlayerAttackState : PlayerAbilityState
 
         inputIndex = (int)input;
 
-        weapon.OnExit += HandleExit;
         weapon.OnUseInput += HandleUseInput;
+
+        weapon.EventHandler.OnEnableInterrupt += HandleEnableInterrupt;
+        weapon.EventHandler.OnFinish += HandleFinish;
     }
+
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        weapon.CurrentInput = player.InputHandler.AttackInputs[inputIndex];
+        var playerInputHandler = player.InputHandler;
+        
+        var xInput = playerInputHandler.NormInputX;
+        var attackInputs = playerInputHandler.AttackInputs;
+        
+        weapon.CurrentInput = attackInputs[inputIndex];
+        
+        if(!canInterrupt)
+            return;
+
+        if (xInput != 0 || attackInputs[0] || attackInputs[1])
+        {
+            Debug.Break();
+            isAbilityDone = true;
+        }
     }
 
     public override void Enter()
     {
         base.Enter();
 
+        canInterrupt = false;
+
         weapon.Enter();
     }
 
-    private void HandleUseInput()
+    public override void Exit()
     {
-        player.InputHandler.UseAttackInput(inputIndex);
+        base.Exit();
+        
+        weapon.Exit();
     }
 
-    private void HandleExit()
+    private void HandleEnableInterrupt() => canInterrupt = true;
+
+    private void HandleUseInput() => player.InputHandler.UseAttackInput(inputIndex);
+    private void HandleFinish()
     {
         AnimationFinishTrigger();
         isAbilityDone = true;

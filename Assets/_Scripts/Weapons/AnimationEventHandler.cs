@@ -17,6 +17,8 @@ namespace Bardent.Weapons
          */
         public event Action OnUseInput;
 
+        public event Action OnEnableInterrupt; 
+
         public event Action<bool> OnSetOptionalSpriteActive;
 
         public event Action<AttackPhases> OnEnterAttackPhase;
@@ -27,6 +29,7 @@ namespace Bardent.Weapons
          */
         public event Action<AnimationWindows> OnStartAnimationWindow;
         public event Action<AnimationWindows> OnStopAnimationWindow;
+        
 
         private void AnimationFinishedTrigger() => OnFinish?.Invoke();
         private void StartMovementTrigger() => OnStartMovement?.Invoke();
@@ -42,5 +45,7 @@ namespace Bardent.Weapons
 
         private void StartAnimationWindow(AnimationWindows window) => OnStartAnimationWindow?.Invoke(window);
         private void StopAnimationWindow(AnimationWindows window) => OnStopAnimationWindow?.Invoke(window);
+
+        private void EnableInterrupt() => OnEnableInterrupt?.Invoke();
     }
 }
