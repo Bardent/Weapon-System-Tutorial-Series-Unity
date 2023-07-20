@@ -46,9 +46,9 @@ MonoBehaviour:
         - name: Attack 2
           <Amount>k__BackingField: 20
     - rid: 3124257199506325505
-      type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      type: {class: DamageOnHitBoxActionData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
-        name: DamageData
+        name: DamageOnHitBoxActionData
         attackData:
         - name: Attack 1
           <Amount>k__BackingField: 5

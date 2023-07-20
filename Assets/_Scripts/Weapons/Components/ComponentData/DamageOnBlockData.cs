@@ -1,10 +1,10 @@
 ﻿namespace Bardent.Weapons.Components
 {
-    public class DamageData : ComponentData<AttackDamage>
+    public class DamageOnBlockData : ComponentData<AttackDamage>
     {
         protected override void SetComponentDependency()
         {
-            ComponentDependency = typeof(Damage);
+            ComponentDependency = typeof(DamageOnBlock);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Bardent.Weapons.Components
             anim = GetComponentInChildren<Animator>();
 
             weapon.OnCurrentInputChange += HandleCurrentInputChange;
-            EventHandler.OnMinHoldPassed += HandleMinHoldPassed;
+            AnimationEventHandler.OnMinHoldPassed += HandleMinHoldPassed;
         }
 
         protected override void OnDestroy()
@@ -60,7 +60,7 @@ namespace Bardent.Weapons.Components
             base.OnDestroy();
 
             weapon.OnCurrentInputChange -= HandleCurrentInputChange;
-            EventHandler.OnMinHoldPassed -= HandleMinHoldPassed;
+            AnimationEventHandler.OnMinHoldPassed -= HandleMinHoldPassed;
         }
     }
 }

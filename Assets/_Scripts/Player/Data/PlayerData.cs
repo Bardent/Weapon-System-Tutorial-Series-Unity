@@ -45,4 +45,7 @@ public class PlayerData : ScriptableObject
     public float crouchMovementVelocity = 5f;
     public float crouchColliderHeight = 0.8f;
     public float standColliderHeight = 1.6f;
+    
+    [Header("Stun State")] 
+    public float stunTime = 2f;
 }

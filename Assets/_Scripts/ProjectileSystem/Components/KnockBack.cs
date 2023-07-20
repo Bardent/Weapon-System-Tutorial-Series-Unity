@@ -1,4 +1,5 @@
-﻿using Bardent.ProjectileSystem.DataPackages;
+﻿using Bardent.Combat.KnockBack;
+using Bardent.ProjectileSystem.DataPackages;
 using Bardent.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,7 +40,7 @@ namespace Bardent.ProjectileSystem.Components
                 if (!hit.collider.transform.gameObject.TryGetComponent(out IKnockBackable knockBackable))
                     continue;
 
-                knockBackable.KnockBack(angle, strength, direction);
+                knockBackable.KnockBack(new KnockBackData(angle, strength, direction, projectile.gameObject));
 
                 OnKnockBack?.Invoke();
                 

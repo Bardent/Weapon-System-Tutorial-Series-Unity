@@ -8,7 +8,7 @@ namespace Bardent.Weapons.Components
     {
         protected Weapon weapon;
 
-        protected AnimationEventHandler EventHandler => weapon.EventHandler;
+        protected AnimationEventHandler AnimationEventHandler => weapon.EventHandler;
         protected Core Core => weapon.Core;
         protected float attackStartTime => weapon.AttackStartTime;
 

@@ -1,27 +1,33 @@
-﻿using UnityEngine;
+﻿using Bardent.Combat.KnockBack;
+using Bardent.ModifierSystem;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Bardent.CoreSystem
 {
     public class KnockBackReceiver : CoreComponent, IKnockBackable
     {
+        public Modifiers<Modifier<KnockBackData>, KnockBackData> Modifiers { get; } = new();
+
         [SerializeField] private float maxKnockBackTime = 0.2f;
 
         private bool isKnockBackActive;
         private float knockBackStartTime;
 
-        private CoreComp<Movement> movement;
-        private CoreComp<CollisionSenses> collisionSenses;
+        private Movement movement;
+        private CollisionSenses collisionSenses;
 
         public override void LogicUpdate()
         {
             CheckKnockBack();
         }
 
-        public void KnockBack(Vector2 angle, float strength, int direction)
+        public void KnockBack(KnockBackData data)
         {
-            movement.Comp?.SetVelocity(strength, angle, direction);
-            movement.Comp.CanSetVelocity = false;
+            data = Modifiers.ApplyAllModifiers(data);
+            
+            movement.SetVelocity(data.Strength, data.Angle, data.Direction);
+            movement.CanSetVelocity = false;
             isKnockBackActive = true;
             knockBackStartTime = Time.time;
         }
@@ -29,12 +35,12 @@ namespace Bardent.CoreSystem
         private void CheckKnockBack()
         {
             if (isKnockBackActive
-                && ((movement.Comp?.CurrentVelocity.y <= 0.01f && collisionSenses.Comp.Ground)
+                && ((movement.CurrentVelocity.y <= 0.01f && collisionSenses.Ground)
                     || Time.time >= knockBackStartTime + maxKnockBackTime)
                )
             {
                 isKnockBackActive = false;
-                movement.Comp.CanSetVelocity = true;
+                movement.CanSetVelocity = true;
             }
         }
 
@@ -42,8 +48,8 @@ namespace Bardent.CoreSystem
         {
             base.Awake();
 
-            movement = new CoreComp<Movement>(core);
-            collisionSenses = new CoreComp<CollisionSenses>(core);
+            movement = core.GetCoreComponent<Movement>();
+            collisionSenses = core.GetCoreComponent<CollisionSenses>();
         }
     }
 }
