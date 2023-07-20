@@ -20,6 +20,7 @@ MonoBehaviour:
   - rid: 1263952740535762945
   - rid: 1263952740535762946
   - rid: 1263952740535762947
+  - rid: 1263952839495385088
   references:
     version: 2
     RefIds:
@@ -91,3 +92,11 @@ MonoBehaviour:
         - name: Attack 1
           <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 0
+    - rid: 1263952839495385088
+      type: {class: DamageOnBlockData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageOnBlockData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Amount>k__BackingField: 1000
