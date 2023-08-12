@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,5 +15,10 @@ public class AnimationToStatemachine : MonoBehaviour
     private void FinishAttack()
     {
         attackState.FinishAttack();
+    }
+
+    private void SetParryWindowActive(int value)
+    {
+        attackState.SetParryWindowActive(Convert.ToBoolean(value));
     }
 }

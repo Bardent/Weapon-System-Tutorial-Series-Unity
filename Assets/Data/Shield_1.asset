@@ -21,6 +21,8 @@ MonoBehaviour:
   - rid: 1263952740535762946
   - rid: 1263952740535762947
   - rid: 1263952839495385088
+  - rid: 1263952977246814208
+  - rid: 5082901806419542016
   references:
     version: 2
     RefIds:
@@ -99,4 +101,30 @@ MonoBehaviour:
         repeatData: 0
         attackData:
         - name: Attack 1
-          <Amount>k__BackingField: 1000
+          <Amount>k__BackingField: 5
+    - rid: 1263952977246814208
+      type: {class: ParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ParryData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <DamageAbsorption>k__BackingField: 1
+          <ParryHitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0.09
+            y: -0.81
+            width: 2.13
+            height: 1.25
+        ParryableLayers:
+          serializedVersion: 2
+          m_Bits: 512
+    - rid: 5082901806419542016
+      type: {class: KnockBackOnParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: KnockBackOnParryData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Angle>k__BackingField: {x: 1, y: 1}
+          <Strength>k__BackingField: 10

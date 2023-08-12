@@ -61,6 +61,13 @@ public class Enemy2 : Entity
         stateMachine.ChangeState(stunState);
     }
 
+    protected override void HandleParry()
+    {
+        base.HandleParry();
+        
+        stateMachine.ChangeState(stunState);
+    }
+
     private void OnDestroy()
     {
         stats.Poise.OnCurrentValueZero -= HandlePoiseZero;
