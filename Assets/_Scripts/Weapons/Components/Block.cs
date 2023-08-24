@@ -47,7 +47,7 @@ namespace Bardent.Weapons.Components
         }
 
         // Checks if source falls withing any blocked regions for the current attack. Also returns the block information
-        private bool IsAttackBlocked(Transform source, out BlockDirectionInformation blockDirectionInformation)
+        private bool IsAttackBlocked(Transform source, out DirectionalInformation directionalInformation)
         {
             var angleOfAttacker = AngleUtilities.AngleFromFacingDirection(
                 Core.Root.transform,
@@ -55,7 +55,7 @@ namespace Bardent.Weapons.Components
                 movement.FacingDirection
             );
 
-            return currentAttackData.IsBlocked(angleOfAttacker, out blockDirectionInformation);
+            return currentAttackData.IsBlocked(angleOfAttacker, out directionalInformation);
         }
 
         /*

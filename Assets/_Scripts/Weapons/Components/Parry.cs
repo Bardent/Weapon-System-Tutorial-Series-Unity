@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bardent.CoreSystem;
+using Bardent.ProjectileSystem.Components;
+using Bardent.Utilities;
+using Bardent.Weapons.Modifiers.BlockModifiers;
 using UnityEngine;
 using static Bardent.Combat.Parry.CombatParryUtilities;
 
@@ -8,50 +11,66 @@ namespace Bardent.Weapons.Components
 {
     public class Parry : WeaponComponent<ParryData, AttackParry>
     {
-        public Action<List<GameObject>> OnParry;
+        public event Action<GameObject> OnParry;
+
+        private DamageReceiver damageReceiver;
+        private KnockBackReceiver knockBackReceiver;
+        private PoiseDamageReceiver poiseDamageReceiver;
+
+        private BlockDamageModifier damageModifier;
+        private BlockKnockBackModifier knockBackModifier;
+        private BlockPoiseDamageModifier poiseDamageModifier;
 
         private CoreSystem.Movement movement;
-        private ParticleManager particleManager;
-
-        private bool isParryWindowActive;
-
-        private Vector2 hitBoxWorldCenter;
-
-        private void CheckParryHitBox()
-        {
-            var position = transform.position;
-
-            hitBoxWorldCenter.Set(
-                position.x + (currentAttackData.ParryHitBox.center.x * movement.FacingDirection),
-                position.y + currentAttackData.ParryHitBox.center.y
-            );
-
-            var detected = Physics2D.OverlapBoxAll(hitBoxWorldCenter, currentAttackData.ParryHitBox.size, 0f,
-                data.ParryableLayers);
-            
-            if(detected.Length <= 0)
-                return;
-
-            if (TryParry(detected, new Combat.Parry.ParryData(Core.Root), out _, out var parriedGameObjects))
-            {
-                OnParry?.Invoke(parriedGameObjects);
-            }
-        }
 
         private void HandleStartAnimationWindow(AnimationWindows window)
         {
-            if(window != AnimationWindows.Parry)
+            if (window != AnimationWindows.Parry)
                 return;
 
-            isParryWindowActive = true;
+            damageReceiver.Modifiers.AddModifier(damageModifier);
+            knockBackReceiver.Modifiers.AddModifier(knockBackModifier);
+            poiseDamageReceiver.Modifiers.AddModifier(poiseDamageModifier);
         }
 
         private void HandleStopAnimationWindow(AnimationWindows window)
         {
-            if(window != AnimationWindows.Parry)
+            if (window != AnimationWindows.Parry)
                 return;
+
+            damageReceiver.Modifiers.RemoveModifier(damageModifier);
+            knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
+            poiseDamageReceiver.Modifiers.RemoveModifier(poiseDamageModifier);
+        }
+
+        protected override void HandleExit()
+        {
+            base.HandleExit();
             
-            isParryWindowActive = false;
+            damageReceiver.Modifiers.RemoveModifier(damageModifier);
+            knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
+            poiseDamageReceiver.Modifiers.RemoveModifier(poiseDamageModifier);
+        }
+
+        private bool IsAttackParried(Transform source, out DirectionalInformation directionalInformation)
+        {
+            if (!TryParry(source, new Combat.Parry.ParryData(Core.Root), out _, out var parriedGameObject))
+            {
+                directionalInformation = null;
+                return false;
+            }
+
+            weapon.Anim.SetTrigger("parry");
+
+            OnParry?.Invoke(parriedGameObject);
+
+            var angleOfAttacker = AngleUtilities.AngleFromFacingDirection(
+                Core.Root.transform,
+                source,
+                movement.FacingDirection
+            );
+
+            return currentAttackData.IsBlocked(angleOfAttacker, out directionalInformation);
         }
 
         #region Plumbing
@@ -60,38 +79,27 @@ namespace Bardent.Weapons.Components
         {
             base.Start();
 
+            damageReceiver = Core.GetCoreComponent<DamageReceiver>();
+            knockBackReceiver = Core.GetCoreComponent<KnockBackReceiver>();
+            poiseDamageReceiver = Core.GetCoreComponent<PoiseDamageReceiver>();
+
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
-            particleManager = Core.GetCoreComponent<ParticleManager>();
 
             AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
-        }
 
-        private void Update()
-        {
-            if (!isParryWindowActive)
-                return;
-
-            CheckParryHitBox();
+            // Create the modifier objects.
+            damageModifier = new BlockDamageModifier(IsAttackParried);
+            knockBackModifier = new BlockKnockBackModifier(IsAttackParried);
+            poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackParried);
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-
+            
             AnimationEventHandler.OnStartAnimationWindow -= HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow -= HandleStopAnimationWindow;
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (data is null)
-                return;
-
-            foreach (var attackParry in data.GetAllAttackData())
-            {
-                Gizmos.DrawWireCube(transform.position + (Vector3)attackParry.ParryHitBox.center, attackParry.ParryHitBox.size);
-            }
         }
 
         #endregion

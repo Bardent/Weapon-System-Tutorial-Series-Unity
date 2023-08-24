@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Bardent.Combat.KnockBack;
-
+﻿using UnityEngine;
 using static Bardent.Combat.KnockBack.CombatKnockBackUtilities;
 
 
@@ -13,21 +10,21 @@ namespace Bardent.Weapons.Components
 
         private CoreSystem.Movement movement;
 
-        private void HandleParry(List<GameObject> parriedObjects)
+        private void HandleParry(GameObject parriedObject)
         {
-            TryKnockBack(parriedObjects,
+            TryKnockBack(parriedObject,
                 new Combat.KnockBack.KnockBackData(currentAttackData.Angle, currentAttackData.Strength,
                     movement.FacingDirection, Core.Root), out _);
         }
-        
+
         protected override void Start()
         {
             base.Start();
 
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
-            
+
             parry = GetComponent<Parry>();
-            
+
             parry.OnParry += HandleParry;
         }
 

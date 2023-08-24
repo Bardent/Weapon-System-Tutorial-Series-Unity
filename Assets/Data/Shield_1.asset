@@ -109,16 +109,12 @@ MonoBehaviour:
         repeatData: 0
         attackData:
         - name: Attack 1
-          <DamageAbsorption>k__BackingField: 1
-          <ParryHitBox>k__BackingField:
-            serializedVersion: 2
-            x: 0.09
-            y: -0.81
-            width: 2.13
-            height: 1.25
-        ParryableLayers:
-          serializedVersion: 2
-          m_Bits: 512
+          <ParryDirectionalInformation>k__BackingField:
+          - MinAngle: -90
+            MaxAngle: 90
+            DamageAbsorption: 1
+            KnockBackAbsorption: 0.85
+            PoiseDamageAbsorption: 1
     - rid: 5082901806419542016
       type: {class: KnockBackOnParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:

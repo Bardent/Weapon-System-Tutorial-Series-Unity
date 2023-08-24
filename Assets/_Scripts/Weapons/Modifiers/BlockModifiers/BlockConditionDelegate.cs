@@ -3,5 +3,5 @@ using UnityEngine;
 
 namespace Bardent.Weapons.Modifiers.BlockModifiers
 {
-    public delegate bool BlockConditionDelegate(Transform source, out BlockDirectionInformation blockDirectionInformation);
+    public delegate bool BlockConditionDelegate(Transform source, out DirectionalInformation directionalInformation);
 }
