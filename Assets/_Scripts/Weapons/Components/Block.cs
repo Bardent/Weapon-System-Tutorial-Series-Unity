@@ -23,6 +23,8 @@ namespace Bardent.Weapons.Components
 
         private CoreSystem.Movement movement;
 
+        private ParticleManager particleManager;
+
         // When the animation event is invoked with the Block AnimationWindows enum as a parameter, we add the modifier
         private void HandleStartAnimationWindow(AnimationWindows window)
         {
@@ -62,7 +64,12 @@ namespace Bardent.Weapons.Components
          * The modifier is what tells us if a block was performed. It fires off an event when used. This handles that event and broadcasts
          * that information further
          */
-        private void HandleBlock(GameObject source) => OnBlock?.Invoke(source);
+        private void HandleBlock(GameObject source)
+        {
+            particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
+            
+            OnBlock?.Invoke(source);
+        }
 
 
         #region Plumbing
@@ -72,6 +79,8 @@ namespace Bardent.Weapons.Components
             base.Start();
 
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
+            particleManager = Core.GetCoreComponent<ParticleManager>();
+            
             knockBackReceiver = Core.GetCoreComponent<KnockBackReceiver>();
             damageReceiver = Core.GetCoreComponent<DamageReceiver>();
             poiseDamageReceiver = Core.GetCoreComponent<PoiseDamageReceiver>();

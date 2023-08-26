@@ -22,6 +22,7 @@ namespace Bardent.Weapons.Components
         private BlockPoiseDamageModifier poiseDamageModifier;
 
         private CoreSystem.Movement movement;
+        private ParticleManager particleManager;
 
         private void HandleStartAnimationWindow(AnimationWindows window)
         {
@@ -63,6 +64,8 @@ namespace Bardent.Weapons.Components
             weapon.Anim.SetTrigger("parry");
 
             OnParry?.Invoke(parriedGameObject);
+            
+            particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
 
             var angleOfAttacker = AngleUtilities.AngleFromFacingDirection(
                 Core.Root.transform,
@@ -84,6 +87,7 @@ namespace Bardent.Weapons.Components
             poiseDamageReceiver = Core.GetCoreComponent<PoiseDamageReceiver>();
 
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
+            particleManager = Core.GetCoreComponent<ParticleManager>();
 
             AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;

@@ -29,7 +29,7 @@ namespace Bardent.CoreSystem
             print($"Damage Amount After Modifiers: {data.Amount}");
 
             stats.Health.Decrease(data.Amount);
-            particleManager.StartParticlesWithRandomRotation(damageParticles);
+            particleManager.StartWithRandomRotation(damageParticles);
         }
 
         protected override void Awake()

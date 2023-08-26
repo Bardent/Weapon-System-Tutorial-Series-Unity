@@ -86,6 +86,9 @@ MonoBehaviour:
             DamageAbsorption: 0.75
             KnockBackAbsorption: 0.5
             PoiseDamageAbsorption: 0.75
+          <Particles>k__BackingField: {fileID: 6240072112886026631, guid: 25aeb624df7917e4aa9cbe2204b85ed6,
+            type: 3}
+          <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
     - rid: 1263952740535762947
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -116,6 +119,9 @@ MonoBehaviour:
             DamageAbsorption: 1
             KnockBackAbsorption: 0.85
             PoiseDamageAbsorption: 1
+          <Particles>k__BackingField: {fileID: 6240072112886026631, guid: 25aeb624df7917e4aa9cbe2204b85ed6,
+            type: 3}
+          <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
     - rid: 5082901806419542016
       type: {class: KnockBackOnParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:

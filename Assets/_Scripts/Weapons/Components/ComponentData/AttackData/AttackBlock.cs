@@ -13,6 +13,10 @@ namespace Bardent.Weapons.Components
         // All blocking regions for a single attack
         [field: SerializeField] public DirectionalInformation[] BlockDirectionInformation { get; private set; }
 
+        [field: SerializeField] public GameObject Particles { get; private set; }
+
+        [field: SerializeField] public Vector2 ParticlesOffset { get; private set; }
+
         /*
          * Checks angle against all blocking regions. Also gives back the information for the region that is actually doing the blocking as it has other information
          * like how much damage we actually do block

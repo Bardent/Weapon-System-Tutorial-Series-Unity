@@ -8,6 +8,10 @@ namespace Bardent.Weapons.Components
     {
         [field: SerializeField] public DirectionalInformation[] ParryDirectionalInformation { get; private set; }
         
+        [field: SerializeField] public GameObject Particles { get; private set; }
+
+        [field: SerializeField] public Vector2 ParticlesOffset { get; private set; }
+        
         /*
          * Checks angle against all parry regions. Also gives back the information for the region that is actually doing the parrying as it has other information
          * like how much damage we actually do block by parrying
