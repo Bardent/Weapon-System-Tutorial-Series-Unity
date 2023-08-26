@@ -10,9 +10,9 @@ namespace Bardent.Weapons.Components
 
         private CoreSystem.Movement movement;
 
-        private void HandleParry(GameObject parriedObject)
+        private void HandleParry(GameObject parriedGameObject)
         {
-            TryKnockBack(parriedObject,
+            TryKnockBack(parriedGameObject,
                 new Combat.KnockBack.KnockBackData(currentAttackData.Angle, currentAttackData.Strength,
                     movement.FacingDirection, Core.Root), out _);
         }
