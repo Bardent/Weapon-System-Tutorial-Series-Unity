@@ -47,7 +47,7 @@ namespace Bardent.Weapons.Components
         protected override void HandleExit()
         {
             base.HandleExit();
-            
+
             damageReceiver.Modifiers.RemoveModifier(damageModifier);
             knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
             poiseDamageReceiver.Modifiers.RemoveModifier(poiseDamageModifier);
@@ -55,18 +55,6 @@ namespace Bardent.Weapons.Components
 
         private bool IsAttackParried(Transform source, out DirectionalInformation directionalInformation)
         {
-            if (!TryParry(source, new Combat.Parry.ParryData(Core.Root), out _, out var parriedGameObject))
-            {
-                directionalInformation = null;
-                return false;
-            }
-
-            weapon.Anim.SetTrigger("parry");
-
-            OnParry?.Invoke(parriedGameObject);
-            
-            particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
-
             var angleOfAttacker = AngleUtilities.AngleFromFacingDirection(
                 Core.Root.transform,
                 source,
@@ -74,6 +62,20 @@ namespace Bardent.Weapons.Components
             );
 
             return currentAttackData.IsBlocked(angleOfAttacker, out directionalInformation);
+        }
+
+        private void HandleParry(GameObject parriedGameObject)
+        {
+            if (!TryParry(parriedGameObject, new Combat.Parry.ParryData(Core.Root), out _, out _))
+            {
+                return;
+            }
+
+            weapon.Anim.SetTrigger("parry");
+
+            OnParry?.Invoke(parriedGameObject);
+
+            particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
         }
 
         #region Plumbing
@@ -96,14 +98,18 @@ namespace Bardent.Weapons.Components
             damageModifier = new BlockDamageModifier(IsAttackParried);
             knockBackModifier = new BlockKnockBackModifier(IsAttackParried);
             poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackParried);
+
+            damageModifier.OnBlock += HandleParry;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            
+
             AnimationEventHandler.OnStartAnimationWindow -= HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow -= HandleStopAnimationWindow;
+
+            damageModifier.OnBlock -= HandleParry;
         }
 
         #endregion
