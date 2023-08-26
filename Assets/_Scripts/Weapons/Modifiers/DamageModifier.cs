@@ -6,20 +6,20 @@ using UnityEngine;
 using DamageData = Bardent.Combat.Damage.DamageData;
 using Movement = Bardent.CoreSystem.Movement;
 
-namespace Bardent.Weapons.Modifiers.BlockModifiers
+namespace Bardent.Weapons.Modifiers
 {
     /*
      * The modifier used by the Block weapon component to block incoming damage by modifying the damage amount.
      */
-    public class BlockDamageModifier : Modifier<DamageData>
+    public class DamageModifier : Modifier<DamageData>
     {
         // Event that fires off if the block was actually successful
-        public event Action<GameObject> OnBlock;
+        public event Action<GameObject> OnModified;
 
         // The function that we call to determine if a block was successful. 
-        private readonly BlockConditionDelegate isBlocked;
+        private readonly ConditionalDelegate isBlocked;
 
-        public BlockDamageModifier(BlockConditionDelegate isBlocked)
+        public DamageModifier(ConditionalDelegate isBlocked)
         {
             this.isBlocked = isBlocked;
         }
@@ -34,7 +34,7 @@ namespace Bardent.Weapons.Modifiers.BlockModifiers
             if (isBlocked(value.Source.transform, out var blockDirectionInformation))
             {
                 value.SetAmount(value.Amount * (1 - blockDirectionInformation.DamageAbsorption));
-                OnBlock?.Invoke(value.Source);
+                OnModified?.Invoke(value.Source);
             }
 
             return value;

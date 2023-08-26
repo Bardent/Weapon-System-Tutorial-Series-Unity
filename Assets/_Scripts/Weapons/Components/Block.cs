@@ -1,7 +1,7 @@
 ﻿using System;
 using Bardent.CoreSystem;
 using Bardent.Utilities;
-using Bardent.Weapons.Modifiers.BlockModifiers;
+using Bardent.Weapons.Modifiers;
 using UnityEngine;
 
 namespace Bardent.Weapons.Components
@@ -17,7 +17,7 @@ namespace Bardent.Weapons.Components
         private PoiseDamageReceiver poiseDamageReceiver;
 
         // The modifier that we give the DamageReceiver when the block window is active.
-        private BlockDamageModifier damageModifier;
+        private DamageModifier damageModifier;
         private BlockKnockBackModifier knockBackModifier;
         private BlockPoiseDamageModifier poiseDamageModifier;
 
@@ -64,7 +64,7 @@ namespace Bardent.Weapons.Components
          * The modifier is what tells us if a block was performed. It fires off an event when used. This handles that event and broadcasts
          * that information further
          */
-        private void HandleBlock(GameObject source)
+        private void HandleModified(GameObject source)
         {
             particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
             
@@ -89,18 +89,18 @@ namespace Bardent.Weapons.Components
             AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
 
             // Create the modifier objects.
-            damageModifier = new BlockDamageModifier(IsAttackBlocked);
+            damageModifier = new DamageModifier(IsAttackBlocked);
             knockBackModifier = new BlockKnockBackModifier(IsAttackBlocked);
             poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackBlocked);
 
-            damageModifier.OnBlock += HandleBlock;
+            damageModifier.OnModified += HandleModified;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            damageModifier.OnBlock -= HandleBlock;
+            damageModifier.OnModified -= HandleModified;
 
             AnimationEventHandler.OnStartAnimationWindow -= HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow -= HandleStopAnimationWindow;

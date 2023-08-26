@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using Bardent.CoreSystem;
-using Bardent.ProjectileSystem.Components;
 using Bardent.Utilities;
-using Bardent.Weapons.Modifiers.BlockModifiers;
+using Bardent.Weapons.Modifiers;
 using UnityEngine;
 using static Bardent.Combat.Parry.CombatParryUtilities;
 
 namespace Bardent.Weapons.Components
 {
+    /*
+     * Parry works essentially the same as the Block weapon component. It passes modifiers to the various
+     * player -Receiver Core Components while the parry window is active. If the damage modifier is triggered
+     * it counts as a successful parry and the entity that tried to do damage is parried.
+     */
     public class Parry : WeaponComponent<ParryData, AttackParry>
     {
         public event Action<GameObject> OnParry;
@@ -17,7 +20,7 @@ namespace Bardent.Weapons.Components
         private KnockBackReceiver knockBackReceiver;
         private PoiseDamageReceiver poiseDamageReceiver;
 
-        private BlockDamageModifier damageModifier;
+        private DamageModifier damageModifier;
         private BlockKnockBackModifier knockBackModifier;
         private BlockPoiseDamageModifier poiseDamageModifier;
 
@@ -66,6 +69,10 @@ namespace Bardent.Weapons.Components
 
         private void HandleParry(GameObject parriedGameObject)
         {
+            /*
+             * The modifier is only used to detect an enemy making contact with the player from allowed directions.
+             * If that happens we still need to inform the entity that it has been parried.
+             */ 
             if (!TryParry(parriedGameObject, new Combat.Parry.ParryData(Core.Root), out _, out _))
             {
                 return;
@@ -94,12 +101,11 @@ namespace Bardent.Weapons.Components
             AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
 
-            // Create the modifier objects.
-            damageModifier = new BlockDamageModifier(IsAttackParried);
+            damageModifier = new DamageModifier(IsAttackParried);
             knockBackModifier = new BlockKnockBackModifier(IsAttackParried);
             poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackParried);
 
-            damageModifier.OnBlock += HandleParry;
+            damageModifier.OnModified += HandleParry;
         }
 
         protected override void OnDestroy()
@@ -109,7 +115,7 @@ namespace Bardent.Weapons.Components
             AnimationEventHandler.OnStartAnimationWindow -= HandleStartAnimationWindow;
             AnimationEventHandler.OnStopAnimationWindow -= HandleStopAnimationWindow;
 
-            damageModifier.OnBlock -= HandleParry;
+            damageModifier.OnModified -= HandleParry;
         }
 
         #endregion
