@@ -22,26 +22,37 @@ namespace Bardent.Weapons.Components
         private BlockPoiseDamageModifier poiseDamageModifier;
 
         private CoreSystem.Movement movement;
-
         private ParticleManager particleManager;
 
-        // When the animation event is invoked with the Block AnimationWindows enum as a parameter, we add the modifier
-        private void HandleStartAnimationWindow(AnimationWindows window)
+        private bool isBlockWindowActive;
+        private bool shouldUpdate;
+
+        private float nextWindowTriggerTime;
+
+        // Starts the block window by passing modifiers to receivers.
+        private void StartBlockWindow()
         {
-            if (window != AnimationWindows.Block)
-                return;
+            print("StartBlockWindow");
+
+            isBlockWindowActive = true;
+            shouldUpdate = false;
+
+            damageModifier.OnModified += HandleModified;
 
             damageReceiver.Modifiers.AddModifier(damageModifier);
             knockBackReceiver.Modifiers.AddModifier(knockBackModifier);
             poiseDamageReceiver.Modifiers.AddModifier(poiseDamageModifier);
-            
         }
 
-        // When the animation event is invoked with the Block AnimationWindows enum as a parameter, we remove the modifier
-        private void HandleStopAnimationWindow(AnimationWindows window)
+        // Stops block window by removing modifiers from windows.
+        private void StopBlockWindow()
         {
-            if (window != AnimationWindows.Block)
-                return;
+            print("StopBlockWindow");
+
+            isBlockWindowActive = false;
+            shouldUpdate = false;
+
+            damageModifier.OnModified -= HandleModified;
 
             damageReceiver.Modifiers.RemoveModifier(damageModifier);
             knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
@@ -67,10 +78,18 @@ namespace Bardent.Weapons.Components
         private void HandleModified(GameObject source)
         {
             particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
-            
+
             OnBlock?.Invoke(source);
         }
 
+        private void HandleEnterAttackPhase(AttackPhases phase)
+        {
+            print($"Entering Attack Phase: {phase.ToString()}");
+            
+            shouldUpdate = isBlockWindowActive
+                ? currentAttackData.BlockWindowEnd.TryGetTriggerTime(phase, out nextWindowTriggerTime)
+                : currentAttackData.BlockWindowStart.TryGetTriggerTime(phase, out nextWindowTriggerTime);
+        }
 
         #region Plumbing
 
@@ -80,30 +99,44 @@ namespace Bardent.Weapons.Components
 
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
             particleManager = Core.GetCoreComponent<ParticleManager>();
-            
+
             knockBackReceiver = Core.GetCoreComponent<KnockBackReceiver>();
             damageReceiver = Core.GetCoreComponent<DamageReceiver>();
             poiseDamageReceiver = Core.GetCoreComponent<PoiseDamageReceiver>();
-
-            AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
-            AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
 
             // Create the modifier objects.
             damageModifier = new DamageModifier(IsAttackBlocked);
             knockBackModifier = new BlockKnockBackModifier(IsAttackBlocked);
             poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackBlocked);
 
-            damageModifier.OnModified += HandleModified;
+            AnimationEventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
+        }
+
+        private void Update()
+        {
+            if (!shouldUpdate || !IsPastTriggerTime())
+                return;
+
+            if (isBlockWindowActive)
+            {
+                StopBlockWindow();
+            }
+            else
+            {
+                StartBlockWindow();
+            }
+        }
+
+        private bool IsPastTriggerTime()
+        {
+            return Time.time >= nextWindowTriggerTime;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            damageModifier.OnModified -= HandleModified;
-
-            AnimationEventHandler.OnStartAnimationWindow -= HandleStartAnimationWindow;
-            AnimationEventHandler.OnStopAnimationWindow -= HandleStopAnimationWindow;
+            AnimationEventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
         }
 
         #endregion

@@ -13,6 +13,10 @@ namespace Bardent.Weapons.Components
         // All blocking regions for a single attack
         [field: SerializeField] public DirectionalInformation[] BlockDirectionInformation { get; private set; }
 
+        [field: SerializeField] public PhaseTime BlockWindowStart { get; private set; }
+        
+        [field: SerializeField] public PhaseTime BlockWindowEnd { get; private set; }
+        
         [field: SerializeField] public GameObject Particles { get; private set; }
 
         [field: SerializeField] public Vector2 ParticlesOffset { get; private set; }
