@@ -1,13 +1,13 @@
 ﻿using Bardent.Combat.KnockBack;
 using Bardent.ModifierSystem;
 
-namespace Bardent.Weapons.Modifiers.BlockModifiers
+namespace Bardent.Weapons.Modifiers
 {
     public class BlockKnockBackModifier : Modifier<KnockBackData>
     {
-        private readonly BlockConditionDelegate isBlocked;
+        private readonly ConditionalDelegate isBlocked;
 
-        public BlockKnockBackModifier(BlockConditionDelegate isBlocked)
+        public BlockKnockBackModifier(ConditionalDelegate isBlocked)
         {
             this.isBlocked = isBlocked;
         }

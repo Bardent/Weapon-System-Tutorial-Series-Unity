@@ -56,6 +56,13 @@ public class Enemy1 : Entity
         stateMachine.ChangeState(stunState);
     }
 
+    protected override void HandleParry()
+    {
+        base.HandleParry();
+        
+        stateMachine.ChangeState(stunState);
+    }
+
     private void Start()
     {
         stateMachine.Initialize(moveState);        

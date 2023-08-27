@@ -3,20 +3,23 @@ using Bardent.CoreSystem;
 using Bardent.Utilities;
 using Bardent.Weapons.Modifiers;
 using UnityEngine;
+using static Bardent.Combat.Parry.CombatParryUtilities;
 
 namespace Bardent.Weapons.Components
 {
-    public class Block : WeaponComponent<BlockData, AttackBlock>
+    /*
+     * Parry works essentially the same as the Block weapon component. It passes modifiers to the various
+     * player -Receiver Core Components while the parry window is active. If the damage modifier is triggered
+     * it counts as a successful parry and the entity that tried to do damage is parried.
+     */
+    public class Parry : WeaponComponent<ParryData, AttackParry>
     {
-        // Event fired off when an attack is blocked. The parameter is the GameObject of the entity that was blocked
-        public event Action<GameObject> OnBlock;
+        public event Action<GameObject> OnParry;
 
-        // The players DamageReceiver core component. We use the damage receiver's modifiers to modify the amount of damage successfully blocked attacks deal.
         private DamageReceiver damageReceiver;
         private KnockBackReceiver knockBackReceiver;
         private PoiseDamageReceiver poiseDamageReceiver;
 
-        // The modifier that we give the DamageReceiver when the block window is active.
         private DamageModifier damageModifier;
         private BlockKnockBackModifier knockBackModifier;
         private BlockPoiseDamageModifier poiseDamageModifier;
@@ -29,34 +32,41 @@ namespace Bardent.Weapons.Components
 
         private float nextWindowTriggerTime;
 
-        // Starts the block window by passing modifiers to receivers.
-        private void StartBlockWindow()
+        private void StartParryWindow()
         {
             isBlockWindowActive = true;
             shouldUpdate = false;
 
-            damageModifier.OnModified += HandleModified;
+            damageModifier.OnModified += HandleParry;
+
 
             damageReceiver.Modifiers.AddModifier(damageModifier);
             knockBackReceiver.Modifiers.AddModifier(knockBackModifier);
             poiseDamageReceiver.Modifiers.AddModifier(poiseDamageModifier);
         }
 
-        // Stops block window by removing modifiers from windows.
-        private void StopBlockWindow()
+        private void StopParryWindow()
         {
             isBlockWindowActive = false;
             shouldUpdate = false;
 
-            damageModifier.OnModified -= HandleModified;
+            damageModifier.OnModified += HandleParry;
 
             damageReceiver.Modifiers.RemoveModifier(damageModifier);
             knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
             poiseDamageReceiver.Modifiers.RemoveModifier(poiseDamageModifier);
         }
 
-        // Checks if source falls withing any blocked regions for the current attack. Also returns the block information
-        private bool IsAttackBlocked(Transform source, out DirectionalInformation directionalInformation)
+        protected override void HandleExit()
+        {
+            base.HandleExit();
+
+            damageReceiver.Modifiers.RemoveModifier(damageModifier);
+            knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
+            poiseDamageReceiver.Modifiers.RemoveModifier(poiseDamageModifier);
+        }
+
+        private bool IsAttackParried(Transform source, out DirectionalInformation directionalInformation)
         {
             var angleOfAttacker = AngleUtilities.AngleFromFacingDirection(
                 Core.Root.transform,
@@ -67,22 +77,29 @@ namespace Bardent.Weapons.Components
             return currentAttackData.IsBlocked(angleOfAttacker, out directionalInformation);
         }
 
-        /*
-         * The modifier is what tells us if a block was performed. It fires off an event when used. This handles that event and broadcasts
-         * that information further
-         */
-        private void HandleModified(GameObject source)
+        private void HandleParry(GameObject parriedGameObject)
         {
-            particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
+            /*
+             * The modifier is only used to detect an enemy making contact with the player from allowed directions.
+             * If that happens we still need to inform the entity that it has been parried.
+             */
+            if (!TryParry(parriedGameObject, new Combat.Parry.ParryData(Core.Root), out _, out _))
+            {
+                return;
+            }
 
-            OnBlock?.Invoke(source);
+            weapon.Anim.SetTrigger("parry");
+
+            OnParry?.Invoke(parriedGameObject);
+
+            particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
         }
 
         private void HandleEnterAttackPhase(AttackPhases phase)
         {
             shouldUpdate = isBlockWindowActive
-                ? currentAttackData.BlockWindowEnd.TryGetTriggerTime(phase, out nextWindowTriggerTime)
-                : currentAttackData.BlockWindowStart.TryGetTriggerTime(phase, out nextWindowTriggerTime);
+                ? currentAttackData.ParryWindowEnd.TryGetTriggerTime(phase, out nextWindowTriggerTime)
+                : currentAttackData.ParryWindowStart.TryGetTriggerTime(phase, out nextWindowTriggerTime);
         }
 
         #region Plumbing
@@ -91,17 +108,16 @@ namespace Bardent.Weapons.Components
         {
             base.Start();
 
+            damageReceiver = Core.GetCoreComponent<DamageReceiver>();
+            knockBackReceiver = Core.GetCoreComponent<KnockBackReceiver>();
+            poiseDamageReceiver = Core.GetCoreComponent<PoiseDamageReceiver>();
+
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
             particleManager = Core.GetCoreComponent<ParticleManager>();
 
-            knockBackReceiver = Core.GetCoreComponent<KnockBackReceiver>();
-            damageReceiver = Core.GetCoreComponent<DamageReceiver>();
-            poiseDamageReceiver = Core.GetCoreComponent<PoiseDamageReceiver>();
-
-            // Create the modifier objects.
-            damageModifier = new DamageModifier(IsAttackBlocked);
-            knockBackModifier = new BlockKnockBackModifier(IsAttackBlocked);
-            poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackBlocked);
+            damageModifier = new DamageModifier(IsAttackParried);
+            knockBackModifier = new BlockKnockBackModifier(IsAttackParried);
+            poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackParried);
 
             AnimationEventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
         }
@@ -113,11 +129,11 @@ namespace Bardent.Weapons.Components
 
             if (isBlockWindowActive)
             {
-                StopBlockWindow();
+                StopParryWindow();
             }
             else
             {
-                StartBlockWindow();
+                StartParryWindow();
             }
         }
 

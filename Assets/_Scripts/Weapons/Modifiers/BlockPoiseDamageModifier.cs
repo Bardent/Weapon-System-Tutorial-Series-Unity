@@ -1,13 +1,13 @@
 ﻿using Bardent.Combat.PoiseDamage;
 using Bardent.ModifierSystem;
 
-namespace Bardent.Weapons.Modifiers.BlockModifiers
+namespace Bardent.Weapons.Modifiers
 {
     public class BlockPoiseDamageModifier : Modifier<PoiseDamageData>
     {
-        private readonly BlockConditionDelegate isBlocked;
+        private readonly ConditionalDelegate isBlocked;
 
-        public BlockPoiseDamageModifier(BlockConditionDelegate isBlocked)
+        public BlockPoiseDamageModifier(ConditionalDelegate isBlocked)
         {
             this.isBlocked = isBlocked;
         }

@@ -1,6 +1,6 @@
 ﻿using Bardent.Combat.Damage;
 using UnityEngine;
-using static Bardent.Utilities.CombatUtilities; //(2)
+using static Bardent.Utilities.CombatDamageUtilities; //(2)
 
 namespace Bardent.Weapons.Components
 {
@@ -12,7 +12,7 @@ namespace Bardent.Weapons.Components
         {
             // Notice that this is equal to (1), the logic has just been offloaded to a static helper class. Notice the using statement (2) is static, allowing as to call the Damage function directly instead of saying
             // Bardent.Utilities.CombatUtilities.Damage(...);
-            Damage(colliders, new DamageData(currentAttackData.Amount, Core.Root)); 
+            TryDamage(colliders, new DamageData(currentAttackData.Amount, Core.Root), out _); 
             
             //(1)
             // foreach (var item in colliders)

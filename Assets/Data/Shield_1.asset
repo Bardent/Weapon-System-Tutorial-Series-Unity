@@ -21,6 +21,9 @@ MonoBehaviour:
   - rid: 1263952740535762946
   - rid: 1263952740535762947
   - rid: 1263952839495385088
+  - rid: 1263952977246814208
+  - rid: 5082901806419542016
+  - rid: 5082902107917385728
   references:
     version: 2
     RefIds:
@@ -83,6 +86,15 @@ MonoBehaviour:
             DamageAbsorption: 0.75
             KnockBackAbsorption: 0.5
             PoiseDamageAbsorption: 0.75
+          <BlockWindowStart>k__BackingField:
+            <Duration>k__BackingField: 0.2666667
+            <Phase>k__BackingField: 0
+          <BlockWindowEnd>k__BackingField:
+            <Duration>k__BackingField: 0
+            <Phase>k__BackingField: 3
+          <Particles>k__BackingField: {fileID: 6240072112886026631, guid: 25aeb624df7917e4aa9cbe2204b85ed6,
+            type: 3}
+          <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
     - rid: 1263952740535762947
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -99,4 +111,43 @@ MonoBehaviour:
         repeatData: 0
         attackData:
         - name: Attack 1
-          <Amount>k__BackingField: 1000
+          <Amount>k__BackingField: 5
+    - rid: 1263952977246814208
+      type: {class: ParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ParryData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <ParryDirectionalInformation>k__BackingField:
+          - MinAngle: -90
+            MaxAngle: 90
+            DamageAbsorption: 1
+            KnockBackAbsorption: 0.85
+            PoiseDamageAbsorption: 1
+          <ParryWindowStart>k__BackingField:
+            <Duration>k__BackingField: 0
+            <Phase>k__BackingField: 0
+          <ParryWindowEnd>k__BackingField:
+            <Duration>k__BackingField: 0.25
+            <Phase>k__BackingField: 0
+          <Particles>k__BackingField: {fileID: 6240072112886026631, guid: 25aeb624df7917e4aa9cbe2204b85ed6,
+            type: 3}
+          <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
+    - rid: 5082901806419542016
+      type: {class: KnockBackOnParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: KnockBackOnParryData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Angle>k__BackingField: {x: 1, y: 1}
+          <Strength>k__BackingField: 10
+    - rid: 5082902107917385728
+      type: {class: DamageOnParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageOnParryData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Amount>k__BackingField: 5

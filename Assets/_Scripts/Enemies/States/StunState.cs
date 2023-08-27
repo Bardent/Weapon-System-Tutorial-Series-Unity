@@ -35,8 +35,6 @@ public class StunState : State {
 
 		isStunTimeOver = false;
 		isMovementStopped = false;
-		Movement?.SetVelocity(stateData.stunKnockbackSpeed, stateData.stunKnockbackAngle, entity.lastDamageDirection);
-
 	}
 
 	public override void Exit() {

@@ -9,5 +9,10 @@ namespace Bardent.Utilities
             component = gameObject.GetComponentInChildren<T>();
             return component != null;
         }
+
+        public static bool TryGetComponentInChildren<T>(this Component comp, out T component)
+        {
+            return TryGetComponentInChildren(comp.gameObject, out component);
+        }
     }
 }

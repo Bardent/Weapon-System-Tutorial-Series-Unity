@@ -1,6 +1,6 @@
 ﻿using Bardent.Combat.Damage;
 using UnityEngine;
-using static Bardent.Utilities.CombatUtilities;
+using static Bardent.Utilities.CombatDamageUtilities;
 
 namespace Bardent.Weapons.Components
 {
@@ -10,7 +10,8 @@ namespace Bardent.Weapons.Components
 
         private void HandleBlock(GameObject blockedGameObject)
         {
-            Damage(blockedGameObject, new DamageData(currentAttackData.Amount, Core.Root));
+            // Notice here the "out _". This indicates that in this case we do not care about the damageable that is assigned there
+            TryDamage(blockedGameObject, new DamageData(currentAttackData.Amount, Core.Root), out _);
         }
 
         protected override void Start()

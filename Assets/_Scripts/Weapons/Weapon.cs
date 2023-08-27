@@ -38,7 +38,7 @@ namespace Bardent.Weapons
 
         public float AttackStartTime { get; private set; }
 
-        private Animator anim;
+        public Animator Anim { get; private set; }
         public GameObject BaseGameObject { get; private set; }
         public GameObject WeaponSpriteGameObject { get; private set; }
 
@@ -69,14 +69,15 @@ namespace Bardent.Weapons
 
         public void Enter()
         {
+            // Debug.Break();
             print($"{transform.name} enter");
 
             AttackStartTime = Time.time;
 
             attackCounterResetTimeNotifier.Disable();
 
-            anim.SetBool("active", true);
-            anim.SetInteger("counter", currentAttackCounter);
+            Anim.SetBool("active", true);
+            Anim.SetInteger("counter", currentAttackCounter);
 
             OnEnter?.Invoke();
         }
@@ -93,7 +94,7 @@ namespace Bardent.Weapons
 
         public void Exit()
         {
-            anim.SetBool("active", false);
+            Anim.SetBool("active", false);
 
             CurrentAttackCounter++;
             attackCounterResetTimeNotifier.Init(attackCounterResetCooldown);
@@ -116,7 +117,7 @@ namespace Bardent.Weapons
             BaseGameObject = transform.Find("Base").gameObject;
             WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
 
-            anim = BaseGameObject.GetComponent<Animator>();
+            Anim = BaseGameObject.GetComponent<Animator>();
 
             EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
