@@ -21,6 +21,8 @@ namespace Bardent.Weapons
 
         public event Action<bool> OnSetOptionalSpriteActive;
 
+        public event Action<bool> OnFlipSetActive; 
+
         public event Action<AttackPhases> OnEnterAttackPhase;
 
         /*
@@ -40,6 +42,9 @@ namespace Bardent.Weapons
 
         private void SetOptionalSpriteEnabled() => OnSetOptionalSpriteActive?.Invoke(true);
         private void SetOptionalSpriteDisabled() => OnSetOptionalSpriteActive?.Invoke(false);
+
+        private void SetFlipActive() => OnFlipSetActive?.Invoke(true);
+        private void SetFlipInactive() => OnFlipSetActive?.Invoke(false);
 
         private void EnterAttackPhase(AttackPhases phase) => OnEnterAttackPhase?.Invoke(phase);
 
