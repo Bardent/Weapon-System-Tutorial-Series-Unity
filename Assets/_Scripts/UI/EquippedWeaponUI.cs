@@ -8,16 +8,17 @@ namespace Bardent.UI
 {
     public class EquippedWeaponUI : MonoBehaviour
     {
-        [SerializeField] private WeaponDataSO weaponData;
         [SerializeField] private Image weaponIcon;
 
         [SerializeField] private CombatInputs input;
         [SerializeField] private WeaponInventory weaponInventory;
 
-        [ContextMenu("Set Weapon Icon")]
+        private WeaponDataSO weaponData;
+        
         private void SetWeaponIcon()
         {
             weaponIcon.sprite = weaponData ? weaponData.Icon : null;
+            weaponIcon.color = weaponData ? Color.white : Color.clear;
         }
 
         private void HandleWeaponDataChanged(int inputIndex, WeaponDataSO data)

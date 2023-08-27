@@ -25,6 +25,12 @@ namespace Bardent.Weapons
         private void GenerateWeapon(WeaponDataSO data)
         {
             weapon.SetData(data);
+
+            if (data is null)
+            {
+                weapon.SetCanEnterAttack(false);
+                return;
+            }
             
             componentAlreadyOnWeapon.Clear();
             componentsAddedToWeapon.Clear();
