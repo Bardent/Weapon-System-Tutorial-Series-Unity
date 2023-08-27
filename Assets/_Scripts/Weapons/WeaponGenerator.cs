@@ -21,19 +21,8 @@ namespace Bardent.Weapons
         private Animator anim;
 
         private WeaponInventory weaponInventory;
-        
-        private void Start()
-        {
-            weaponInventory = weapon.Core.GetCoreComponent<WeaponInventory>();
-            anim = GetComponentInChildren<Animator>();
 
-            if (weaponInventory.TryGetWeapon((int)combatInput, out var data))
-            {
-                GenerateWeapon(data);
-            }
-        }
-
-        public void GenerateWeapon(WeaponDataSO data)
+        private void GenerateWeapon(WeaponDataSO data)
         {
             weapon.SetData(data);
             
@@ -74,5 +63,36 @@ namespace Bardent.Weapons
             
             weapon.SetCanEnterAttack(true);
         }
+        
+        private void HandleWeaponDataChanged(int inputIndex, WeaponDataSO data)
+        {
+            if (inputIndex != (int)combatInput)
+                return;
+            
+            GenerateWeapon(data);
+        }
+        
+        #region Plumbing
+
+        private void Start()
+        {
+            weaponInventory = weapon.Core.GetCoreComponent<WeaponInventory>();
+
+            weaponInventory.OnWeaponDataChanged += HandleWeaponDataChanged;
+            
+            anim = GetComponentInChildren<Animator>();
+
+            if (weaponInventory.TryGetWeapon((int)combatInput, out var data))
+            {
+                GenerateWeapon(data);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            weaponInventory.OnWeaponDataChanged -= HandleWeaponDataChanged;
+        }
+
+        #endregion
     }
 }
