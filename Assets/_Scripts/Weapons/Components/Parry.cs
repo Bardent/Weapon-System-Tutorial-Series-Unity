@@ -27,20 +27,30 @@ namespace Bardent.Weapons.Components
         private CoreSystem.Movement movement;
         private ParticleManager particleManager;
 
-        private void HandleStartAnimationWindow(AnimationWindows window)
+        private bool isBlockWindowActive;
+        private bool shouldUpdate;
+
+        private float nextWindowTriggerTime;
+
+        private void StartParryWindow()
         {
-            if (window != AnimationWindows.Parry)
-                return;
+            isBlockWindowActive = true;
+            shouldUpdate = false;
+
+            damageModifier.OnModified += HandleParry;
+
 
             damageReceiver.Modifiers.AddModifier(damageModifier);
             knockBackReceiver.Modifiers.AddModifier(knockBackModifier);
             poiseDamageReceiver.Modifiers.AddModifier(poiseDamageModifier);
         }
 
-        private void HandleStopAnimationWindow(AnimationWindows window)
+        private void StopParryWindow()
         {
-            if (window != AnimationWindows.Parry)
-                return;
+            isBlockWindowActive = false;
+            shouldUpdate = false;
+
+            damageModifier.OnModified += HandleParry;
 
             damageReceiver.Modifiers.RemoveModifier(damageModifier);
             knockBackReceiver.Modifiers.RemoveModifier(knockBackModifier);
@@ -72,7 +82,7 @@ namespace Bardent.Weapons.Components
             /*
              * The modifier is only used to detect an enemy making contact with the player from allowed directions.
              * If that happens we still need to inform the entity that it has been parried.
-             */ 
+             */
             if (!TryParry(parriedGameObject, new Combat.Parry.ParryData(Core.Root), out _, out _))
             {
                 return;
@@ -83,6 +93,13 @@ namespace Bardent.Weapons.Components
             OnParry?.Invoke(parriedGameObject);
 
             particleManager.StartWithRandomRotation(currentAttackData.Particles, currentAttackData.ParticlesOffset);
+        }
+
+        private void HandleEnterAttackPhase(AttackPhases phase)
+        {
+            shouldUpdate = isBlockWindowActive
+                ? currentAttackData.ParryWindowEnd.TryGetTriggerTime(phase, out nextWindowTriggerTime)
+                : currentAttackData.ParryWindowStart.TryGetTriggerTime(phase, out nextWindowTriggerTime);
         }
 
         #region Plumbing
@@ -98,24 +115,38 @@ namespace Bardent.Weapons.Components
             movement = Core.GetCoreComponent<CoreSystem.Movement>();
             particleManager = Core.GetCoreComponent<ParticleManager>();
 
-            AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
-            AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
-
             damageModifier = new DamageModifier(IsAttackParried);
             knockBackModifier = new BlockKnockBackModifier(IsAttackParried);
             poiseDamageModifier = new BlockPoiseDamageModifier(IsAttackParried);
 
-            damageModifier.OnModified += HandleParry;
+            AnimationEventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
+        }
+
+        private void Update()
+        {
+            if (!shouldUpdate || !IsPastTriggerTime())
+                return;
+
+            if (isBlockWindowActive)
+            {
+                StopParryWindow();
+            }
+            else
+            {
+                StartParryWindow();
+            }
+        }
+
+        private bool IsPastTriggerTime()
+        {
+            return Time.time >= nextWindowTriggerTime;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            AnimationEventHandler.OnStartAnimationWindow -= HandleStartAnimationWindow;
-            AnimationEventHandler.OnStopAnimationWindow -= HandleStopAnimationWindow;
-
-            damageModifier.OnModified -= HandleParry;
+            AnimationEventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
         }
 
         #endregion

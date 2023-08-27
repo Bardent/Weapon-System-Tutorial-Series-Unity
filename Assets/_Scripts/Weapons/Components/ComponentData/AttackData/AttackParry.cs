@@ -7,6 +7,10 @@ namespace Bardent.Weapons.Components
     public class AttackParry : AttackData
     {
         [field: SerializeField] public DirectionalInformation[] ParryDirectionalInformation { get; private set; }
+
+        [field: SerializeField] public PhaseTime ParryWindowStart { get; private set; }
+
+        [field: SerializeField] public PhaseTime ParryWindowEnd { get; private set; }
         
         [field: SerializeField] public GameObject Particles { get; private set; }
 

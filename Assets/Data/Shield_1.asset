@@ -125,6 +125,12 @@ MonoBehaviour:
             DamageAbsorption: 1
             KnockBackAbsorption: 0.85
             PoiseDamageAbsorption: 1
+          <ParryWindowStart>k__BackingField:
+            <Duration>k__BackingField: 0
+            <Phase>k__BackingField: 0
+          <ParryWindowEnd>k__BackingField:
+            <Duration>k__BackingField: 0.25
+            <Phase>k__BackingField: 0
           <Particles>k__BackingField: {fileID: 6240072112886026631, guid: 25aeb624df7917e4aa9cbe2204b85ed6,
             type: 3}
           <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}

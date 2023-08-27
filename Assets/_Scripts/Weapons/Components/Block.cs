@@ -32,8 +32,6 @@ namespace Bardent.Weapons.Components
         // Starts the block window by passing modifiers to receivers.
         private void StartBlockWindow()
         {
-            print("StartBlockWindow");
-
             isBlockWindowActive = true;
             shouldUpdate = false;
 
@@ -47,8 +45,6 @@ namespace Bardent.Weapons.Components
         // Stops block window by removing modifiers from windows.
         private void StopBlockWindow()
         {
-            print("StopBlockWindow");
-
             isBlockWindowActive = false;
             shouldUpdate = false;
 
@@ -84,8 +80,6 @@ namespace Bardent.Weapons.Components
 
         private void HandleEnterAttackPhase(AttackPhases phase)
         {
-            print($"Entering Attack Phase: {phase.ToString()}");
-            
             shouldUpdate = isBlockWindowActive
                 ? currentAttackData.BlockWindowEnd.TryGetTriggerTime(phase, out nextWindowTriggerTime)
                 : currentAttackData.BlockWindowStart.TryGetTriggerTime(phase, out nextWindowTriggerTime);
