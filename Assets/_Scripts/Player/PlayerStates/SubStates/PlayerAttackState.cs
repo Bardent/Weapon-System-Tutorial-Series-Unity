@@ -81,6 +81,8 @@ public class PlayerAttackState : PlayerAbilityState
         weapon.Exit();
     }
 
+    public bool CanTransitionToAttackState() => weapon.CanEnterAttack;
+
     private void HandleEnableInterrupt() => canInterrupt = true;
 
     private void HandleUseInput() => player.InputHandler.UseAttackInput(inputIndex);

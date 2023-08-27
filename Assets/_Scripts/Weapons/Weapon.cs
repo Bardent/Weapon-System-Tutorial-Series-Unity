@@ -15,6 +15,8 @@ namespace Bardent.Weapons
 
         [SerializeField] private float attackCounterResetCooldown;
 
+        public bool CanEnterAttack { get; private set; }
+        
         public WeaponDataSO Data { get; private set; }
 
         public int CurrentAttackCounter
@@ -91,6 +93,8 @@ namespace Bardent.Weapons
         {
             Data = data;
         }
+
+        public void SetCanEnterAttack(bool value) => CanEnterAttack = value;
 
         public void Exit()
         {
