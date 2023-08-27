@@ -44852,6 +44852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1937725962}
   - component: {fileID: 1937725963}
+  - component: {fileID: 1937725964}
   m_Layer: 11
   m_Name: WeaponInventory
   m_TagString: Untagged
@@ -44888,7 +44889,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <weaponData>k__BackingField:
   - {fileID: 11400000, guid: 34a22b2e4f061dd4e833ca5b0b73ddc6, type: 2}
-  - {fileID: 11400000, guid: 4a936cdbbada63143b9a868912282179, type: 2}
+  - {fileID: 11400000, guid: d37888f2fea16544187309f4eeaf9260, type: 2}
+--- !u!114 &1937725964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937725961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089807799f36484e954d3fa4a2f3b727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <WeaponData>k__BackingField: {fileID: 0}
+  <CombatInput>k__BackingField: 0
 --- !u!1 &2016511925
 GameObject:
   m_ObjectHideFlags: 0
