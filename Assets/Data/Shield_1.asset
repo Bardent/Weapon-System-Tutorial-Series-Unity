@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Shield_1
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: -641897536, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
+    type: 3}
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 1baa3682ee132644cbd959c267628da5,
     type: 2}
   <NumberOfAttacks>k__BackingField: 1

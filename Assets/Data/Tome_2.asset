@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Tome_2
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 1974652921, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
+    type: 3}
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 80caa8ced50a9af45801404d8bcc2e1c,
     type: 2}
   <NumberOfAttacks>k__BackingField: 1

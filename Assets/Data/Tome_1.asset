@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Tome_1
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: -766350882, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
+    type: 3}
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 80caa8ced50a9af45801404d8bcc2e1c,
     type: 2}
   <NumberOfAttacks>k__BackingField: 1
@@ -31,6 +33,7 @@ MonoBehaviour:
       type: {class: ChargeData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: ChargeData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <ChargeTime>k__BackingField: 1
@@ -46,6 +49,7 @@ MonoBehaviour:
         asm: Assembly-CSharp}
       data:
         name: ChargeToProjectileSpawnerData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <AngleVariation>k__BackingField: 15
@@ -57,6 +61,7 @@ MonoBehaviour:
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: WeaponSpriteData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <PhaseSprites>k__BackingField:
@@ -100,6 +105,7 @@ MonoBehaviour:
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: MovementData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <Direction>k__BackingField: {x: 1, y: 0}
@@ -108,6 +114,7 @@ MonoBehaviour:
       type: {class: TargeterData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: TargeterData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <Area>k__BackingField:
@@ -127,6 +134,7 @@ MonoBehaviour:
       type: {class: ProjectileSpawnerData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: ProjectileSpawnerData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <SpawnInfos>k__BackingField:
