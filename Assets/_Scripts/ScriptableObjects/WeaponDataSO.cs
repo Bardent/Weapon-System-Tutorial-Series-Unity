@@ -10,6 +10,8 @@ namespace Bardent.Weapons
     public class WeaponDataSO : ScriptableObject
     {
         [field: SerializeField] public Sprite Icon { get; set; }
+        [field: SerializeField] public string Name { get; private set; }
+        [field: SerializeField] public string Description { get; private set; }
         [field: SerializeField] public RuntimeAnimatorController AnimatorController { get; private set; }
         [field: SerializeField] public int NumberOfAttacks { get; private set; }
 
