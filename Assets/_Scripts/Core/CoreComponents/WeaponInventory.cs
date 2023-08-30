@@ -37,5 +37,20 @@ namespace Bardent.CoreSystem
             data = weaponData[index];
             return true;
         }
+
+        public bool TryGetEmptyIndex(out int index)
+        {
+            for (var i = 0; i < weaponData.Length; i++)
+            {
+                if (weaponData[i] is not null)
+                    continue;
+                
+                index = i;
+                return true;
+            }
+
+            index = -1;
+            return false;
+        }
     }
 }

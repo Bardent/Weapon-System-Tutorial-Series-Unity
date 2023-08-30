@@ -7,19 +7,31 @@ using UnityEngine;
 namespace Bardent.CoreSystem
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Interaction : CoreComponent
+    public class InteractableDetector : CoreComponent
     {
+        public Action<IInteractable> OnTryInteract;
+
         private readonly List<IInteractable> interactables = new();
 
         private IInteractable closestInteractable;
 
         private float distanceToClosestInteractable = float.PositiveInfinity;
 
+        [ContextMenu("TryInteract")]
+        public void TryInteract()
+        {
+            if(closestInteractable is null)
+                return;
+            
+            OnTryInteract?.Invoke(closestInteractable);
+        }
+        
         private void Update()
         {
             if (interactables.Count <= 0)
                 return;
 
+            distanceToClosestInteractable = float.PositiveInfinity;
             var oldClosestInteractable = closestInteractable;
 
             if (closestInteractable is not null)
@@ -68,6 +80,7 @@ namespace Bardent.CoreSystem
                 if (interactable == closestInteractable)
                 {
                     interactable.DisableInteraction();
+                    closestInteractable = null;
                 }
             }
         }

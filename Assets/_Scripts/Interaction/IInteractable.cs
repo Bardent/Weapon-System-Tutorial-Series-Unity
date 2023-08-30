@@ -9,10 +9,12 @@ namespace Bardent.Interaction
         void DisableInteraction();
 
         Vector3 GetPosition();
+
+        void Interact();
     }
 
     public interface IInteractable<T> : IInteractable
     {
-        bool TryInteract(out T context);
+        T GetContext();
     }
 }

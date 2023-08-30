@@ -1,18 +1,17 @@
-﻿using Bardent.Interaction;
-using Bardent.Weapons;
+﻿using Bardent.Weapons;
 using UnityEngine;
 
-namespace Bardent.WeaponPickup
+namespace Bardent.Interaction.Interactables
 {
     public class WeaponPickup : MonoBehaviour, IInteractable<WeaponDataSO>
     {
         [SerializeField] private WeaponDataSO weaponData;
 
-        public bool TryInteract(out WeaponDataSO context)
-        {
-            context = weaponData;
+        public WeaponDataSO GetContext() => weaponData;
 
-            return weaponData is not null;
+        public void Interact()
+        {
+            gameObject.SetActive(false);
         }
 
         public void EnableInteraction()
