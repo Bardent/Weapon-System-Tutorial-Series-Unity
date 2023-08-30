@@ -18,9 +18,9 @@ namespace Bardent.CoreSystem
         private float distanceToClosestInteractable = float.PositiveInfinity;
 
         [ContextMenu("TryInteract")]
-        public void TryInteract()
+        public void TryInteract(bool inputValue)
         {
-            if(closestInteractable is null)
+            if(!inputValue || closestInteractable is null)
                 return;
             
             OnTryInteract?.Invoke(closestInteractable);
