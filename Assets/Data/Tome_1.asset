@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: -766350882, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
     type: 3}
+  <Name>k__BackingField: Magic Missile
+  <Description>k__BackingField: A spell that shoots of magic missiles. These missles
+    are able to track enemies. Each attack can be charged up to 3 times.
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 80caa8ced50a9af45801404d8bcc2e1c,
     type: 2}
   <NumberOfAttacks>k__BackingField: 1

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: -641897536, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
     type: 3}
+  <Name>k__BackingField: Bardent's Shield
+  <Description>k__BackingField: 'It''s made of some kind of metal alloy. '
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 1baa3682ee132644cbd959c267628da5,
     type: 2}
   <NumberOfAttacks>k__BackingField: 1

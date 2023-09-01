@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 264998466, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
     type: 3}
+  <Name>k__BackingField: Bardent's Sword
+  <Description>k__BackingField: It looks sick af
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 95b2394cafcd7ac4eb455b8d8735c661,
     type: 2}
   <NumberOfAttacks>k__BackingField: 3

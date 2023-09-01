@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: -173177169, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
     type: 3}
+  <Name>k__BackingField: Got Your 6 Bow
+  <Description>k__BackingField: This bow fires a magic missle backwards on every
+    three shots
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 1089e6ad3ab9c034382f2409dbcddd6c,
     type: 2}
   <NumberOfAttacks>k__BackingField: 3
