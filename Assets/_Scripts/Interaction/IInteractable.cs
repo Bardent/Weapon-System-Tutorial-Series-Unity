@@ -16,5 +16,7 @@ namespace Bardent.Interaction
     public interface IInteractable<T> : IInteractable
     {
         T GetContext();
+
+        void SetContext(T context);
     }
 }

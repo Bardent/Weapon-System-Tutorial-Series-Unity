@@ -1,17 +1,25 @@
-﻿using Bardent.Weapons;
+﻿using System;
+using Bardent.Weapons;
 using UnityEngine;
 
 namespace Bardent.Interaction.Interactables
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class WeaponPickup : MonoBehaviour, IInteractable<WeaponDataSO>
     {
-        [SerializeField] private WeaponDataSO weaponData;
+        [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
 
+        [SerializeField] private WeaponDataSO weaponData;
+        
         public WeaponDataSO GetContext() => weaponData;
+        public void SetContext(WeaponDataSO context)
+        {
+            weaponData = context;
+        }
 
         public void Interact()
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
         public void EnableInteraction()
@@ -27,6 +35,11 @@ namespace Bardent.Interaction.Interactables
         public Vector3 GetPosition()
         {
             return transform.position;
+        }
+
+        private void Awake()
+        {
+            Rigidbody2D ??= GetComponent<Rigidbody2D>();
         }
     }
 }

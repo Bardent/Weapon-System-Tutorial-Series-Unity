@@ -8,17 +8,18 @@ namespace Bardent.CoreSystem
     public class WeaponSwap : CoreComponent
     {
         public event Action<WeaponSwapChoiceRequest> OnChoiceRequested;
-        
+        public event Action<WeaponDataSO> OnWeaponDiscarded;
+
         private InteractableDetector interactableDetector;
         private WeaponInventory weaponInventory;
 
         private WeaponDataSO newWeaponData;
 
         private WeaponPickup weaponPickup;
-        
+
         private void HandleTryInteract(IInteractable interactable)
         {
-            if(interactable is not WeaponPickup pickup)
+            if (interactable is not WeaponPickup pickup)
                 return;
 
             weaponPickup = pickup;
@@ -32,23 +33,28 @@ namespace Bardent.CoreSystem
                 newWeaponData = null;
                 return;
             }
-            
+
             OnChoiceRequested?.Invoke(new WeaponSwapChoiceRequest(
                 HandleWeaponSwapChoice,
                 weaponInventory.GetWeaponSwapChoices(),
                 newWeaponData
-                ));   
+            ));
         }
 
         private void HandleWeaponSwapChoice(WeaponSwapChoice choice)
         {
-            weaponInventory.TrySetWeapon(newWeaponData, choice.Index, out _);
-            newWeaponData = null;
-            
-            if(weaponPickup is null)
+            if (!weaponInventory.TrySetWeapon(newWeaponData, choice.Index, out var oldData)) 
                 return;
             
+            newWeaponData = null;
+
+            OnWeaponDiscarded?.Invoke(oldData);
+                
+            if (weaponPickup is null)
+                return;
+
             weaponPickup.Interact();
+            
         }
 
         protected override void Awake()
