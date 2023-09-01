@@ -44,13 +44,27 @@ namespace Bardent.CoreSystem
             {
                 if (weaponData[i] is not null)
                     continue;
-                
+
                 index = i;
                 return true;
             }
 
             index = -1;
             return false;
+        }
+
+        public WeaponSwapChoice[] GetWeaponSwapChoices()
+        {
+            var choices = new WeaponSwapChoice[weaponData.Length];
+
+            for (var i = 0; i < weaponData.Length; i++)
+            {
+                var data = weaponData[i];
+
+                choices[i] = new WeaponSwapChoice(data, i);
+            }
+
+            return choices;
         }
     }
 }
