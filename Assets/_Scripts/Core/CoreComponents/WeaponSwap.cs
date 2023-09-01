@@ -13,11 +13,15 @@ namespace Bardent.CoreSystem
         private WeaponInventory weaponInventory;
 
         private WeaponDataSO newWeaponData;
+
+        private WeaponPickup weaponPickup;
         
         private void HandleTryInteract(IInteractable interactable)
         {
-            if(interactable is not WeaponPickup weaponPickup)
+            if(interactable is not WeaponPickup pickup)
                 return;
+
+            weaponPickup = pickup;
 
             newWeaponData = weaponPickup.GetContext();
 
@@ -40,6 +44,11 @@ namespace Bardent.CoreSystem
         {
             weaponInventory.TrySetWeapon(newWeaponData, choice.Index, out _);
             newWeaponData = null;
+            
+            if(weaponPickup is null)
+                return;
+            
+            weaponPickup.Interact();
         }
 
         protected override void Awake()
