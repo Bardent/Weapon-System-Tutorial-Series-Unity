@@ -9,6 +9,8 @@ namespace Bardent.Weapons
 {
     public class WeaponGenerator : MonoBehaviour
     {
+        public event Action OnWeaponGenerating;
+        
         [SerializeField] private Weapon weapon;
         [SerializeField] private CombatInputs combatInput;
 
@@ -24,6 +26,8 @@ namespace Bardent.Weapons
 
         private void GenerateWeapon(WeaponDataSO data)
         {
+            OnWeaponGenerating?.Invoke();
+            
             weapon.SetData(data);
 
             if (data is null)
