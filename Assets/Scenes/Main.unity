@@ -47025,10 +47025,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7002959371737094117, guid: b0f73ec3103934545aa96c640d881cec,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7002959371737094118, guid: b0f73ec3103934545aa96c640d881cec,
         type: 3}
       propertyPath: m_Name
       value: WeaponPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002959372488733395, guid: b0f73ec3103934545aa96c640d881cec,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1662719763, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
+        type: 3}
+    - target: {fileID: 7002959372488733405, guid: b0f73ec3103934545aa96c640d881cec,
+        type: 3}
+      propertyPath: m_Name
+      value: Graphics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0f73ec3103934545aa96c640d881cec, type: 3}
