@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Sword_1
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 264998466, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
+    type: 3}
+  <Name>k__BackingField: Bardent's Sword
+  <Description>k__BackingField: It looks sick af
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 95b2394cafcd7ac4eb455b8d8735c661,
     type: 2}
   <NumberOfAttacks>k__BackingField: 3
@@ -29,6 +33,7 @@ MonoBehaviour:
       type: {class: KnockBackData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: KnockBackData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <Angle>k__BackingField: {x: 1, y: 1}
@@ -43,6 +48,7 @@ MonoBehaviour:
       type: {class: PoiseDamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: PoiseDamageData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <Amount>k__BackingField: 30
@@ -54,6 +60,7 @@ MonoBehaviour:
       type: {class: DamageOnHitBoxActionData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: DamageOnHitBoxActionData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <Amount>k__BackingField: 5
@@ -65,6 +72,7 @@ MonoBehaviour:
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: MovementData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <Direction>k__BackingField: {x: 1, y: 0}
@@ -79,6 +87,7 @@ MonoBehaviour:
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: ActionHitBoxData
+        repeatData: 0
         attackData:
         - name: Attack 1
           Debug: 0
@@ -111,6 +120,7 @@ MonoBehaviour:
       type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: WeaponSpriteData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <PhaseSprites>k__BackingField:

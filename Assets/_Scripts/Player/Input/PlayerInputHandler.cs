@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    public event Action<bool> OnInteractInputChanged; 
+
     private PlayerInput playerInput;
     private Camera cam;
 
@@ -42,6 +44,20 @@ public class PlayerInputHandler : MonoBehaviour
     {
         CheckJumpInputHoldTime();
         CheckDashInputHoldTime();
+    }
+
+    public void OnInteractInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OnInteractInputChanged?.Invoke(true);
+            return;
+        }
+
+        if (context.canceled)
+        {
+            OnInteractInputChanged?.Invoke(false);
+        }
     }
 
     public void OnPrimaryAttackInput(InputAction.CallbackContext context)

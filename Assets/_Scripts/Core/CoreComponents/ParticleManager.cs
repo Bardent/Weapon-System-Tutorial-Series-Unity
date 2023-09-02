@@ -52,11 +52,7 @@ namespace Bardent.CoreSystem
             return StartParticles(particlePrefab, pos, rotation);
         }
 
-        private Vector2 FindRelativePoint(Vector2 offset)
-        {
-            offset.x *= movement.FacingDirection;
+        private Vector2 FindRelativePoint(Vector2 offset) => movement.FindRelativePoint(offset);
 
-            return transform.position + (Vector3)offset;
-        }
     }
 }

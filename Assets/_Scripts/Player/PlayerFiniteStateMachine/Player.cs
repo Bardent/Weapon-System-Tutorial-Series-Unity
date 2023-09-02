@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     public BoxCollider2D MovementCollider { get; private set; }
 
     public Stats Stats { get; private set; }
+    
+    public InteractableDetector InteractableDetector { get; private set; }
     #endregion
 
     #region Other Variables         
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour
         secondaryWeapon.SetCore(Core);
 
         Stats = Core.GetCoreComponent<Stats>();
+        InteractableDetector = Core.GetCoreComponent<InteractableDetector>();
         
         StateMachine = new PlayerStateMachine();
 
@@ -91,6 +94,9 @@ public class Player : MonoBehaviour
     {
         Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
+
+        InputHandler.OnInteractInputChanged += InteractableDetector.TryInteract;
+        
         RB = GetComponent<Rigidbody2D>();
         DashDirectionIndicator = transform.Find("DashDirectionIndicator");
         MovementCollider = GetComponent<BoxCollider2D>();
