@@ -92,6 +92,11 @@ namespace Bardent.Weapons
         public void SetData(WeaponDataSO data)
         {
             Data = data;
+            
+            if(Data is null)
+                return;
+            
+            ResetAttackCounter();
         }
 
         public void SetCanEnterAttack(bool value) => CanEnterAttack = value;
