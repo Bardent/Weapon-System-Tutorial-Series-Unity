@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
-  m_Name: Shield_1
+  m_Name: Shield_3
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: -641897536, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
+  <Icon>k__BackingField: {fileID: 853403320, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
     type: 3}
-  <Name>k__BackingField: Bardent's Shield
-  <Description>k__BackingField: 'It''s made of some kind of metal alloy. '
+  <Name>k__BackingField: Crystal Shield
+  <Description>k__BackingField: A shield made of pure crystal. Watch out! Crystals
+    can be pretty pokey!
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 1baa3682ee132644cbd959c267628da5,
     type: 2}
   <NumberOfAttacks>k__BackingField: 1
@@ -24,6 +25,7 @@ MonoBehaviour:
   - rid: 1263952740535762945
   - rid: 1263952740535762946
   - rid: 1263952740535762947
+  - rid: 1263952839495385088
   - rid: 1263952977246814208
   - rid: 5082901806419542016
   - rid: 5082902107917385728
@@ -40,38 +42,38 @@ MonoBehaviour:
           <PhaseSprites>k__BackingField:
           - <Phase>k__BackingField: 0
             <Sprites>k__BackingField:
-            - {fileID: 1280331598, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -1494657642, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 566926144, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 1508402341, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -1287479526, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -1692188888, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: -2050573273, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -1705875464, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: 1901594419, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -1597256307, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: 1743468772, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: 653090539, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
           - <Phase>k__BackingField: 1
             <Sprites>k__BackingField:
-            - {fileID: -1785300728, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 730176475, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -1222750679, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -2069254117, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: 649740858, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -2105612583, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -1387427354, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -1341108270, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
           - <Phase>k__BackingField: 3
             <Sprites>k__BackingField:
-            - {fileID: -464158169, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -788627126, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -696614539, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 232687259, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: 896290284, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: 30839396, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -869936769, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -118287007, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
             - {fileID: -6096497897028323266, guid: 0a54b12d964217349929807f3ea6fb60, type: 3}
           - <Phase>k__BackingField: 4
             <Sprites>k__BackingField:
-            - {fileID: -563162435, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 51504190, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 1842655769, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -447961485, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: 1430168277, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: 622885436, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: 1017179392, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: 1028396829, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
             - {fileID: -6096497897028323266, guid: 0a54b12d964217349929807f3ea6fb60, type: 3}
           - <Phase>k__BackingField: 5
             <Sprites>k__BackingField:
-            - {fileID: 1489475093, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 890883244, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 910991532, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 353571203, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: -172835044, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -2114263260, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: 872173614, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
+            - {fileID: -2052464454, guid: b69bbaa0bc532f04496c8602a756dc26, type: 3}
     - rid: 1263952740535762945
       type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -107,6 +109,14 @@ MonoBehaviour:
         - name: Attack 1
           <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 0
+    - rid: 1263952839495385088
+      type: {class: DamageOnBlockData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageOnBlockData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Amount>k__BackingField: 10
     - rid: 1263952977246814208
       type: {class: ParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
-  m_Name: Shield_1
+  m_Name: Shield_2
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: -641897536, guid: 7698f902a8e73cb4b88c4738f7fb0ff5,
     type: 3}
-  <Name>k__BackingField: Bardent's Shield
-  <Description>k__BackingField: 'It''s made of some kind of metal alloy. '
+  <Name>k__BackingField: Wooden Shield
+  <Description>k__BackingField: Just a shield made of wood
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 1baa3682ee132644cbd959c267628da5,
     type: 2}
   <NumberOfAttacks>k__BackingField: 1
@@ -40,38 +40,38 @@ MonoBehaviour:
           <PhaseSprites>k__BackingField:
           - <Phase>k__BackingField: 0
             <Sprites>k__BackingField:
-            - {fileID: 1280331598, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -1494657642, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 566926144, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 1508402341, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -1287479526, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -1692188888, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: -1048036714, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: 1565793815, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -1484040435, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -1720796325, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: 273292081, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -925444439, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
           - <Phase>k__BackingField: 1
             <Sprites>k__BackingField:
-            - {fileID: -1785300728, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 730176475, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -1222750679, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -2069254117, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: -429040762, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: 415074057, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: 1071959021, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -111214336, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
           - <Phase>k__BackingField: 3
             <Sprites>k__BackingField:
-            - {fileID: -464158169, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -788627126, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -696614539, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 232687259, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: -486079054, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: 932276872, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -1511961161, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -74527363, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
             - {fileID: -6096497897028323266, guid: 0a54b12d964217349929807f3ea6fb60, type: 3}
           - <Phase>k__BackingField: 4
             <Sprites>k__BackingField:
-            - {fileID: -563162435, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 51504190, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 1842655769, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: -447961485, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: -1947108724, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -1290754227, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: 1216963456, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -988856200, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
             - {fileID: -6096497897028323266, guid: 0a54b12d964217349929807f3ea6fb60, type: 3}
           - <Phase>k__BackingField: 5
             <Sprites>k__BackingField:
-            - {fileID: 1489475093, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 890883244, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 910991532, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
-            - {fileID: 353571203, guid: 9f850381bbfa4614aa5fd31658444014, type: 3}
+            - {fileID: -2026350669, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -1336301572, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: 1319187721, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
+            - {fileID: -428189951, guid: f6f10e6e84266ef4e8db20cde452957a, type: 3}
     - rid: 1263952740535762945
       type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -145,4 +145,4 @@ MonoBehaviour:
         repeatData: 0
         attackData:
         - name: Attack 1
-          <Amount>k__BackingField: 5
+          <Amount>k__BackingField: 20
