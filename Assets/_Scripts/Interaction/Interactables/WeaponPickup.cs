@@ -10,7 +10,8 @@ namespace Bardent.Interaction.Interactables
     {
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
 
-        [FormerlySerializedAs("iconSprite")] [SerializeField] private SpriteRenderer weaponIcon;
+        [SerializeField] private SpriteRenderer weaponIcon;
+        [SerializeField] private Bobber bobber;
         
         [SerializeField] private WeaponDataSO weaponData;
         
@@ -29,12 +30,12 @@ namespace Bardent.Interaction.Interactables
 
         public void EnableInteraction()
         {
-            print("Enable Interaction");
+            bobber.StartBobbing();
         }
 
         public void DisableInteraction()
         {
-            print("Disable Interaction");
+            bobber.StopBobbing();
         }
 
         public Vector3 GetPosition()
