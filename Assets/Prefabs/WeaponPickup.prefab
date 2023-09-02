@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8897983848841811052}
   - component: {fileID: 3560717069512704630}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingLayerID: 756119877
   m_SortingLayer: 6
   m_SortingOrder: -1
-  m_Sprite: {fileID: -2034599813, guid: 7698f902a8e73cb4b88c4738f7fb0ff5, type: 3}
+  m_Sprite: {fileID: 264998466, guid: 7698f902a8e73cb4b88c4738f7fb0ff5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
